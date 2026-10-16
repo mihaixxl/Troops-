@@ -220,7 +220,7 @@ tbody tr:hover td{background:#f7e7c5}
   </footer>
 </div>
 <script>
-const LAST_UPDATED="16.10.2026 · 18:33";
+const LAST_UPDATED="16.10.2026 · 23:44";
 const WORLD="s62-fr.kingsage.gameforge.com";
 const OFF_INDEXES=[3,5,6,8,9];
 const DEF_INDEXES=[0,1,2,4,5,7];
@@ -276,19 +276,19 @@ const playersData = [
       {
         "name": "05  trouble",
         "coords": "489|506",
-        "pts": "7.370",
+        "pts": "7.400",
         "troops": null
       },
       {
         "name": "06 bommmm",
         "coords": "471|489",
-        "pts": "5.320",
+        "pts": "5.380",
         "troops": null
       },
       {
         "name": "07 de poupie",
         "coords": "505|504",
-        "pts": "4.530",
+        "pts": "4.590",
         "troops": [
           188,
           0,
@@ -306,14 +306,26 @@ const playersData = [
       {
         "name": "08 farfadet",
         "coords": "511|517",
-        "pts": "4.200",
+        "pts": "4.330",
         "troops": null
       },
       {
         "name": "09 envolé",
         "coords": "475|491",
-        "pts": "3.240",
-        "troops": null
+        "pts": "3.640",
+        "troops": [
+          100,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
       }
     ]
   },
@@ -323,7 +335,7 @@ const playersData = [
       {
         "name": "001",
         "coords": "498|485",
-        "pts": "8.140",
+        "pts": "8.240",
         "troops": [
           0,
           0,
@@ -395,7 +407,7 @@ const playersData = [
       {
         "name": "005",
         "coords": "485|472",
-        "pts": "6.360",
+        "pts": "6.380",
         "troops": [
           0,
           0,
@@ -423,14 +435,14 @@ const playersData = [
           416,
           0,
           0,
-          0,
+          28000,
           1,
-          100,
+          2000,
+          3000,
           0,
-          0,
-          0,
-          0,
-          0
+          400,
+          50,
+          3
         ]
       },
       {
@@ -490,7 +502,7 @@ const playersData = [
       {
         "name": "010",
         "coords": "481|513",
-        "pts": "5.250",
+        "pts": "5.320",
         "troops": [
           0,
           0,
@@ -508,7 +520,7 @@ const playersData = [
       {
         "name": "020",
         "coords": "481|510",
-        "pts": "5.630",
+        "pts": "5.670",
         "troops": [
           0,
           0,
@@ -526,7 +538,7 @@ const playersData = [
       {
         "name": "030",
         "coords": "483|498",
-        "pts": "4.160",
+        "pts": "4.200",
         "troops": [
           0,
           0,
@@ -544,7 +556,7 @@ const playersData = [
       {
         "name": "040",
         "coords": "510|527",
-        "pts": "3.870",
+        "pts": "3.970",
         "troops": [
           0,
           0,
@@ -621,7 +633,7 @@ const playersData = [
       {
         "name": "004",
         "coords": "519|516",
-        "pts": "5.520",
+        "pts": "5.540",
         "troops": [
           0,
           0,
@@ -639,7 +651,7 @@ const playersData = [
       {
         "name": "005",
         "coords": "507|507",
-        "pts": "6.330",
+        "pts": "6.350",
         "troops": [
           349,
           0,
@@ -657,16 +669,16 @@ const playersData = [
       {
         "name": "006",
         "coords": "518|509",
-        "pts": "7.590",
+        "pts": "7.620",
         "troops": [
           0,
           0,
           0,
           0,
-          900,
+          2256,
           0,
           0,
-          2878,
+          3179,
           0,
           0,
           0
@@ -675,49 +687,20 @@ const playersData = [
       {
         "name": "007",
         "coords": "503|505",
-        "pts": "6.120",
+        "pts": "6.140",
         "troops": [
           0,
           0,
-          1585,
-          2418,
-          11595,
+          7870,
+          4453,
+          23194,
           0,
-          456,
+          659,
           0,
-          356,
+          368,
           0,
           0
         ]
-      }
-    ]
-  },
-  {
-    "name": "Bracks",
-    "villages": [
-      {
-        "name": "01 - Front",
-        "coords": "496|488",
-        "pts": "7.880",
-        "troops": null
-      },
-      {
-        "name": "02 - Front",
-        "coords": "495|487",
-        "pts": "7.880",
-        "troops": null
-      },
-      {
-        "name": "AR - 01",
-        "coords": "489|502",
-        "pts": "6.530",
-        "troops": null
-      },
-      {
-        "name": "AR - 02",
-        "coords": "469|500",
-        "pts": "5.690",
-        "troops": null
       }
     ]
   },
@@ -769,7 +752,7 @@ const playersData = [
       {
         "name": "004",
         "coords": "491|511",
-        "pts": "5.900",
+        "pts": "5.940",
         "troops": [
           1099,
           0,
@@ -787,12 +770,41 @@ const playersData = [
     ]
   },
   {
+    "name": "Bracks",
+    "villages": [
+      {
+        "name": "01 - Front",
+        "coords": "496|488",
+        "pts": "7.920",
+        "troops": null
+      },
+      {
+        "name": "02 - Front",
+        "coords": "495|487",
+        "pts": "7.920",
+        "troops": null
+      },
+      {
+        "name": "AR - 01",
+        "coords": "489|502",
+        "pts": "6.560",
+        "troops": null
+      },
+      {
+        "name": "AR - 02",
+        "coords": "469|500",
+        "pts": "5.730",
+        "troops": null
+      }
+    ]
+  },
+  {
     "name": "LaaGazouzz",
     "villages": [
       {
         "name": "1 Athenae",
         "coords": "496|498",
-        "pts": "8.700",
+        "pts": "8.800",
         "troops": [
           500,
           2500,
@@ -810,19 +822,19 @@ const playersData = [
       {
         "name": "2 Mykenai",
         "coords": "488|491",
-        "pts": "7.650",
+        "pts": "7.720",
         "troops": null
       },
       {
         "name": "3 Olympia",
         "coords": "495|497",
-        "pts": "6.770",
+        "pts": "6.790",
         "troops": null
       },
       {
         "name": "4 Messenia",
         "coords": "477|502",
-        "pts": "4.510",
+        "pts": "4.670",
         "troops": [
           185,
           0,
@@ -840,35 +852,6 @@ const playersData = [
     ]
   },
   {
-    "name": "Balgorf",
-    "villages": [
-      {
-        "name": "Alaric",
-        "coords": "475|483",
-        "pts": "5.760",
-        "troops": null
-      },
-      {
-        "name": "Arminius",
-        "coords": "491|484",
-        "pts": "6.890",
-        "troops": null
-      },
-      {
-        "name": "Attila",
-        "coords": "490|481",
-        "pts": "6.800",
-        "troops": null
-      },
-      {
-        "name": "Théodoric",
-        "coords": "473|470",
-        "pts": "2.000",
-        "troops": null
-      }
-    ]
-  },
-  {
     "name": "jc98",
     "villages": [
       {
@@ -880,7 +863,7 @@ const playersData = [
       {
         "name": "V002",
         "coords": "498|481",
-        "pts": "6.410",
+        "pts": "6.430",
         "troops": [
           0,
           1571,
@@ -898,7 +881,7 @@ const playersData = [
       {
         "name": "V003",
         "coords": "487|507",
-        "pts": "6.320",
+        "pts": "6.340",
         "troops": null
       },
       {
@@ -910,7 +893,36 @@ const playersData = [
       {
         "name": "V005",
         "coords": "490|468",
-        "pts": "3.060",
+        "pts": "3.390",
+        "troops": null
+      }
+    ]
+  },
+  {
+    "name": "Balgorf",
+    "villages": [
+      {
+        "name": "Alaric",
+        "coords": "475|483",
+        "pts": "5.770",
+        "troops": null
+      },
+      {
+        "name": "Arminius",
+        "coords": "491|484",
+        "pts": "6.890",
+        "troops": null
+      },
+      {
+        "name": "Attila",
+        "coords": "490|481",
+        "pts": "6.800",
+        "troops": null
+      },
+      {
+        "name": "Théodoric",
+        "coords": "473|470",
+        "pts": "2.980",
         "troops": null
       }
     ]
@@ -957,14 +969,38 @@ const playersData = [
       {
         "name": "Ssj2",
         "coords": "485|501",
-        "pts": "6.620",
-        "troops": null
+        "pts": "6.640",
+        "troops": [
+          0,
+          0,
+          0,
+          8893,
+          0,
+          0,
+          1123,
+          0,
+          1,
+          0,
+          0
+        ]
       },
       {
         "name": "SSJ3",
         "coords": "481|506",
-        "pts": "5.630",
-        "troops": null
+        "pts": "5.690",
+        "troops": [
+          1,
+          0,
+          0,
+          0,
+          1603,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
       }
     ]
   },
@@ -980,19 +1016,19 @@ const playersData = [
       {
         "name": "-02- Bruleurs de DEPS",
         "coords": "482|496",
-        "pts": "6.570",
+        "pts": "6.590",
         "troops": [
-          2032,
           0,
           0,
-          23000,
           0,
-          2038,
-          3500,
+          1,
           0,
-          600,
-          100,
-          1
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
         ]
       },
       {
@@ -1007,7 +1043,7 @@ const playersData = [
           0,
           0,
           0,
-          240,
+          314,
           0,
           0,
           0
@@ -1016,7 +1052,7 @@ const playersData = [
       {
         "name": "-04- Merci la gratuité ...",
         "coords": "477|497",
-        "pts": "6.220",
+        "pts": "6.240",
         "troops": [
           0,
           0,
@@ -1069,7 +1105,7 @@ const playersData = [
       {
         "name": "A01",
         "coords": "501|508",
-        "pts": "7.170",
+        "pts": "7.210",
         "troops": [
           314,
           0,
@@ -1087,7 +1123,7 @@ const playersData = [
       {
         "name": "A02",
         "coords": "500|512",
-        "pts": "6.800",
+        "pts": "6.820",
         "troops": [
           3508,
           30,
@@ -1105,13 +1141,25 @@ const playersData = [
       {
         "name": "A03",
         "coords": "498|507",
-        "pts": "4.990",
-        "troops": null
+        "pts": "5.090",
+        "troops": [
+          0,
+          0,
+          1061,
+          200,
+          66,
+          0,
+          0,
+          44,
+          0,
+          0,
+          0
+        ]
       },
       {
         "name": "Ae01",
         "coords": "518|510",
-        "pts": "5.940",
+        "pts": "6.000",
         "troops": [
           2177,
           0,
@@ -1129,7 +1177,7 @@ const playersData = [
       {
         "name": "B01",
         "coords": "491|518",
-        "pts": "6.600",
+        "pts": "6.610",
         "troops": [
           5989,
           0,
@@ -1147,7 +1195,7 @@ const playersData = [
       {
         "name": "B02",
         "coords": "484|519",
-        "pts": "5.220",
+        "pts": "5.240",
         "troops": null
       }
     ]
@@ -1158,7 +1206,7 @@ const playersData = [
       {
         "name": "Vivi chief 01",
         "coords": "490|498",
-        "pts": "7.400",
+        "pts": "7.420",
         "troops": [
           1000,
           200,
@@ -1182,8 +1230,20 @@ const playersData = [
       {
         "name": "Vivi Chief 03",
         "coords": "491|512",
-        "pts": "5.870",
-        "troops": null
+        "pts": "5.900",
+        "troops": [
+          0,
+          600,
+          1100,
+          0,
+          1608,
+          1200,
+          0,
+          796,
+          0,
+          0,
+          0
+        ]
       }
     ]
   },
@@ -1229,13 +1289,13 @@ const playersData = [
       {
         "name": "FOU 2",
         "coords": "503|527",
-        "pts": "1.440",
+        "pts": "2.820",
         "troops": null
       },
       {
         "name": "FOX",
         "coords": "510|508",
-        "pts": "6.250",
+        "pts": "6.260",
         "troops": null
       }
     ]
@@ -1264,7 +1324,54 @@ const playersData = [
       {
         "name": "002 kyko",
         "coords": "490|485",
-        "pts": "6.870",
+        "pts": "7.000",
+        "troops": [
+          0,
+          0,
+          2952,
+          0,
+          900,
+          700,
+          0,
+          891,
+          0,
+          0,
+          0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Hazor",
+    "villages": [
+      {
+        "name": "001 - il a pas dit Bonjour",
+        "coords": "512|519",
+        "pts": "5.310",
+        "troops": null
+      },
+      {
+        "name": "002 - Deviens génial",
+        "coords": "505|509",
+        "pts": "7.230",
+        "troops": null
+      },
+      {
+        "name": "003 - Vitrine",
+        "coords": "502|510",
+        "pts": "9.000",
+        "troops": null
+      },
+      {
+        "name": "004 - Désaccordé",
+        "coords": "490|520",
+        "pts": "6.530",
+        "troops": null
+      },
+      {
+        "name": "005 - Gris",
+        "coords": "486|511",
+        "pts": "1.730",
         "troops": null
       }
     ]
@@ -1275,7 +1382,7 @@ const playersData = [
       {
         "name": "Rage",
         "coords": "488|529",
-        "pts": "5.870",
+        "pts": "5.940",
         "troops": null
       },
       {
@@ -1304,7 +1411,7 @@ const playersData = [
       {
         "name": "001",
         "coords": "499|493",
-        "pts": "8.580",
+        "pts": "8.680",
         "troops": [
           2086,
           12667,
@@ -1322,7 +1429,7 @@ const playersData = [
       {
         "name": "002",
         "coords": "484|511",
-        "pts": "5.650",
+        "pts": "5.690",
         "troops": [
           1,
           263,
@@ -1345,19 +1452,19 @@ const playersData = [
       {
         "name": "Bouse",
         "coords": "498|514",
-        "pts": "5.810",
+        "pts": "5.830",
         "troops": null
       },
       {
-        "name": "Doctogre",
+        "name": "Cholera",
         "coords": "477|510",
-        "pts": "1.090",
+        "pts": "1.650",
         "troops": null
       },
       {
         "name": "Marais",
         "coords": "520|507",
-        "pts": "7.080",
+        "pts": "7.100",
         "troops": null
       }
     ]
@@ -1368,7 +1475,7 @@ const playersData = [
       {
         "name": "Hrafnsson",
         "coords": "488|525",
-        "pts": "7.240",
+        "pts": "7.300",
         "troops": [
           900,
           1780,
@@ -1386,47 +1493,18 @@ const playersData = [
     ]
   },
   {
-    "name": "Hazor",
-    "villages": [
-      {
-        "name": "001 - il a pas dit Bonjour",
-        "coords": "512|519",
-        "pts": "5.100",
-        "troops": null
-      },
-      {
-        "name": "002 - Deviens génial",
-        "coords": "505|509",
-        "pts": "7.230",
-        "troops": null
-      },
-      {
-        "name": "003 - Vitrine",
-        "coords": "502|510",
-        "pts": "9.000",
-        "troops": null
-      },
-      {
-        "name": "004 - Désaccordé",
-        "coords": "490|520",
-        "pts": "6.530",
-        "troops": null
-      }
-    ]
-  },
-  {
     "name": "FineBzZz",
     "villages": [
       {
         "name": "Fine",
         "coords": "512|511",
-        "pts": "6.400",
+        "pts": "6.410",
         "troops": null
       },
       {
         "name": "MoucheBzZz",
         "coords": "508|517",
-        "pts": "5.310",
+        "pts": "5.320",
         "troops": [
           386,
           0,
@@ -1455,17 +1533,6 @@ const playersData = [
     ]
   },
   {
-    "name": "Priestess Vespera",
-    "villages": [
-      {
-        "name": "Village de Priestess Vespera",
-        "coords": "488|492",
-        "pts": "7.470",
-        "troops": null
-      }
-    ]
-  },
-  {
     "name": "Papy Doudou21",
     "villages": [
       {
@@ -1485,6 +1552,29 @@ const playersData = [
         "coords": "521|509",
         "pts": "5.300",
         "troops": null
+      }
+    ]
+  },
+  {
+    "name": "Priestess Vespera",
+    "villages": [
+      {
+        "name": "Village de Priestess Vespera",
+        "coords": "488|492",
+        "pts": "7.560",
+        "troops": [
+          0,
+          1500,
+          400,
+          0,
+          11000,
+          1200,
+          0,
+          2275,
+          0,
+          0,
+          0
+        ]
       }
     ]
   },
@@ -1512,13 +1602,13 @@ const playersData = [
       {
         "name": "002 désoler du retard",
         "coords": "474|482",
-        "pts": "4.470",
+        "pts": "4.490",
         "troops": null
       },
       {
         "name": "003 on ce reveil",
         "coords": "479|495",
-        "pts": "3.180",
+        "pts": "3.240",
         "troops": null
       }
     ]
@@ -1529,19 +1619,19 @@ const playersData = [
       {
         "name": "2-Métairie de Sir Davos",
         "coords": "511|518",
-        "pts": "6.380",
+        "pts": "6.390",
         "troops": null
       },
       {
         "name": "3-Commanderie de Gilead",
         "coords": "501|505",
-        "pts": "5.340",
+        "pts": "5.390",
         "troops": null
       },
       {
         "name": "4-Village de Eagle",
         "coords": "508|515",
-        "pts": "6.180",
+        "pts": "6.200",
         "troops": null
       }
     ]
@@ -1552,7 +1642,7 @@ const playersData = [
       {
         "name": "Eroisis",
         "coords": "493|487",
-        "pts": "7.360",
+        "pts": "7.520",
         "troops": [
           0,
           0,
@@ -1570,13 +1660,13 @@ const playersData = [
       {
         "name": "Eroisis 2",
         "coords": "490|489",
-        "pts": "5.280",
+        "pts": "5.380",
         "troops": null
       },
       {
         "name": "Eroisis 3",
         "coords": "496|501",
-        "pts": "4.720",
+        "pts": "4.760",
         "troops": [
           0,
           0,
@@ -1601,6 +1691,12 @@ const playersData = [
         "coords": "474|495",
         "pts": "4.990",
         "troops": null
+      },
+      {
+        "name": "Village de Assassin Eadric",
+        "coords": "480|523",
+        "pts": "1.810",
+        "troops": null
       }
     ]
   },
@@ -1610,20 +1706,44 @@ const playersData = [
       {
         "name": "vivi00",
         "coords": "511|516",
-        "pts": "4.040",
+        "pts": "4.470",
         "troops": null
       },
       {
         "name": "Vivi01",
         "coords": "513|515",
-        "pts": "3.270",
-        "troops": null
+        "pts": "3.730",
+        "troops": [
+          0,
+          0,
+          31,
+          0,
+          0,
+          0,
+          0,
+          1274,
+          0,
+          0,
+          0
+        ]
       },
       {
         "name": "Vivi02",
         "coords": "511|515",
-        "pts": "2.880",
-        "troops": null
+        "pts": "3.700",
+        "troops": [
+          0,
+          0,
+          390,
+          0,
+          1140,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
       }
     ]
   },
@@ -1633,7 +1753,7 @@ const playersData = [
       {
         "name": "Village de Benbao",
         "coords": "510|511",
-        "pts": "6.040",
+        "pts": "6.060",
         "troops": null
       }
     ]
@@ -1644,7 +1764,7 @@ const playersData = [
       {
         "name": "ATHENES",
         "coords": "478|488",
-        "pts": "6.400",
+        "pts": "6.420",
         "troops": null
       }
     ]
@@ -1655,7 +1775,7 @@ const playersData = [
       {
         "name": "Village de Diplomat Yorath",
         "coords": "471|503",
-        "pts": "2.440",
+        "pts": "2.870",
         "troops": null
       }
     ]
@@ -1677,7 +1797,7 @@ const playersData = [
       {
         "name": "Village de Denji",
         "coords": "475|503",
-        "pts": "1.520",
+        "pts": "1.930",
         "troops": null
       }
     ]
@@ -1688,7 +1808,7 @@ const playersData = [
       {
         "name": "Village de Spartacus",
         "coords": "464|512",
-        "pts": "870",
+        "pts": "910",
         "troops": null
       }
     ]
