@@ -7,398 +7,528 @@
 
 <style>
 :root{
-  --bg:#f5e8c9;
-  --paper:#fff8e7;
-  --paper2:#ecd6a7;
-  --line:#9b6a2f;
-  --line-soft:#dbc59d;
-  --text:#4a2e1a;
-  --muted:#8c785d;
-  --brown:#81391f;
-  --brown2:#632815;
+  --bg:#f2dfb8;
+  --paper:#fff7e4;
+  --paper2:#f4e2bb;
+  --head:#edd3a0;
 
-  --off:#0c6b39;
-  --off-bg:#e7f3ea;
+  --line:#a57435;
+  --line2:#d8ba80;
 
-  --def:#c3382c;
-  --def-bg:#fae7e4;
+  --text:#4b2d1a;
+  --muted:#8e795e;
 
-  --gold:#b57600;
-  --gold-bg:#fff1c8;
+  --brown:#7e351d;
+  --brown2:#5f2615;
 
-  --shadow:0 8px 24px rgba(88,57,24,.12);
+  --off:#08783f;
+  --def:#d42c24;
+
+  --gold:#b87900;
+  --gold2:#8f5c00;
+
+  --shadow:0 6px 18px rgba(89,55,19,.13);
 }
 
 *{
   box-sizing:border-box;
 }
 
-html,body{
+html,
+body{
   margin:0;
   padding:0;
 }
 
 body{
   padding:8px;
-  font-family:Arial,Helvetica,sans-serif;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
   color:var(--text);
 
   background:
-    radial-gradient(circle at top left,rgba(255,255,255,.78),transparent 26%),
-    linear-gradient(180deg,#f8edcf,#ead7ad);
+    radial-gradient(
+      circle at 15% 0%,
+      rgba(255,255,255,.85),
+      transparent 25%
+    ),
+    linear-gradient(
+      180deg,
+      #f8ecd0 0%,
+      #ead2a4 100%
+    );
 }
 
 .app{
-  max-width:1600px;
-  margin:auto;
+  max-width:1580px;
+  margin:0 auto;
 }
 
-/* =========================
+
+/* =====================================================
    HEADER
-========================= */
+===================================================== */
 
 .topbar{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:12px;
+
+  gap:14px;
+
   flex-wrap:wrap;
 
-  padding:10px 12px;
+  min-height:72px;
+
+  padding:9px 14px;
   margin-bottom:8px;
 
   border:1px solid var(--line);
-  border-radius:11px;
+  border-radius:10px;
 
   background:
-    linear-gradient(180deg,#f3dfb5,#e7c992);
+    linear-gradient(
+      180deg,
+      #f2ddb2,
+      #e7c891
+    );
 
   box-shadow:var(--shadow);
+
+  position:relative;
+
+  overflow:hidden;
+}
+
+.topbar:after{
+  content:"";
+
+  position:absolute;
+
+  right:180px;
+  top:0;
+
+  width:420px;
+  height:100%;
+
+  opacity:.09;
+
+  pointer-events:none;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      #7f4b24,
+      transparent
+    );
 }
 
 .brand{
   display:flex;
   align-items:center;
-  gap:10px;
+
+  gap:11px;
+
   min-width:0;
+
+  z-index:1;
 }
 
 .crest{
-  width:42px;
-  height:48px;
+  width:51px;
+  height:55px;
+
+  flex:0 0 51px;
 
   display:grid;
   place-items:center;
 
-  flex:0 0 42px;
+  border:2px solid #5c2513;
 
-  border:2px solid #5d2816;
-  border-radius:8px 8px 14px 14px;
+  border-radius:
+    12px
+    12px
+    18px
+    18px;
 
   background:
-    linear-gradient(180deg,#a94425,#702814);
+    linear-gradient(
+      180deg,
+      #a34524,
+      #6c2815
+    );
 
-  color:#ffe6a8;
+  color:#ffe6a2;
 
-  font-size:23px;
-  font-weight:900;
+  font:
+    900
+    24px
+    Georgia,
+    serif;
 
   box-shadow:
-    inset 0 0 0 2px rgba(255,220,140,.35);
+    inset
+    0 0 0 2px
+    rgba(255,221,147,.35);
 }
 
 .brand h1{
   margin:0;
 
   font:
-    700 24px Georgia,serif;
-
-  color:#5b2617;
+    700
+    27px
+    Georgia,
+    serif;
 
   line-height:1;
+
+  color:#5d2716;
 }
 
 .brand-sub{
   margin-top:4px;
 
-  font-size:11px;
+  font-size:12px;
   font-weight:700;
 
-  color:#6d5134;
+  color:#6a4b30;
 }
 
 .updated{
   display:inline-flex;
   align-items:center;
-  gap:5px;
 
-  margin-top:5px;
+  gap:6px;
 
-  padding:3px 8px;
+  margin-top:4px;
 
-  border-radius:99px;
+  padding:4px 9px;
 
-  border:1px solid #cfb67f;
+  border:1px solid #ccb278;
+
+  border-radius:999px;
 
   background:
-    rgba(255,249,230,.75);
+    rgba(
+      255,
+      250,
+      234,
+      .83
+    );
 
   font-size:10px;
-  font-weight:700;
+  font-weight:800;
+
+  color:#693a23;
 }
 
 .updated:before{
-  content:"●";
+  content:"";
 
-  color:#33a55a;
+  width:8px;
+  height:8px;
 
-  font-size:8px;
+  border-radius:50%;
+
+  background:#48b965;
+
+  box-shadow:
+    0 0 0 2px
+    rgba(72,185,101,.15);
 }
 
 .langs{
   display:flex;
-  gap:5px;
+  gap:6px;
+
+  z-index:1;
 }
 
 .lang-btn{
-  height:34px;
-  min-width:44px;
+  height:40px;
 
-  border:1px solid #b89159;
-  border-radius:7px;
+  min-width:48px;
+
+  padding:0 12px;
+
+  border:
+    1px
+    solid
+    #ad8550;
+
+  border-radius:8px;
 
   background:#fff8e8;
 
-  color:#5e341f;
+  color:#57301d;
 
-  font-weight:800;
+  font-weight:900;
 
   cursor:pointer;
+
+  box-shadow:
+    0 2px 4px
+    rgba(70,40,15,.08);
 }
 
 .lang-btn.active{
   background:
-    linear-gradient(180deg,#9a4023,#722914);
+    linear-gradient(
+      180deg,
+      #963c20,
+      #6e2815
+    );
+
+  border-color:#632413;
 
   color:#fff;
-
-  border-color:#672713;
 }
 
-/* =========================
+
+/* =====================================================
    FILTRE
-========================= */
+===================================================== */
 
 .toolbar{
   display:flex;
   align-items:center;
 
-  gap:7px;
+  gap:10px;
 
   flex-wrap:wrap;
 
-  padding:7px 8px;
+  padding:9px 12px;
 
   margin-bottom:8px;
 
-  border:1px solid #cfb27f;
+  border:
+    1px
+    solid
+    #ceb07c;
+
   border-radius:10px;
 
   background:
-    rgba(255,248,231,.93);
+    rgba(
+      255,
+      248,
+      232,
+      .95
+    );
+
+  box-shadow:
+    0 3px 10px
+    rgba(80,50,20,.06);
 }
 
-.filter-label{
-  font-size:12px;
-  font-weight:900;
+.funnel{
+  font-size:23px;
 
-  color:#6b351f;
+  color:#6d301b;
 
   margin-right:2px;
 }
 
 .filter-btn{
-  height:34px;
+  height:40px;
 
-  padding:0 15px;
+  min-width:132px;
 
-  border-radius:7px;
+  padding:0 18px;
 
-  border:1px solid #b99d6f;
+  border-radius:8px;
 
-  background:#fffaf0;
+  border:
+    1px
+    solid
+    #b6905b;
 
+  background:#fff9ec;
+
+  color:#5f3c27;
+
+  font-size:13px;
   font-weight:900;
 
   cursor:pointer;
 
-  color:#5d432f;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  gap:9px;
+}
+
+.filter-btn img{
+  width:28px;
+  height:28px;
+
+  object-fit:contain;
 }
 
 .filter-btn[data-filter="off"]{
-  border-color:#5f956f;
+  border-color:#559469;
+  color:#17663b;
 }
 
 .filter-btn[data-filter="def"]{
-  border-color:#d57d72;
+  border-color:#d17467;
+  color:#a82924;
 }
 
 .filter-btn[data-filter="counts"]{
-  border-color:#c79a39;
-}
-
-.filter-btn.active[data-filter="all"]{
-  background:#6c3b23;
-  color:#fff;
+  border-color:#c89a3c;
+  color:#8a5b00;
 }
 
 .filter-btn.active[data-filter="off"]{
   background:
-    linear-gradient(180deg,#26834e,#0e6638);
+    linear-gradient(
+      180deg,
+      #258b50,
+      #0c6a39
+    );
 
   color:#fff;
+
+  border-color:#07572f;
 }
 
 .filter-btn.active[data-filter="def"]{
   background:
-    linear-gradient(180deg,#e76c5e,#c33b2e);
+    linear-gradient(
+      180deg,
+      #eb7567,
+      #c93d32
+    );
 
   color:#fff;
+
+  border-color:#b72d25;
 }
 
 .filter-btn.active[data-filter="counts"]{
   background:
-    linear-gradient(180deg,#e7b443,#b77908);
+    linear-gradient(
+      180deg,
+      #eab94c,
+      #bd7a0a
+    );
 
   color:#fff;
+
+  border-color:#a66a05;
 }
 
 .search-wrap{
   margin-left:auto;
 
   display:flex;
-
   align-items:center;
 
-  min-width:240px;
+  min-width:280px;
+  max-width:430px;
 
   flex:1;
-
-  max-width:390px;
 }
 
 .search-wrap input{
   width:100%;
-  height:34px;
-
-  border:1px solid #b99d6f;
-  border-radius:7px;
-
-  background:#fffdf7;
-
-  padding:0 10px;
-
-  font-size:12px;
-
-  outline:none;
-}
-
-.reset-btn{
-  height:34px;
+  height:40px;
 
   padding:0 13px;
 
-  border:1px solid #6d2816;
-  border-radius:7px;
+  border:
+    1px
+    solid
+    #b99d70;
+
+  border-radius:8px;
+
+  background:#fffdf8;
+
+  color:#4b3423;
+
+  font-size:13px;
+
+  outline:none;
+
+  box-shadow:
+    inset
+    0 1px 2px
+    rgba(82,51,21,.06);
+}
+
+.reset-btn{
+  height:40px;
+
+  padding:0 16px;
+
+  border:
+    1px
+    solid
+    #682514;
+
+  border-radius:8px;
 
   background:
-    linear-gradient(180deg,#963c21,#6c2715);
+    linear-gradient(
+      180deg,
+      #933a20,
+      #692514
+    );
 
   color:#fff;
 
-  font-weight:800;
+  font-weight:900;
 
   cursor:pointer;
 }
 
-/* =========================
-   LEGENDA
-========================= */
 
-.legend{
-  display:flex;
-
-  align-items:center;
-
-  gap:7px;
-
-  flex-wrap:wrap;
-
-  margin-bottom:6px;
-
-  font-size:10px;
-
-  color:#775b3f;
-}
-
-.legend b{
-  padding:3px 7px;
-
-  border-radius:99px;
-}
-
-.legend .loff{
-  color:var(--off);
-
-  background:var(--off-bg);
-
-  border:1px solid #b9d6c0;
-}
-
-.legend .ldef{
-  color:var(--def);
-
-  background:var(--def-bg);
-
-  border:1px solid #e7b8b2;
-}
-
-.legend .lgold{
-  color:#8c5900;
-
-  background:var(--gold-bg);
-
-  border:1px solid #e4c774;
-}
-
-/* =========================
+/* =====================================================
    TABEL
-========================= */
+===================================================== */
 
 .table-shell{
-  border:1px solid var(--line);
+  border:
+    1px
+    solid
+    var(--line);
 
   border-radius:9px;
-
-  overflow:hidden;
 
   background:var(--paper);
 
   box-shadow:var(--shadow);
+
+  overflow:hidden;
 }
 
-.table-scroll{
+.table-viewport{
   width:100%;
 
   overflow-x:auto;
+  overflow-y:hidden;
+}
 
-  -webkit-overflow-scrolling:touch;
+.table-scale{
+  transform-origin:
+    top
+    left;
+
+  width:max-content;
 }
 
 table{
-  width:100%;
-
-  min-width:1010px;
+  width:1180px;
+  min-width:1180px;
 
   border-collapse:collapse;
 
@@ -406,154 +536,191 @@ table{
 
   font-size:11px;
 
-  font-variant-numeric:tabular-nums;
+  font-variant-numeric:
+    tabular-nums;
 
   background:var(--paper);
 }
 
 thead th{
-  height:40px;
+  height:46px;
 
-  padding:3px 2px;
+  padding:2px 3px;
 
   text-align:center;
 
+  vertical-align:middle;
+
   background:
-    linear-gradient(180deg,#edd7a8,#e4c58c);
+    linear-gradient(
+      180deg,
+      #efd9aa,
+      #e5c68d
+    );
 
-  border-right:1px solid #d0b47c;
+  border-right:
+    1px
+    solid
+    #d2b37b;
 
-  border-bottom:2px solid var(--line);
+  border-bottom:
+    2px
+    solid
+    var(--line);
 
-  color:#53351f;
+  color:#55351f;
+
+  font-weight:900;
 
   position:sticky;
 
   top:0;
 
-  z-index:5;
+  z-index:3;
 }
 
 th.col-player{
-  width:130px;
+  width:155px;
 }
 
 th.col-village{
-  width:145px;
+  width:160px;
 }
 
 th.col-coord{
-  width:84px;
+  width:90px;
 }
 
 th.col-points{
-  width:68px;
+  width:72px;
 }
 
 th.unit-col{
-  width:53px;
-}
-
-thead th.off-head{
-  background:
-    linear-gradient(180deg,#e6ecd1,#d5e3c1);
-}
-
-thead th.def-head{
-  background:
-    linear-gradient(180deg,#f1d7c8,#e9c8b8);
-}
-
-thead th.count-head{
-  background:
-    linear-gradient(180deg,#f4dfaa,#e7c577);
+  width:64px;
 }
 
 .unit-h{
   display:flex;
 
-  flex-direction:column;
-
   align-items:center;
-
   justify-content:center;
 
-  gap:1px;
+  height:100%;
 }
 
-.unit-h .ico{
-  font-size:17px;
+.unit-img{
+  width:31px;
+  height:31px;
 
-  line-height:17px;
-}
+  object-fit:contain;
 
-.unit-h .abbr{
-  font-size:8px;
+  display:block;
 
-  font-weight:900;
+  filter:
+    drop-shadow(
+      0 1px 1px
+      rgba(70,40,15,.18)
+    );
 }
 
 tbody td{
-  height:27px;
+  height:25px;
 
-  padding:3px 5px;
+  padding:2px 5px;
 
-  border-right:1px solid #eadcc1;
+  border-right:
+    1px
+    solid
+    #eadbc0;
 
-  border-bottom:1px solid #dfd0b4;
+  border-bottom:
+    1px
+    solid
+    #dfceb0;
 
   white-space:nowrap;
-
-  overflow:hidden;
-
-  text-overflow:ellipsis;
 
   text-align:right;
 
   background:#fff9e9;
+
+  overflow:visible;
+
+  text-overflow:clip;
 }
 
 tbody tr:nth-child(even) td{
-  background:#fcf3dd;
+  background:#fdf4df;
 }
 
 tbody tr:hover td{
-  background:#f7e7c6;
+  background:#f7e7c5;
+}
+
+.group-start td{
+  border-top:
+    2px
+    solid
+    #9e7138;
 }
 
 .player-cell{
   text-align:left!important;
 
-  font-weight:800;
+  font-weight:900;
 
-  background:#ead7b5!important;
-
-  border-right:2px solid #b18a51!important;
+  font-size:11px;
 
   vertical-align:middle;
 
-  padding-left:8px!important;
+  padding-left:12px!important;
+
+  background:
+    #ead6b0!important;
+
+  border-right:
+    2px
+    solid
+    #b18449!important;
+
+  overflow:hidden!important;
+
+  text-overflow:ellipsis!important;
 }
 
 .village-cell{
   text-align:left!important;
+
+  padding-left:10px!important;
+
+  overflow:hidden!important;
+
+  text-overflow:ellipsis!important;
 }
 
 .coord-cell{
   text-align:center!important;
 }
 
+.points-cell{
+  text-align:center!important;
+}
+
 .no-data{
   text-align:left!important;
 
-  color:#9b8b75;
+  color:#9b8970;
 
   font-style:italic;
 
   font-size:12px;
 
-  background:#fff9e9!important;
+  background:
+    #fff9e9!important;
+
+  padding-left:12px!important;
 }
+
 
 /* OFF = VERDE */
 
@@ -563,6 +730,7 @@ tbody tr:hover td{
   font-weight:900;
 }
 
+
 /* DEFF = ROȘU */
 
 .val-def{
@@ -571,69 +739,87 @@ tbody tr:hover td{
   font-weight:900;
 }
 
+
 /* CONȚI = GOLD */
 
 .val-count{
-  color:var(--gold);
+  color:var(--gold2);
 
   font-weight:900;
 }
 
 .val-zero{
-  color:#9a907e;
+  color:#9c917e;
+
+  font-weight:500;
 }
 
-.group-start td{
-  border-top:2px solid #9f7440;
+.empty{
+  padding:28px;
+
+  text-align:center;
+
+  font-weight:800;
+
+  color:#83674a;
 }
 
-/* =========================
+
+/* =====================================================
    FOOTER
-========================= */
+===================================================== */
 
 .footerbar{
   display:flex;
-
   align-items:center;
-
   justify-content:space-between;
 
-  gap:8px;
+  gap:10px;
 
   flex-wrap:wrap;
 
   margin-top:8px;
 
-  padding:7px 8px;
+  padding:6px 8px;
 
-  border:1px solid #cfb27f;
+  border:
+    1px
+    solid
+    #cfb17c;
 
   border-radius:9px;
 
   background:
-    rgba(255,248,231,.95);
+    rgba(
+      255,
+      248,
+      232,
+      .96
+    );
 }
 
 .page-size{
   display:flex;
-
   align-items:center;
 
-  gap:5px;
+  gap:6px;
 
   font-size:11px;
 }
 
 .page-size select{
-  height:32px;
+  height:34px;
 
-  border:1px solid #b99d6f;
+  border:
+    1px
+    solid
+    #b89a69;
 
-  border-radius:6px;
+  border-radius:7px;
 
   background:#fff;
 
-  padding:0 8px;
+  padding:0 9px;
 }
 
 .pager{
@@ -641,60 +827,76 @@ tbody tr:hover td{
 
   align-items:center;
 
-  gap:8px;
+  gap:12px;
 }
 
 .page-btn{
-  height:34px;
+  height:38px;
 
-  padding:0 13px;
+  padding:0 17px;
 
-  border:1px solid #6d2816;
+  border:
+    1px
+    solid
+    #662414;
 
-  border-radius:7px;
+  border-radius:8px;
 
   background:
-    linear-gradient(180deg,#8d3b21,#6c2816);
+    linear-gradient(
+      180deg,
+      #8b381f,
+      #692514
+    );
 
   color:#fff;
 
-  font-weight:800;
+  font-weight:900;
 
   cursor:pointer;
 }
 
 .page-btn:disabled{
-  opacity:.38;
+  opacity:.32;
 
   cursor:not-allowed;
 }
 
 .page-info{
-  font-size:11px;
+  font-size:12px;
 
-  font-weight:800;
+  font-weight:900;
 }
 
 .footer-stats{
   display:flex;
 
-  gap:6px;
+  gap:7px;
 
   flex-wrap:wrap;
 }
 
 .badge{
-  padding:5px 8px;
+  display:inline-flex;
 
-  border-radius:7px;
+  align-items:center;
 
-  border:1px solid #d3ba89;
+  gap:5px;
+
+  padding:6px 9px;
+
+  border:
+    1px
+    solid
+    #d3b982;
+
+  border-radius:8px;
 
   background:#fffaf0;
 
   font-size:10px;
 
-  font-weight:800;
+  font-weight:900;
 }
 
 .badge.off{
@@ -706,24 +908,22 @@ tbody tr:hover td{
 }
 
 .badge.gold{
-  color:var(--gold);
+  color:var(--gold2);
 }
 
-.empty{
-  padding:25px;
+.badge img{
+  width:22px;
+  height:22px;
 
-  text-align:center;
-
-  font-weight:800;
-
-  color:#856b4e;
-
-  background:#fff8e7;
+  object-fit:contain;
 }
 
-/* =========================
+
+/* =====================================================
    TELEFON
-========================= */
+   Păstrează exact tabelul și îl micșorează complet.
+   Numerele nu se taie și nu apar "...".
+===================================================== */
 
 @media(max-width:900px){
 
@@ -732,19 +932,32 @@ tbody tr:hover td{
   }
 
   .topbar{
+    min-height:0;
+
     padding:7px 8px;
 
     margin-bottom:5px;
+
+    gap:7px;
   }
 
   .crest{
-    width:34px;
+    width:37px;
+    height:40px;
 
-    height:39px;
-
-    flex-basis:34px;
+    flex-basis:37px;
 
     font-size:18px;
+
+    border-radius:
+      9px
+      9px
+      13px
+      13px;
+  }
+
+  .brand{
+    gap:7px;
   }
 
   .brand h1{
@@ -753,14 +966,16 @@ tbody tr:hover td{
 
   .brand-sub{
     font-size:9px;
+
+    margin-top:2px;
   }
 
   .updated{
     font-size:8px;
 
-    margin-top:3px;
-
     padding:2px 6px;
+
+    margin-top:2px;
   }
 
   .langs{
@@ -768,9 +983,11 @@ tbody tr:hover td{
   }
 
   .lang-btn{
-    height:30px;
+    height:31px;
 
-    min-width:38px;
+    min-width:40px;
+
+    padding:0 8px;
 
     font-size:10px;
   }
@@ -778,116 +995,78 @@ tbody tr:hover td{
   .toolbar{
     padding:5px;
 
-    gap:4px;
+    gap:5px;
 
     margin-bottom:5px;
   }
 
-  .filter-label{
+  .funnel{
     display:none;
   }
 
   .filter-btn{
-    height:30px;
+    height:31px;
+
+    min-width:auto;
 
     padding:0 10px;
 
     font-size:10px;
+
+    gap:4px;
+  }
+
+  .filter-btn img{
+    width:20px;
+    height:20px;
   }
 
   .search-wrap{
-    order:5;
-
-    max-width:none;
+    order:10;
 
     min-width:100%;
+    max-width:none;
 
     margin-left:0;
   }
 
   .search-wrap input{
-    height:31px;
+    height:32px;
 
     font-size:11px;
   }
 
   .reset-btn{
-    height:30px;
-
-    font-size:10px;
+    height:31px;
 
     padding:0 9px;
-  }
 
-  .legend{
-    font-size:8px;
-
-    margin-bottom:4px;
-
-    gap:4px;
-  }
-
-  table{
     font-size:10px;
-
-    min-width:950px;
   }
 
-  tbody td{
-    height:25px;
-
-    padding:2px 4px;
-  }
-
-  .footerbar{
-    padding:5px;
-
-    gap:5px;
-  }
-
-  .footer-stats{
-    width:100%;
-
-    justify-content:center;
-  }
-
-  .badge{
-    font-size:9px;
-
-    padding:4px 6px;
-  }
-}
-
-@media(max-width:480px){
-
-  .brand-sub{
-    max-width:270px;
-
-    white-space:nowrap;
-
+  .table-viewport{
     overflow:hidden;
-
-    text-overflow:ellipsis;
-  }
-
-  .page-size{
-    display:none;
   }
 
   .footerbar{
-    justify-content:center;
-
     position:sticky;
 
     bottom:3px;
 
     z-index:20;
 
+    padding:5px;
+
     box-shadow:
-      0 6px 18px rgba(75,44,17,.18);
+      0 7px 22px
+      rgba(72,42,15,.18);
   }
 
   .footer-stats{
+    display:none;
+  }
+
+  .page-size{
     display:none;
   }
 
@@ -895,18 +1074,20 @@ tbody tr:hover td{
     width:100%;
 
     justify-content:space-between;
+
+    gap:6px;
   }
 
   .page-btn{
-    height:31px;
+    height:34px;
+
+    padding:0 11px;
 
     font-size:10px;
-
-    padding:0 10px;
   }
 
   .page-info{
-    font-size:9px;
+    font-size:10px;
   }
 }
 </style>
@@ -916,11 +1097,14 @@ tbody tr:hover td{
 
 <div class="app">
 
+
 <header class="topbar">
 
   <div class="brand">
 
-    <div class="crest">♜</div>
+    <div class="crest">
+      K
+    </div>
 
     <div>
 
@@ -941,6 +1125,7 @@ tbody tr:hover td{
     </div>
 
   </div>
+
 
   <div class="langs">
 
@@ -969,35 +1154,50 @@ tbody tr:hover td{
 
 <section class="toolbar">
 
-  <span
-    class="filter-label"
-    id="filterLabel">
-    Filtre:
+  <span class="funnel">
+    ▼
   </span>
 
-  <button
-    class="filter-btn active"
-    data-filter="all"
-    id="fAll">
-    TOATE
-  </button>
 
   <button
     class="filter-btn"
     data-filter="off">
-    ⚔ OFF
+
+    <img
+      src="https://s1-ro.kingsage.gameforge.com/img/units_big/axe_big.png"
+      referrerpolicy="no-referrer"
+      alt="">
+
+    OFF
+
   </button>
+
 
   <button
     class="filter-btn"
     data-filter="def">
-    🛡 DEFF
+
+    <img
+      src="https://s1-ro.kingsage.gameforge.com/img/units_big/sword_big.png"
+      referrerpolicy="no-referrer"
+      alt="">
+
+    DEFF
+
   </button>
+
 
   <button
     class="filter-btn"
     data-filter="counts">
-    ♛ CONȚI
+
+    <img
+      src="https://s1-ro.kingsage.gameforge.com/img/units_big/snob_big.png"
+      referrerpolicy="no-referrer"
+      alt="">
+
+    CONȚI
+
   </button>
 
 
@@ -1007,7 +1207,7 @@ tbody tr:hover td{
       id="search"
       type="search"
       autocomplete="off"
-      placeholder="Caută jucător, sat sau coordonate...">
+      placeholder="Caută jucător sau sat...">
 
   </div>
 
@@ -1015,371 +1215,321 @@ tbody tr:hover td{
   <button
     class="reset-btn"
     id="resetBtn">
+
     ↻ Reset
+
   </button>
 
 </section>
 
 
-<div class="legend">
-
-  <b
-    class="loff"
-    id="legOff">
-    Verde = OFF + Spioni
-  </b>
-
-  <b
-    class="ldef"
-    id="legDef">
-    Roșu = DEFF
-  </b>
-
-  <b
-    class="lgold"
-    id="legGold">
-    Gold = Conți
-  </b>
-
-</div>
-
-
 <div class="table-shell">
 
-<div
-  class="table-scroll"
-  id="tableScroll">
+  <div
+    class="table-viewport"
+    id="tableViewport">
 
-<table id="troopTable">
+    <div
+      class="table-scale"
+      id="tableScale">
 
-<thead>
+      <table id="troopTable">
 
-<tr>
+        <thead>
 
-<th
-  class="col-player"
-  id="hPlayer">
-  Jucător
-</th>
+          <tr>
 
-<th
-  class="col-village"
-  id="hVillage">
-  Sat
-</th>
+            <th
+              class="col-player"
+              id="hPlayer">
+              Jucător
+            </th>
 
-<th
-  class="col-coord"
-  id="hCoords">
-  Coordonate
-</th>
+            <th
+              class="col-village"
+              id="hVillage">
+              Sat
+            </th>
 
-<th
-  class="col-points"
-  id="hPoints">
-  Puncte
-</th>
+            <th
+              class="col-coord"
+              id="hCoords">
+              Coordonate
+            </th>
 
+            <th
+              class="col-points"
+              id="hPoints">
+              Puncte
+            </th>
 
-<th class="unit-col def-head">
 
-<div class="unit-h">
+            <th class="unit-col">
+              <div class="unit-h">
 
-<span class="ico">
-♟
-</span>
+                <img
+                  class="unit-img"
+                  src="https://s1-ro.kingsage.gameforge.com/img/units_big/farmer_big.png"
+                  referrerpolicy="no-referrer"
+                  title="Țărani"
+                  alt="Țărani">
 
-<span
-  class="abbr"
-  data-unit-label="farmers">
-  Țărani
-</span>
+              </div>
+            </th>
 
-</div>
 
-</th>
+            <th class="unit-col">
+              <div class="unit-h">
 
+                <img
+                  class="unit-img"
+                  src="https://s1-ro.kingsage.gameforge.com/img/units_big/sword_big.png"
+                  referrerpolicy="no-referrer"
+                  title="Templieri"
+                  alt="Templieri">
 
-<th class="unit-col def-head">
+              </div>
+            </th>
 
-<div class="unit-h">
 
-<span class="ico">
-🛡
-</span>
+            <th class="unit-col">
+              <div class="unit-h">
 
-<span
-  class="abbr"
-  data-unit-label="templars">
-  Templ.
-</span>
+                <img
+                  class="unit-img"
+                  src="https://s1-ro.kingsage.gameforge.com/img/units_big/spear_big.png"
+                  referrerpolicy="no-referrer"
+                  title="Scutieri"
+                  alt="Scutieri">
 
-</div>
+              </div>
+            </th>
 
-</th>
 
+            <th class="unit-col">
+              <div class="unit-h">
 
-<th class="unit-col def-head">
+                <img
+                  class="unit-img"
+                  src="https://s1-ro.kingsage.gameforge.com/img/units_big/axe_big.png"
+                  referrerpolicy="no-referrer"
+                  title="Axe"
+                  alt="Axe">
 
-<div class="unit-h">
+              </div>
+            </th>
 
-<span class="ico">
-⚔
-</span>
 
-<span
-  class="abbr"
-  data-unit-label="squires">
-  Scut.
-</span>
+            <th class="unit-col">
+              <div class="unit-h">
 
-</div>
+                <img
+                  class="unit-img"
+                  src="https://s1-ro.kingsage.gameforge.com/img/units_big/bow_big.png"
+                  referrerpolicy="no-referrer"
+                  title="Arcași"
+                  alt="Arcași">
 
-</th>
+              </div>
+            </th>
 
 
-<th class="unit-col off-head">
+            <th class="unit-col">
+              <div class="unit-h">
 
-<div class="unit-h">
+                <img
+                  class="unit-img"
+                  src="https://s1-ro.kingsage.gameforge.com/img/units_big/spy_big.png"
+                  referrerpolicy="no-referrer"
+                  title="Spioni"
+                  alt="Spioni">
 
-<span class="ico">
-🪓
-</span>
+              </div>
+            </th>
 
-<span
-  class="abbr"
-  data-unit-label="axe">
-  Axe
-</span>
 
-</div>
+            <th class="unit-col">
+              <div class="unit-h">
 
-</th>
+                <img
+                  class="unit-img"
+                  src="https://s1-ro.kingsage.gameforge.com/img/units_big/light_big.png"
+                  referrerpolicy="no-referrer"
+                  title="Light"
+                  alt="Light">
 
+              </div>
+            </th>
 
-<th class="unit-col def-head">
 
-<div class="unit-h">
+            <th class="unit-col">
+              <div class="unit-h">
 
-<span class="ico">
-🏹
-</span>
+                <img
+                  class="unit-img"
+                  src="https://s1-ro.kingsage.gameforge.com/img/units_big/heavy_big.png"
+                  referrerpolicy="no-referrer"
+                  title="Heavy"
+                  alt="Heavy">
 
-<span
-  class="abbr"
-  data-unit-label="longbows">
-  Arcași
-</span>
+              </div>
+            </th>
 
-</div>
 
-</th>
+            <th class="unit-col">
+              <div class="unit-h">
 
+                <img
+                  class="unit-img"
+                  src="https://s1-ro.kingsage.gameforge.com/img/units_big/ram_big.png"
+                  referrerpolicy="no-referrer"
+                  title="RAM"
+                  alt="RAM">
 
-<th class="unit-col off-head">
+              </div>
+            </th>
 
-<div class="unit-h">
 
-<span class="ico">
-👁
-</span>
+            <th class="unit-col">
+              <div class="unit-h">
 
-<span
-  class="abbr"
-  data-unit-label="spies">
-  Spioni
-</span>
+                <img
+                  class="unit-img"
+                  src="https://s1-ro.kingsage.gameforge.com/img/units_big/kata_big.png"
+                  referrerpolicy="no-referrer"
+                  title="Catapulte"
+                  alt="Catapulte">
 
-</div>
+              </div>
+            </th>
 
-</th>
 
+            <th class="unit-col">
+              <div class="unit-h">
 
-<th class="unit-col off-head">
+                <img
+                  class="unit-img"
+                  src="https://s1-ro.kingsage.gameforge.com/img/units_big/snob_big.png"
+                  referrerpolicy="no-referrer"
+                  title="Conți"
+                  alt="Conți">
 
-<div class="unit-h">
+              </div>
+            </th>
 
-<span class="ico">
-🐎
-</span>
+          </tr>
 
-<span
-  class="abbr"
-  data-unit-label="light">
-  Light
-</span>
+        </thead>
 
-</div>
 
-</th>
+        <tbody id="tbody">
+        </tbody>
 
+      </table>
 
-<th class="unit-col def-head">
+    </div>
 
-<div class="unit-h">
+  </div>
 
-<span class="ico">
-♞
-</span>
 
-<span
-  class="abbr"
-  data-unit-label="heavy">
-  Heavy
-</span>
+  <div
+    class="empty"
+    id="empty"
+    hidden>
 
-</div>
+    Nu există sate pentru filtrul selectat.
 
-</th>
-
-
-<th class="unit-col off-head">
-
-<div class="unit-h">
-
-<span class="ico">
-➖
-</span>
-
-<span
-  class="abbr"
-  data-unit-label="rams">
-  RAM
-</span>
-
-</div>
-
-</th>
-
-
-<th class="unit-col off-head">
-
-<div class="unit-h">
-
-<span class="ico">
-△
-</span>
-
-<span
-  class="abbr"
-  data-unit-label="catapults">
-  Cata
-</span>
-
-</div>
-
-</th>
-
-
-<th class="unit-col count-head">
-
-<div class="unit-h">
-
-<span class="ico">
-♛
-</span>
-
-<span
-  class="abbr"
-  data-unit-label="counts">
-  Conți
-</span>
-
-</div>
-
-</th>
-
-</tr>
-
-</thead>
-
-
-<tbody id="tbody"></tbody>
-
-</table>
-
-</div>
-
-
-<div
-  class="empty"
-  id="empty"
-  hidden>
-
-  Nu există sate pentru filtrul selectat.
-
-</div>
+  </div>
 
 </div>
 
 
 <footer class="footerbar">
 
+  <label class="page-size">
 
-<label class="page-size">
+    <span id="perPageLabel">
+      Pe pagină:
+    </span>
 
-<span id="perPageLabel">
-Pe pagină:
-</span>
+    <select id="pageSize">
 
-<select id="pageSize">
+      <option
+        value="10"
+        selected>
+        10
+      </option>
 
-<option
-  value="10"
-  selected>
-  10
-</option>
+      <option value="15">
+        15
+      </option>
 
-<option value="15">
-15
-</option>
+    </select>
 
-</select>
-
-</label>
-
-
-<div class="pager">
-
-<button
-  class="page-btn"
-  id="prev">
-  ‹ Anterior
-</button>
-
-<span
-  class="page-info"
-  id="pageInfo">
-  Pagina 1 din 1
-</span>
-
-<button
-  class="page-btn"
-  id="next">
-  Următor ›
-</button>
-
-</div>
+  </label>
 
 
-<div class="footer-stats">
+  <div class="pager">
 
-<span
-  class="badge off"
-  id="offStat">
-</span>
+    <button
+      class="page-btn"
+      id="prev">
+      ‹ Anterior
+    </button>
 
-<span
-  class="badge def"
-  id="defStat">
-</span>
+    <span
+      class="page-info"
+      id="pageInfo">
+      Pagina 1 din 1
+    </span>
 
-<span
-  class="badge gold"
-  id="countStat">
-</span>
+    <button
+      class="page-btn"
+      id="next">
+      Următor ›
+    </button>
 
-</div>
+  </div>
+
+
+  <div class="footer-stats">
+
+    <span
+      class="badge off"
+      id="offStat">
+
+      <img
+        src="https://s1-ro.kingsage.gameforge.com/img/units_big/axe_big.png"
+        referrerpolicy="no-referrer"
+        alt="">
+
+    </span>
+
+
+    <span
+      class="badge def"
+      id="defStat">
+
+      <img
+        src="https://s1-ro.kingsage.gameforge.com/img/units_big/sword_big.png"
+        referrerpolicy="no-referrer"
+        alt="">
+
+    </span>
+
+
+    <span
+      class="badge gold"
+      id="countStat">
+
+      <img
+        src="https://s1-ro.kingsage.gameforge.com/img/units_big/snob_big.png"
+        referrerpolicy="no-referrer"
+        alt="">
+
+    </span>
+
+  </div>
 
 </footer>
 
@@ -1388,34 +1538,41 @@ Pe pagină:
 
 <script>
 
-/* =========================================================
+/* =====================================================
    ULTIMA ACTUALIZARE
-   SCHIMBĂ DOAR VALOAREA DE AICI CÂND ACTUALIZEZI PAGINA
-========================================================= */
+===================================================== */
 
 const LAST_UPDATED =
-"16.10.2026 · 17:35";
+"16.10.2026 · 18:06";
+
 
 const WORLD =
 "s62-fr.kingsage.gameforge.com";
 
 
-/* =========================================================
-   CLASIFICAREA TRUPELOR
+/* =====================================================
+   CLASIFICAREA TA
 
-   0  Țărani      = DEFF
-   1  Templieri   = DEFF
-   2  Scutieri    = DEFF
-   3  Axe          = OFF
-   4  Arcași       = DEFF
-   5  Spioni       = OFF + DEFF
-                       DAR AFIȘAȚI VERDE
-   6  Light        = OFF
-   7  Heavy        = DEFF
-   8  RAM          = OFF
-   9  Catapulte    = OFF
-   10 Conți        = GOLD
-========================================================= */
+   OFF:
+   Axe
+   Spioni
+   Light
+   RAM
+   Catapulte
+
+   DEFF:
+   Țărani
+   Templieri
+   Scutieri
+   Arcași
+   Spioni
+   Heavy
+
+   Spionii sunt OFF + DEFF,
+   dar sunt afișați VERDE.
+
+   Conții sunt GOLD.
+===================================================== */
 
 const OFF_INDEXES =
 [
@@ -1425,6 +1582,7 @@ const OFF_INDEXES =
   8,
   9
 ];
+
 
 const DEF_INDEXES =
 [
@@ -1436,16 +1594,18 @@ const DEF_INDEXES =
   7
 ];
 
+
 const SPY_INDEX =
 5;
+
 
 const COUNT_INDEX =
 10;
 
 
-/* =========================================================
-   LIMBI
-========================================================= */
+/* =====================================================
+   TRADUCERI
+===================================================== */
 
 const i18n = {
 
@@ -1457,14 +1617,8 @@ ro:{
   updated:
     "Ultima actualizare",
 
-  filters:
-    "Filtre:",
-
-  all:
-    "TOATE",
-
   search:
-    "Caută jucător, sat sau coordonate...",
+    "Caută jucător sau sat...",
 
   reset:
     "↻ Reset",
@@ -1509,58 +1663,13 @@ ro:{
     "sate",
 
   offVillages:
-    "Sate OFF",
+    "Sate cu atac",
 
   defVillages:
-    "Sate DEFF",
+    "Sate cu apărare",
 
   countVillages:
-    "Sate cu Conți",
-
-  legOff:
-    "Verde = OFF + Spioni",
-
-  legDef:
-    "Roșu = DEFF",
-
-  legGold:
-    "Gold = Conți",
-
-  units:{
-
-    farmers:
-      "Țărani",
-
-    templars:
-      "Templ.",
-
-    squires:
-      "Scut.",
-
-    axe:
-      "Axe",
-
-    longbows:
-      "Arcași",
-
-    spies:
-      "Spioni",
-
-    light:
-      "Light",
-
-    heavy:
-      "Heavy",
-
-    rams:
-      "RAM",
-
-    catapults:
-      "Cata",
-
-    counts:
-      "Conți"
-  }
+    "Sate cu conți"
 },
 
 
@@ -1572,14 +1681,8 @@ fr:{
   updated:
     "Dernière mise à jour",
 
-  filters:
-    "Filtres :",
-
-  all:
-    "TOUS",
-
   search:
-    "Rechercher joueur, village ou coordonnées...",
+    "Rechercher joueur ou village...",
 
   reset:
     "↻ Reset",
@@ -1624,58 +1727,13 @@ fr:{
     "villages",
 
   offVillages:
-    "Villages OFF",
+    "Villages d'attaque",
 
   defVillages:
-    "Villages DEFF",
+    "Villages de défense",
 
   countVillages:
-    "Villages avec Comtes",
-
-  legOff:
-    "Vert = OFF + Espions",
-
-  legDef:
-    "Rouge = DEFF",
-
-  legGold:
-    "Or = Comtes",
-
-  units:{
-
-    farmers:
-      "Paysans",
-
-    templars:
-      "Templ.",
-
-    squires:
-      "Écuy.",
-
-    axe:
-      "Haches",
-
-    longbows:
-      "Archers",
-
-    spies:
-      "Espions",
-
-    light:
-      "Light",
-
-    heavy:
-      "Heavy",
-
-    rams:
-      "Béliers",
-
-    catapults:
-      "Cata",
-
-    counts:
-      "Comtes"
-  }
+    "Villages avec comtes"
 },
 
 
@@ -1687,14 +1745,8 @@ en:{
   updated:
     "Last updated",
 
-  filters:
-    "Filters:",
-
-  all:
-    "ALL",
-
   search:
-    "Search player, village or coordinates...",
+    "Search player or village...",
 
   reset:
     "↻ Reset",
@@ -1739,72 +1791,26 @@ en:{
     "villages",
 
   offVillages:
-    "OFF villages",
+    "Attack villages",
 
   defVillages:
-    "DEFF villages",
+    "Defense villages",
 
   countVillages:
-    "Count villages",
-
-  legOff:
-    "Green = OFF + Spies",
-
-  legDef:
-    "Red = DEFF",
-
-  legGold:
-    "Gold = Counts",
-
-  units:{
-
-    farmers:
-      "Farmers",
-
-    templars:
-      "Templ.",
-
-    squires:
-      "Squires",
-
-    axe:
-      "Axe",
-
-    longbows:
-      "Archers",
-
-    spies:
-      "Spies",
-
-    light:
-      "Light",
-
-    heavy:
-      "Heavy",
-
-    rams:
-      "RAM",
-
-    catapults:
-      "Cata",
-
-    counts:
-      "Counts"
-  }
+    "Count villages"
 }
 
 };
 
 
-/* =========================================================
+/* =====================================================
    DATE JUCĂTORI
-========================================================= */
+===================================================== */
 
 const playersData = [
 
 {
 name:"mikey340",
-
 villages:[
 
 {
@@ -1818,20 +1824,7 @@ troops:null
 name:"02 le tireur",
 coords:"495|485",
 pts:"7.290",
-troops:
-[
-400,
-0,
-0,
-0,
-231,
-533,
-0,
-0,
-9,
-0,
-1
-]
+troops:[400,0,0,0,231,533,0,0,9,0,1]
 },
 
 {
@@ -1866,20 +1859,7 @@ troops:null
 name:"07 de poupie",
 coords:"505|504",
 pts:"4.490",
-troops:
-[
-188,
-0,
-0,
-0,
-13715,
-571,
-0,
-5489,
-0,
-0,
-0
-]
+troops:[188,0,0,0,13715,571,0,5489,0,0,0]
 },
 
 {
@@ -1897,53 +1877,25 @@ troops:null
 }
 
 ]
-
 },
 
 
 {
 name:"WhaaaaaaaaZaaaaaaaaa",
-
 villages:[
 
 {
 name:"001",
 coords:"498|485",
 pts:"8.140",
-troops:
-[
-0,
-0,
-0,
-19674,
-7681,
-1878,
-3128,
-9134,
-600,
-100,
-7
-]
+troops:[0,0,0,19674,7681,1878,3128,9134,600,100,7]
 },
 
 {
 name:"002",
 coords:"479|489",
 pts:"8.310",
-troops:
-[
-0,
-0,
-0,
-0,
-2883,
-190,
-0,
-1630,
-0,
-0,
-0
-]
+troops:[0,0,0,0,2883,190,0,1630,0,0,0]
 },
 
 {
@@ -1957,50 +1909,22 @@ troops:null
 name:"004",
 coords:"476|480",
 pts:"7.780",
-troops:
-[
-2122,
-0,
-0,
-0,
-4401,
-999,
-0,
-1491,
-34,
-0,
-0
-]
+troops:[2122,0,0,0,4401,999,0,1491,34,0,0]
 },
 
 {
 name:"005",
 coords:"485|472",
 pts:"6.350",
-troops:
-[
-0,
-0,
-0,
-0,
-1273,
-739,
-0,
-1345,
-0,
-0,
-0
-]
+troops:[0,0,0,0,1273,739,0,1345,0,0,0]
 }
 
 ]
-
 },
 
 
 {
 name:"mec2tess",
-
 villages:[
 
 {
@@ -2021,20 +1945,7 @@ troops:null
 name:"000",
 coords:"491|486",
 pts:"6.610",
-troops:
-[
-0,
-0,
-0,
-0,
-10000,
-201,
-0,
-3800,
-0,
-0,
-0
-]
+troops:[0,0,0,0,10000,201,0,3800,0,0,0]
 },
 
 {
@@ -2073,33 +1984,18 @@ troops:null
 }
 
 ]
-
 },
 
 
 {
 name:"Vincelli",
-
 villages:[
 
 {
 name:"001",
 coords:"501|507",
 pts:"6.770",
-troops:
-[
-384,
-3382,
-4000,
-27283,
-10234,
-161,
-52,
-0,
-510,
-0,
-2
-]
+troops:[384,3382,4000,27283,10234,161,52,0,510,0,2]
 },
 
 {
@@ -2113,20 +2009,7 @@ troops:null
 name:"003",
 coords:"495|504",
 pts:"7.010",
-troops:
-[
-193,
-0,
-1498,
-0,
-619,
-302,
-0,
-4186,
-3,
-0,
-0
-]
+troops:[193,0,1498,0,619,302,0,4186,3,0,0]
 },
 
 {
@@ -2140,70 +2023,29 @@ troops:null
 name:"005",
 coords:"507|507",
 pts:"6.320",
-troops:
-[
-349,
-0,
-1922,
-0,
-1536,
-176,
-0,
-1310,
-15,
-0,
-0
-]
+troops:[349,0,1922,0,1536,176,0,1310,15,0,0]
 },
 
 {
 name:"006",
 coords:"518|509",
 pts:"7.590",
-troops:
-[
-0,
-0,
-0,
-0,
-900,
-0,
-0,
-2878,
-0,
-0,
-0
-]
+troops:[0,0,0,0,900,0,0,2878,0,0,0]
 },
 
 {
 name:"007",
 coords:"503|505",
 pts:"6.100",
-troops:
-[
-0,
-0,
-1585,
-2418,
-11595,
-0,
-456,
-0,
-356,
-0,
-0
-]
+troops:[0,0,1585,2418,11595,0,456,0,356,0,0]
 }
 
 ]
-
 },
 
 
 {
 name:"Marshal Leofric",
-
 villages:[
 
 {
@@ -2217,80 +2059,28 @@ troops:null
 name:"-02- Bruleurs de DEPS",
 coords:"482|496",
 pts:"6.570",
-troops:
-[
-2032,
-0,
-0,
-23000,
-0,
-2038,
-3500,
-0,
-600,
-100,
-1
-]
+troops:[2032,0,0,23000,0,2038,3500,0,600,100,1]
 },
 
 {
 name:"-03- Oupla griller !!",
 coords:"476|498",
 pts:"5.710",
-troops:
-[
-0,
-0,
-269,
-0,
-0,
-0,
-0,
-240,
-0,
-0,
-0
-]
+troops:[0,0,269,0,0,0,0,240,0,0,0]
 },
 
 {
 name:"-04- Merci la gratuité ...",
 coords:"477|497",
 pts:"6.160",
-troops:
-[
-0,
-0,
-0,
-0,
-50,
-1337,
-0,
-0,
-0,
-0,
-0
-]
+troops:[0,0,0,0,50,1337,0,0,0,0,0]
 },
 
 {
 name:"-B01- Dans La Lune",
 coords:"495|502",
 pts:"5.870",
-troops:
-[
-0,
-0,
-0,
-48,
-1929,
-1812,
-0,
-1903,
-0,
-0,
-0
-]
+troops:[0,0,0,48,1929,1812,0,1903,0,0,0]
 },
 
 {
@@ -2308,13 +2098,11 @@ troops:null
 }
 
 ]
-
 },
 
 
 {
 name:"Bracks",
-
 villages:[
 
 {
@@ -2346,33 +2134,18 @@ troops:null
 }
 
 ]
-
 },
 
 
 {
 name:"ALAINR",
-
 villages:[
 
 {
 name:"001",
 coords:"500|503",
 pts:"7.510",
-troops:
-[
-363,
-0,
-4000,
-24721,
-2950,
-1384,
-3918,
-1700,
-498,
-50,
-2
-]
+troops:[363,0,4000,24721,2950,1384,3918,1700,498,50,2]
 },
 
 {
@@ -2386,70 +2159,29 @@ troops:null
 name:"003",
 coords:"493|517",
 pts:"6.640",
-troops:
-[
-4,
-4,
-0,
-0,
-411,
-12,
-0,
-2346,
-0,
-0,
-0
-]
+troops:[4,4,0,0,411,12,0,2346,0,0,0]
 },
 
 {
 name:"004",
 coords:"491|511",
 pts:"5.900",
-troops:
-[
-1099,
-0,
-580,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0
-]
+troops:[1099,0,580,0,0,0,0,0,0,0,0]
 }
 
 ]
-
 },
 
 
 {
 name:"LaaGazouzz",
-
 villages:[
 
 {
 name:"1 Athenae",
 coords:"496|498",
 pts:"8.700",
-troops:
-[
-500,
-2500,
-2000,
-0,
-8184,
-1651,
-0,
-9330,
-20,
-0,
-1
-]
+troops:[500,2500,2000,0,8184,1651,0,9330,20,0,1]
 },
 
 {
@@ -2470,30 +2202,15 @@ troops:null
 name:"4 Messenia",
 coords:"477|502",
 pts:"4.490",
-troops:
-[
-185,
-0,
-0,
-0,
-40,
-40,
-0,
-0,
-0,
-0,
-0
-]
+troops:[185,0,0,0,40,40,0,0,0,0,0]
 }
 
 ]
-
 },
 
 
 {
 name:"Balgorf",
-
 villages:[
 
 {
@@ -2525,13 +2242,11 @@ troops:null
 }
 
 ]
-
 },
 
 
 {
 name:"jc98",
-
 villages:[
 
 {
@@ -2545,20 +2260,7 @@ troops:null
 name:"V002",
 coords:"498|481",
 pts:"6.410",
-troops:
-[
-0,
-1571,
-1571,
-0,
-2643,
-807,
-0,
-3309,
-0,
-0,
-0
-]
+troops:[0,1571,1571,0,2643,807,0,3309,0,0,0]
 },
 
 {
@@ -2583,13 +2285,11 @@ troops:null
 }
 
 ]
-
 },
 
 
 {
 name:"Bardack",
-
 villages:[
 
 {
@@ -2621,53 +2321,25 @@ troops:null
 }
 
 ]
-
 },
 
 
 {
 name:"Pich x Fire",
-
 villages:[
 
 {
 name:"A01",
 coords:"501|508",
 pts:"7.150",
-troops:
-[
-314,
-0,
-0,
-0,
-0,
-686,
-93,
-0,
-0,
-0,
-0
-]
+troops:[314,0,0,0,0,686,93,0,0,0,0]
 },
 
 {
 name:"A02",
 coords:"500|512",
 pts:"6.800",
-troops:
-[
-3508,
-30,
-2075,
-0,
-2641,
-1005,
-0,
-5521,
-5,
-0,
-0
-]
+troops:[3508,30,2075,0,2641,1005,0,5521,5,0,0]
 },
 
 {
@@ -2699,33 +2371,18 @@ troops:null
 }
 
 ]
-
 },
 
 
 {
 name:"Poukette",
-
 villages:[
 
 {
 name:"Vivi chief 01",
 coords:"490|498",
 pts:"7.400",
-troops:
-[
-1000,
-200,
-400,
-2810,
-1183,
-1011,
-0,
-2139,
-0,
-0,
-2
-]
+troops:[1000,200,400,2810,1183,1011,0,2139,0,0,2]
 },
 
 {
@@ -2743,53 +2400,25 @@ troops:null
 }
 
 ]
-
 },
 
 
 {
 name:"DU GUESCLIN",
-
 villages:[
 
 {
 name:"FOU 01",
 coords:"490|517",
 pts:"7.030",
-troops:
-[
-0,
-4135,
-3000,
-500,
-3476,
-100,
-0,
-0,
-5,
-0,
-0
-]
+troops:[0,4135,3000,500,3476,100,0,0,5,0,0]
 },
 
 {
 name:"FOU 03",
 coords:"509|513",
 pts:"5.040",
-troops:
-[
-50,
-8000,
-6100,
-0,
-7550,
-643,
-0,
-950,
-0,
-0,
-0
-]
+troops:[50,8000,6100,0,7550,643,0,950,0,0,0]
 },
 
 {
@@ -2807,33 +2436,18 @@ troops:null
 }
 
 ]
-
 },
 
 
 {
 name:"Kyko",
-
 villages:[
 
 {
 name:"001 kyko",
 coords:"488|482",
 pts:"8.580",
-troops:
-[
-976,
-1000,
-0,
-0,
-1100,
-1000,
-0,
-608,
-7,
-0,
-2
-]
+troops:[976,1000,0,0,1100,1000,0,608,7,0,2]
 },
 
 {
@@ -2844,13 +2458,11 @@ troops:null
 }
 
 ]
-
 },
 
 
 {
 name:"Le petit Pat",
-
 villages:[
 
 {
@@ -2864,30 +2476,15 @@ troops:null
 name:"Village de Donald",
 coords:"495|494",
 pts:"7.750",
-troops:
-[
-0,
-701,
-1924,
-0,
-3509,
-1000,
-0,
-2553,
-0,
-0,
-0
-]
+troops:[0,701,1924,0,3509,1000,0,2553,0,0,0]
 }
 
 ]
-
 },
 
 
 {
 name:"Cheikh-el-Rais",
-
 villages:[
 
 {
@@ -2905,13 +2502,11 @@ troops:null
 }
 
 ]
-
 },
 
 
 {
 name:"Doctogre",
-
 villages:[
 
 {
@@ -2929,43 +2524,26 @@ troops:null
 }
 
 ]
-
 },
 
 
 {
 name:"Hrafnsson",
-
 villages:[
 
 {
 name:"Hrafnsson",
 coords:"488|525",
 pts:"7.220",
-troops:
-[
-900,
-1780,
-0,
-1600,
-566,
-300,
-0,
-2800,
-20,
-0,
-2
-]
+troops:[900,1780,0,1600,566,300,0,2800,20,0,2]
 }
 
 ]
-
 },
 
 
 {
 name:"Hazor",
-
 villages:[
 
 {
@@ -2997,13 +2575,11 @@ troops:null
 }
 
 ]
-
 },
 
 
 {
 name:"FineBzZz",
-
 villages:[
 
 {
@@ -3021,13 +2597,11 @@ troops:null
 }
 
 ]
-
 },
 
 
 {
 name:"Spy Ida",
-
 villages:[
 
 {
@@ -3038,13 +2612,11 @@ troops:null
 }
 
 ]
-
 },
 
 
 {
 name:"Priestess Vespera",
-
 villages:[
 
 {
@@ -3055,13 +2627,11 @@ troops:null
 }
 
 ]
-
 },
 
 
 {
 name:"Papy Doudou21",
-
 villages:[
 
 {
@@ -3086,13 +2656,11 @@ troops:null
 }
 
 ]
-
 },
 
 
 {
 name:"Kaneky",
-
 villages:[
 
 {
@@ -3117,13 +2685,11 @@ troops:null
 }
 
 ]
-
 },
 
 
 {
 name:"Sir Davos",
-
 villages:[
 
 {
@@ -3148,33 +2714,18 @@ troops:null
 }
 
 ]
-
 },
 
 
 {
 name:"eroisis v2",
-
 villages:[
 
 {
 name:"Eroisis",
 coords:"493|487",
 pts:"7.360",
-troops:
-[
-0,
-0,
-0,
-0,
-1100,
-200,
-0,
-1660,
-6,
-0,
-1
-]
+troops:[0,0,0,0,1100,200,0,1660,6,0,1]
 },
 
 {
@@ -3192,13 +2743,11 @@ troops:null
 }
 
 ]
-
 },
 
 
 {
 name:"Ortho",
-
 villages:[
 
 {
@@ -3216,13 +2765,11 @@ troops:null
 }
 
 ]
-
 },
 
 
 {
 name:"Benbao",
-
 villages:[
 
 {
@@ -3233,13 +2780,11 @@ troops:null
 }
 
 ]
-
 },
 
 
 {
 name:"LEONIDAS",
-
 villages:[
 
 {
@@ -3250,13 +2795,11 @@ troops:null
 }
 
 ]
-
 },
 
 
 {
 name:"Krays62",
-
 villages:[
 
 {
@@ -3281,13 +2824,11 @@ troops:null
 }
 
 ]
-
 },
 
 
 {
 name:"Diplomat Yorath",
-
 villages:[
 
 {
@@ -3298,13 +2839,11 @@ troops:null
 }
 
 ]
-
 },
 
 
 {
 name:"Vulrak",
-
 villages:[
 
 {
@@ -3315,13 +2854,11 @@ troops:null
 }
 
 ]
-
 },
 
 
 {
 name:"Denji",
-
 villages:[
 
 {
@@ -3332,13 +2869,11 @@ troops:null
 }
 
 ]
-
 },
 
 
 {
 name:"Spartacus",
-
 villages:[
 
 {
@@ -3349,15 +2884,14 @@ troops:null
 }
 
 ]
-
 }
 
 ];
 
 
-/* =========================================================
-   STARE PAGINĂ
-========================================================= */
+/* =====================================================
+   STARE
+===================================================== */
 
 let lang =
 "ro";
@@ -3375,60 +2909,27 @@ let perPage =
 10;
 
 
-/* =========================================================
+/* =====================================================
    FUNCȚII
-========================================================= */
+===================================================== */
 
-function t(){
-
-  return i18n[lang];
-
-}
-
-
-function esc(v){
-
-  return String(v ?? "")
-
-    .replaceAll(
-      "&",
-      "&amp;"
-    )
-
-    .replaceAll(
-      "<",
-      "&lt;"
-    )
-
-    .replaceAll(
-      ">",
-      "&gt;"
-    )
-
-    .replaceAll(
-      '"',
-      "&quot;"
-    )
-
-    .replaceAll(
-      "'",
-      "&#039;"
-    );
-
-}
+const t =
+() =>
+  i18n[lang];
 
 
 function fmt(n){
 
-  const locale =
-    lang === "fr"
-      ? "fr-FR"
-      : lang === "en"
-      ? "en-US"
-      : "ro-RO";
-
   return Number(n)
-    .toLocaleString(locale);
+    .toLocaleString(
+
+      lang === "fr"
+        ? "fr-FR"
+        : lang === "en"
+        ? "en-US"
+        : "ro-RO"
+
+    );
 
 }
 
@@ -3439,20 +2940,28 @@ function hasAny(
 ){
 
   return (
-    Array.isArray(troops)
+
+    Array.isArray(
+      troops
+    )
+
     &&
+
     indexes.some(
+
       i =>
         Number(
           troops[i] || 0
         ) > 0
+
     )
+
   );
 
 }
 
 
-/* OFF = Axe + Spioni + Light + RAM + Catapulte */
+/* OFF */
 
 function isOff(v){
 
@@ -3464,7 +2973,7 @@ function isOff(v){
 }
 
 
-/* DEFF = restul + Spioni */
+/* DEFF */
 
 function isDef(v){
 
@@ -3481,17 +2990,25 @@ function isDef(v){
 function hasCount(v){
 
   return (
-    Array.isArray(v.troops)
+
+    Array.isArray(
+      v.troops
+    )
+
     &&
+
     Number(
-      v.troops[COUNT_INDEX] || 0
+      v.troops[
+        COUNT_INDEX
+      ] || 0
     ) > 0
+
   );
 
 }
 
 
-/* FILTRARE SAT */
+/* FILTRARE */
 
 function villageMatches(
   v,
@@ -3534,12 +3051,24 @@ function villageMatches(
   if(searchText){
 
     const hay =
-      `${pname} ${v.name} ${v.coords}`
+      (
+        pname
+        +
+        " "
+        +
+        v.name
+        +
+        " "
+        +
+        v.coords
+      )
       .toLowerCase();
 
 
     if(
-      !hay.includes(searchText)
+      !hay.includes(
+        searchText
+      )
     ){
 
       return false;
@@ -3554,13 +3083,14 @@ function villageMatches(
 }
 
 
-/* JUCĂTORI DUPĂ FILTRARE */
+/* LISTA DUPĂ FILTRE */
 
 function getFilteredPlayers(){
 
   return playersData
 
     .map(
+
       p => ({
 
         name:
@@ -3568,19 +3098,24 @@ function getFilteredPlayers(){
 
         villages:
           p.villages.filter(
+
             v =>
               villageMatches(
                 v,
                 p.name
               )
+
           )
 
       })
+
     )
 
     .filter(
+
       p =>
         p.villages.length
+
     );
 
 }
@@ -3593,15 +3128,16 @@ function totalVillageCount(){
   return playersData.reduce(
 
     (
-      total,
-      player
+      n,
+      p
     ) =>
 
-      total
+      n
       +
-      player.villages.length,
+      p.villages.length,
 
     0
+
   );
 
 }
@@ -3611,27 +3147,29 @@ function totalVillageCount(){
 
 function allVillageStats(){
 
-  const all =
+  const a =
     playersData.flatMap(
+
       p =>
         p.villages
+
     );
 
 
   return {
 
     off:
-      all.filter(
+      a.filter(
         isOff
       ).length,
 
     def:
-      all.filter(
+      a.filter(
         isDef
       ).length,
 
     counts:
-      all.filter(
+      a.filter(
         hasCount
       ).length
 
@@ -3640,15 +3178,15 @@ function allVillageStats(){
 }
 
 
-/* CULOAREA FIECĂREI TRUPE */
+/* CULOAREA NUMERELOR */
 
 function cellClass(
-  index,
-  value
+  i,
+  v
 ){
 
   if(
-    Number(value) === 0
+    Number(v) === 0
   ){
 
     return "val-zero";
@@ -3657,7 +3195,7 @@ function cellClass(
 
 
   if(
-    index === COUNT_INDEX
+    i === COUNT_INDEX
   ){
 
     return "val-count";
@@ -3665,15 +3203,10 @@ function cellClass(
   }
 
 
-  /*
-     Spionul este verde.
-     OFF este verde.
-  */
-
   if(
-    index === SPY_INDEX
+    i === SPY_INDEX
     ||
-    OFF_INDEXES.includes(index)
+    OFF_INDEXES.includes(i)
   ){
 
     return "val-off";
@@ -3681,28 +3214,19 @@ function cellClass(
   }
 
 
-  /*
-     Restul trupelor sunt DEFF
-     și sunt roșii.
-  */
-
   return "val-def";
 
 }
 
 
-/* =========================
+/* =====================================================
    TEXTE
-========================= */
+===================================================== */
 
 function renderTexts(){
 
   const x =
     t();
-
-
-  const villages =
-    totalVillageCount();
 
 
   document
@@ -3712,115 +3236,91 @@ function renderTexts(){
 
 
   document
-    .getElementById("title")
+    .getElementById(
+      "title"
+    )
     .textContent =
       x.title;
 
 
   document
-    .getElementById("subtitle")
+    .getElementById(
+      "subtitle"
+    )
     .textContent =
-      `${playersData.length} ${x.players} · ${villages} ${x.villages} · ${WORLD}`;
+      `${playersData.length} ${x.players} · ${totalVillageCount()} ${x.villages} · ${WORLD}`;
 
 
   document
-    .getElementById("updated")
+    .getElementById(
+      "updated"
+    )
     .textContent =
       `${x.updated}: ${LAST_UPDATED}`;
 
 
   document
-    .getElementById("filterLabel")
-    .textContent =
-      x.filters;
-
-
-  document
-    .getElementById("fAll")
-    .textContent =
-      x.all;
-
-
-  document
-    .getElementById("search")
+    .getElementById(
+      "search"
+    )
     .placeholder =
       x.search;
 
 
   document
-    .getElementById("resetBtn")
+    .getElementById(
+      "resetBtn"
+    )
     .textContent =
       x.reset;
 
 
   document
-    .getElementById("hPlayer")
+    .getElementById(
+      "hPlayer"
+    )
     .textContent =
       x.player;
 
 
   document
-    .getElementById("hVillage")
+    .getElementById(
+      "hVillage"
+    )
     .textContent =
       x.village;
 
 
   document
-    .getElementById("hCoords")
+    .getElementById(
+      "hCoords"
+    )
     .textContent =
       x.coords;
 
 
   document
-    .getElementById("hPoints")
+    .getElementById(
+      "hPoints"
+    )
     .textContent =
       x.points;
 
 
   document
-    .getElementById("empty")
+    .getElementById(
+      "empty"
+    )
     .textContent =
       x.noResult;
 
 
   document
-    .getElementById("perPageLabel")
+    .getElementById(
+      "perPageLabel"
+    )
     .textContent =
       x.perPage;
-
-
-  document
-    .getElementById("legOff")
-    .textContent =
-      x.legOff;
-
-
-  document
-    .getElementById("legDef")
-    .textContent =
-      x.legDef;
-
-
-  document
-    .getElementById("legGold")
-    .textContent =
-      x.legGold;
-
-
-  document
-    .querySelectorAll(
-      "[data-unit-label]"
-    )
-    .forEach(
-      el => {
-
-        el.textContent =
-          x.units[
-            el.dataset.unitLabel
-          ];
-
-      }
-    );
 
 
   document
@@ -3828,7 +3328,8 @@ function renderTexts(){
       ".lang-btn"
     )
     .forEach(
-      b => {
+
+      b =>
 
         b.classList.toggle(
 
@@ -3838,17 +3339,16 @@ function renderTexts(){
           ===
           lang
 
-        );
+        )
 
-      }
     );
 
 }
 
 
-/* =========================
+/* =====================================================
    TABEL
-========================= */
+===================================================== */
 
 function renderTable(){
 
@@ -3913,14 +3413,14 @@ function renderTable(){
 
     (
       player,
-      playerIndex
+      pi
     ) => {
 
       player.villages.forEach(
 
         (
-          village,
-          villageIndex
+          v,
+          vi
         ) => {
 
           const tr =
@@ -3931,12 +3431,13 @@ function renderTable(){
 
 
           if(
-            playerIndex > 0
+            pi > 0
             &&
-            villageIndex === 0
+            vi === 0
           ){
 
-            tr.classList
+            tr
+              .classList
               .add(
                 "group-start"
               );
@@ -3945,7 +3446,7 @@ function renderTable(){
 
 
           if(
-            villageIndex === 0
+            vi === 0
           ){
 
             const td =
@@ -3976,67 +3477,69 @@ function renderTable(){
           }
 
 
-          const tdVillage =
+          const village =
             document
               .createElement(
                 "td"
               );
 
 
-          tdVillage.className =
+          village.className =
             "village-cell";
 
 
-          tdVillage.textContent =
-            village.name;
+          village.textContent =
+            v.name;
 
 
           tr.appendChild(
-            tdVillage
+            village
           );
 
 
-          const tdCoords =
+          const coord =
             document
               .createElement(
                 "td"
               );
 
 
-          tdCoords.className =
+          coord.className =
             "coord-cell";
 
 
-          tdCoords.textContent =
-            village.coords;
+          coord.textContent =
+            v.coords;
 
 
           tr.appendChild(
-            tdCoords
+            coord
           );
 
 
-          const tdPoints =
+          const points =
             document
               .createElement(
                 "td"
               );
 
 
-          tdPoints.textContent =
-            village.pts;
+          points.className =
+            "points-cell";
+
+
+          points.textContent =
+            v.pts;
 
 
           tr.appendChild(
-            tdPoints
+            points
           );
 
 
-          /* NU EXISTĂ DATE */
-
           if(
             !Array.isArray(
-              village.troops
+              v.troops
             )
           ){
 
@@ -4065,45 +3568,46 @@ function renderTable(){
 
           }
 
-
-          /* EXISTĂ TRUPE */
-
           else{
 
-            village
-              .troops
-              .forEach(
+            v.troops.forEach(
 
-                (
-                  value,
-                  index
-                ) => {
+              (
+                value,
+                i
+              ) => {
 
-                  const td =
-                    document
-                      .createElement(
-                        "td"
-                      );
-
-
-                  td.className =
-                    cellClass(
-                      index,
-                      value
+                const td =
+                  document
+                    .createElement(
+                      "td"
                     );
 
 
-                  td.textContent =
-                    fmt(value);
-
-
-                  tr.appendChild(
-                    td
+                td.className =
+                  cellClass(
+                    i,
+                    value
                   );
 
-                }
 
-              );
+                /*
+                  IMPORTANT:
+                  nu există ellipsis la cifre.
+                  13.715 rămâne 13.715.
+                */
+
+                td.textContent =
+                  fmt(value);
+
+
+                tr.appendChild(
+                  td
+                );
+
+              }
+
+            );
 
           }
 
@@ -4121,8 +3625,6 @@ function renderTable(){
   );
 
 
-  /* MESAJ DACĂ NU EXISTĂ REZULTATE */
-
   document
     .getElementById(
       "empty"
@@ -4133,7 +3635,7 @@ function renderTable(){
 
   document
     .getElementById(
-      "tableScroll"
+      "tableViewport"
     )
     .style
     .display =
@@ -4141,8 +3643,6 @@ function renderTable(){
         ? ""
         : "none";
 
-
-  /* PAGINARE */
 
   document
     .getElementById(
@@ -4182,9 +3682,7 @@ function renderTable(){
     page >= pages;
 
 
-  /* STATISTICI */
-
-  const stats =
+  const s =
     allVillageStats();
 
 
@@ -4192,43 +3690,70 @@ function renderTable(){
     .getElementById(
       "offStat"
     )
-    .textContent =
-      `⚔ ${x.offVillages}: ${stats.off}`;
+    .innerHTML =
+      `
+      <img
+        src="https://s1-ro.kingsage.gameforge.com/img/units_big/axe_big.png"
+        referrerpolicy="no-referrer"
+        alt="">
+      ${x.offVillages}: ${s.off}
+      `;
 
 
   document
     .getElementById(
       "defStat"
     )
-    .textContent =
-      `🛡 ${x.defVillages}: ${stats.def}`;
+    .innerHTML =
+      `
+      <img
+        src="https://s1-ro.kingsage.gameforge.com/img/units_big/sword_big.png"
+        referrerpolicy="no-referrer"
+        alt="">
+      ${x.defVillages}: ${s.def}
+      `;
 
 
   document
     .getElementById(
       "countStat"
     )
-    .textContent =
-      `♛ ${x.countVillages}: ${stats.counts}`;
+    .innerHTML =
+      `
+      <img
+        src="https://s1-ro.kingsage.gameforge.com/img/units_big/snob_big.png"
+        referrerpolicy="no-referrer"
+        alt="">
+      ${x.countVillages}: ${s.counts}
+      `;
 
 
   requestAnimationFrame(
-    fitTableToScreen
+    fitTable
   );
 
 }
 
 
-/* =========================
-   ÎNCADRARE PE TELEFON
-========================= */
+/* =====================================================
+   TELEFON
+   Tabelul se micșorează complet.
+   Nu taie cifrele.
+===================================================== */
 
-function fitTableToScreen(){
+function fitTable(){
 
-  const wrap =
+  const viewport =
     document
       .getElementById(
-        "tableScroll"
+        "tableViewport"
+      );
+
+
+  const scaleBox =
+    document
+      .getElementById(
+        "tableScale"
       );
 
 
@@ -4240,7 +3765,9 @@ function fitTableToScreen(){
 
 
   if(
-    !wrap
+    !viewport
+    ||
+    !scaleBox
     ||
     !table
   ){
@@ -4250,65 +3777,92 @@ function fitTableToScreen(){
   }
 
 
-  table.style.zoom =
-    "1";
+  /*
+    reset înainte de măsurare
+  */
+
+  scaleBox
+    .style
+    .transform =
+      "none";
 
 
-  wrap.style.overflowX =
-    window.innerWidth <= 900
-      ? "hidden"
-      : "auto";
+  viewport
+    .style
+    .height =
+      "auto";
 
 
   if(
-    window.innerWidth <= 900
+    window.innerWidth
+    <=
+    900
   ){
 
-    const natural =
-      table.scrollWidth;
+    const naturalW =
+      table.offsetWidth;
+
+
+    const naturalH =
+      table.offsetHeight;
 
 
     const available =
-      wrap.clientWidth;
+      viewport.clientWidth;
 
 
-    if(
-      natural
-      >
-      available
-    ){
+    const scale =
+      Math.min(
 
-      const scale =
-        Math.max(
+        1,
 
-          .42,
+        available
+        /
+        naturalW
 
-          Math.min(
-
-            1,
-
-            available
-            /
-            natural
-
-          )
-
-        );
+      );
 
 
-      table.style.zoom =
-        String(scale);
+    scaleBox
+      .style
+      .transform =
+        `scale(${scale})`;
 
-    }
+
+    viewport
+      .style
+      .height =
+        Math.ceil(
+          naturalH
+          *
+          scale
+        )
+        +
+        "px";
+
+  }
+
+  else{
+
+    scaleBox
+      .style
+      .transform =
+        "none";
+
+
+    viewport
+      .style
+      .height =
+        "auto";
 
   }
 
 }
 
 
-/* =========================
-   RENDER GENERAL
-========================= */
+/* =====================================================
+   RENDER
+===================================================== */
 
 function render(){
 
@@ -4319,9 +3873,9 @@ function render(){
 }
 
 
-/* =========================
-   FILTRE
-========================= */
+/* =====================================================
+   FILTRE OFF / DEFF / CONȚI
+===================================================== */
 
 document
 .querySelectorAll(
@@ -4337,33 +3891,61 @@ document
 
       () => {
 
-        activeFilter =
-          btn.dataset.filter;
+        /*
+          Dacă apeși din nou
+          același filtru,
+          revine la toate.
+        */
+
+        if(
+          activeFilter
+          ===
+          btn.dataset.filter
+        ){
+
+          activeFilter =
+            "all";
+
+
+          btn
+            .classList
+            .remove(
+              "active"
+            );
+
+        }
+
+        else{
+
+          activeFilter =
+            btn.dataset.filter;
+
+
+          document
+            .querySelectorAll(
+              ".filter-btn"
+            )
+            .forEach(
+
+              x =>
+
+                x
+                  .classList
+                  .toggle(
+
+                    "active",
+
+                    x === btn
+
+                  )
+
+            );
+
+        }
 
 
         page =
           1;
-
-
-        document
-          .querySelectorAll(
-            ".filter-btn"
-          )
-          .forEach(
-
-            item =>
-
-              item
-                .classList
-                .toggle(
-
-                  "active",
-
-                  item === btn
-
-                )
-
-          );
 
 
         renderTable();
@@ -4375,9 +3957,9 @@ document
 );
 
 
-/* =========================
+/* =====================================================
    LIMBI
-========================= */
+===================================================== */
 
 document
 .querySelectorAll(
@@ -4410,9 +3992,9 @@ document
 );
 
 
-/* =========================
+/* =====================================================
    CĂUTARE
-========================= */
+===================================================== */
 
 document
 .getElementById(
@@ -4422,10 +4004,10 @@ document
 
   "input",
 
-  event => {
+  e => {
 
     searchText =
-      event
+      e
         .target
         .value
         .trim()
@@ -4443,9 +4025,9 @@ document
 );
 
 
-/* =========================
+/* =====================================================
    RESET
-========================= */
+===================================================== */
 
 document
 .getElementById(
@@ -4483,20 +4065,12 @@ document
       )
       .forEach(
 
-        item =>
+        x =>
 
-          item
+          x
             .classList
-            .toggle(
-
-              "active",
-
-              item
-                .dataset
-                .filter
-              ===
-              "all"
-
+            .remove(
+              "active"
             )
 
       );
@@ -4509,9 +4083,9 @@ document
 );
 
 
-/* =========================
-   10 / 15 JUCĂTORI
-========================= */
+/* =====================================================
+   10 / 15 JUCĂTORI PE PAGINĂ
+===================================================== */
 
 document
 .getElementById(
@@ -4521,11 +4095,11 @@ document
 
   "change",
 
-  event => {
+  e => {
 
     perPage =
       Number(
-        event.target.value
+        e.target.value
       )
       ||
       10;
@@ -4542,9 +4116,9 @@ document
 );
 
 
-/* =========================
+/* =====================================================
    ANTERIOR
-========================= */
+===================================================== */
 
 document
 .getElementById(
@@ -4568,8 +4142,7 @@ document
 
       window.scrollTo({
 
-        top:
-          0,
+        top:0,
 
         behavior:
           "smooth"
@@ -4583,9 +4156,9 @@ document
 );
 
 
-/* =========================
+/* =====================================================
    URMĂTOR
-========================= */
+===================================================== */
 
 document
 .getElementById(
@@ -4626,8 +4199,7 @@ document
 
       window.scrollTo({
 
-        top:
-          0,
+        top:0,
 
         behavior:
           "smooth"
@@ -4641,9 +4213,9 @@ document
 );
 
 
-/* =========================
-   REDIMENSIONARE
-========================= */
+/* =====================================================
+   RESIZE
+===================================================== */
 
 window
 .addEventListener(
@@ -4653,15 +4225,29 @@ window
   () =>
 
     requestAnimationFrame(
-      fitTableToScreen
+      fitTable
     )
 
 );
 
 
-/* =========================
-   PORNIRE
-========================= */
+window
+.addEventListener(
+
+  "load",
+
+  () =>
+
+    requestAnimationFrame(
+      fitTable
+    )
+
+);
+
+
+/* =====================================================
+   START
+===================================================== */
 
 render();
 
