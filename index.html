@@ -1,16 +1,1744 @@
-♜
-KCS — Trupele alianței
-35 jucători · 114 sate · 31 cu Intel · s62-fr.kingsage.gameforge.com
-RO
-FR
-EN
-35
-Jucători
-114
-Sate
-31
-Cu Intel
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>KCS — Trupele alianței</title>
 
+<style>
+:root{
+    --bg:#f6ecd4;
+    --panel:#fff8e7;
+    --line:#9a7441;
+    --line-soft:#dfcda7;
+    --text:#382c1d;
+    --muted:#79664a;
+    --accent:#7c3f24;
+    --green:#1f6b3a;
+    --zero:#aa9a80;
+    --shadow:0 8px 24px rgba(84,57,26,.12);
+}
+
+*{
+    box-sizing:border-box;
+}
+
+html,body{
+    margin:0;
+    padding:0;
+    background:
+        radial-gradient(circle at top left,rgba(255,255,255,.85),transparent 28%),
+        linear-gradient(180deg,#f9f0dc,#efe0bd);
+    color:var(--text);
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    padding:12px;
+}
+
+.app{
+    max-width:1600px;
+    margin:0 auto;
+}
+
+/* HEADER */
+
+.topbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:14px;
+    padding:14px 16px;
+    border:1px solid var(--line);
+    border-radius:16px;
+    background:linear-gradient(180deg,#f3dfb6,#ead2a0);
+    box-shadow:var(--shadow);
+    margin-bottom:12px;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    min-width:0;
+}
+
+.brand-badge{
+    width:46px;
+    height:46px;
+    min-width:46px;
+    display:grid;
+    place-items:center;
+    border-radius:12px;
+    background:linear-gradient(180deg,#8f4d2b,#5f2d1b);
+    border:2px solid #4f2a17;
+    color:#fff5dc;
+    font-size:24px;
+}
+
+.brand-copy{
+    min-width:0;
+}
+
+.brand-copy h1{
+    margin:0;
+    font-size:21px;
+    color:#4c2b18;
+}
+
+.brand-copy p{
+    margin:4px 0 0;
+    font-size:12px;
+    color:#684f31;
+}
+
+.last-updated{
+    display:inline-flex;
+    align-items:center;
+    gap:5px;
+    padding:4px 8px;
+    border-radius:999px;
+    background:rgba(255,248,231,.7);
+    border:1px solid rgba(124,63,36,.22);
+    font-size:10px!important;
+    font-weight:bold;
+    color:#754328!important;
+}
+
+.last-updated:before{
+    content:"●";
+    color:#2f7a46;
+    font-size:8px;
+}
+
+.lang-picker{
+    display:flex;
+    gap:6px;
+}
+
+.lang-btn{
+    min-height:38px;
+    padding:0 12px;
+    border:1px solid var(--line);
+    border-radius:9px;
+    background:#fff7e8;
+    color:#5f351f;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.lang-btn.active{
+    background:linear-gradient(180deg,#914727,#6f351f);
+    color:white;
+}
+
+/* STATS */
+
+.summary{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:8px;
+    margin-bottom:12px;
+}
+
+.stat{
+    padding:10px 12px;
+    border:1px solid var(--line-soft);
+    border-radius:12px;
+    background:rgba(255,248,231,.9);
+    text-align:center;
+    box-shadow:0 4px 12px rgba(84,57,26,.06);
+}
+
+.stat strong{
+    display:block;
+    font-size:18px;
+    color:var(--accent);
+}
+
+.stat span{
+    font-size:11px;
+    color:var(--muted);
+}
+
+/* PC TABLE */
+
+.table-shell{
+    border:1px solid var(--line);
+    border-radius:14px;
+    overflow:hidden;
+    background:var(--panel);
+    box-shadow:var(--shadow);
+}
+
+.table-scroll{
+    overflow-x:auto;
+    width:100%;
+}
+
+table{
+    width:100%;
+    min-width:1150px;
+    border-collapse:collapse;
+    font-size:12px;
+    font-variant-numeric:tabular-nums;
+}
+
+thead th{
+    position:sticky;
+    top:0;
+    z-index:3;
+    padding:8px 5px;
+    text-align:center;
+    background:linear-gradient(180deg,#efddb8,#e5c991);
+    border-bottom:2px solid var(--line);
+    border-right:1px solid rgba(154,116,65,.28);
+    color:#4b331e;
+}
+
+tbody td{
+    padding:7px 6px;
+    border-bottom:1px solid var(--line-soft);
+    border-right:1px solid rgba(154,116,65,.15);
+    text-align:right;
+    white-space:nowrap;
+}
+
+tbody tr:nth-child(even) td{
+    background:rgba(252,245,228,.55);
+}
+
+tbody tr:hover td{
+    background:#f5e7c8;
+}
+
+.player-cell{
+    position:sticky;
+    left:0;
+    z-index:2;
+    min-width:150px;
+    text-align:left!important;
+    font-weight:bold;
+    color:#412719;
+    background:linear-gradient(90deg,#efd8a8,#f8ecd2)!important;
+    border-right:2px solid var(--line)!important;
+}
+
+.village-cell{
+    min-width:170px;
+    text-align:left!important;
+}
+
+.coord-cell{
+    text-align:center!important;
+    font-weight:bold;
+}
+
+.unit-head{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    min-width:60px;
+    gap:2px;
+}
+
+.unit-icon{
+    width:18px;
+    height:18px;
+    fill:#674422;
+}
+
+.unit-name{
+    font-size:9px;
+}
+
+.pos{
+    color:var(--green);
+    font-weight:bold;
+}
+
+.zero{
+    color:var(--zero);
+}
+
+.no-data{
+    text-align:left!important;
+    color:#8a785e;
+    font-style:italic;
+    background:#fbf3e1!important;
+}
+
+/* MOBILE CARDS */
+
+.mobile-view{
+    display:none;
+}
+
+.mobile-player{
+    margin-bottom:11px;
+    overflow:hidden;
+    border:1px solid var(--line);
+    border-radius:13px;
+    background:var(--panel);
+    box-shadow:var(--shadow);
+}
+
+.mobile-player-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:8px;
+    padding:10px 11px;
+    background:linear-gradient(180deg,#eed8ab,#e8cb92);
+    border-bottom:1px solid var(--line);
+}
+
+.mobile-player-name{
+    font-weight:900;
+    font-size:14px;
+    color:#4b2d1a;
+}
+
+.mobile-player-count{
+    font-size:10px;
+    color:#71583d;
+}
+
+.mobile-village{
+    padding:10px;
+    border-bottom:1px solid var(--line-soft);
+}
+
+.mobile-village:last-child{
+    border-bottom:none;
+}
+
+.mobile-village-top{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) auto auto;
+    align-items:center;
+    gap:6px;
+    margin-bottom:8px;
+}
+
+.mobile-village-name{
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    font-weight:bold;
+}
+
+.mobile-coord,
+.mobile-pts{
+    padding:4px 6px;
+    border:1px solid #dec59a;
+    border-radius:7px;
+    background:#f3e3c2;
+    font-size:10px;
+    font-weight:bold;
+}
+
+.troop-grid{
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:5px;
+}
+
+.troop-box{
+    min-width:0;
+    padding:6px 4px;
+    text-align:center;
+    border:1px solid #ead7b3;
+    border-radius:8px;
+    background:#fffaf0;
+}
+
+.troop-box .label{
+    display:block;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    font-size:8px;
+    color:#7f684a;
+}
+
+.troop-box .value{
+    display:block;
+    margin-top:2px;
+    font-size:11px;
+    font-weight:bold;
+}
+
+.mobile-no-data{
+    padding:8px;
+    border:1px dashed #cdb68d;
+    border-radius:8px;
+    background:#fcf5e6;
+    color:#8a775f;
+    font-size:11px;
+    font-style:italic;
+}
+
+/* PAGINATION */
+
+.pagination{
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:8px;
+    margin-top:12px;
+    padding:9px;
+    border:1px solid var(--line-soft);
+    border-radius:12px;
+    background:rgba(255,248,231,.95);
+}
+
+.pagination-center{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.pagination-btn,
+.page-size select{
+    min-height:38px;
+    padding:0 12px;
+    border:1px solid var(--line);
+    border-radius:9px;
+    font-weight:bold;
+}
+
+.pagination-btn{
+    background:linear-gradient(180deg,#8b482b,#6d351f);
+    color:white;
+    cursor:pointer;
+}
+
+.pagination-btn:disabled{
+    opacity:.4;
+    cursor:not-allowed;
+}
+
+.page-info{
+    font-weight:bold;
+    color:#51321f;
+}
+
+.page-size{
+    display:flex;
+    align-items:center;
+    gap:5px;
+    font-size:11px;
+    color:var(--muted);
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+    body{
+        padding:7px;
+    }
+
+    .topbar{
+        flex-wrap:wrap;
+        padding:10px;
+        border-radius:12px;
+    }
+
+    .brand-badge{
+        width:40px;
+        height:40px;
+        min-width:40px;
+        font-size:20px;
+    }
+
+    .brand-copy h1{
+        font-size:17px;
+    }
+
+    .brand-copy p{
+        font-size:9px;
+    }
+
+    .lang-picker{
+        width:100%;
+    }
+
+    .lang-btn{
+        flex:1;
+    }
+
+    .summary{
+        gap:5px;
+    }
+
+    .stat{
+        padding:7px 4px;
+    }
+
+    .stat strong{
+        font-size:15px;
+    }
+
+    .stat span{
+        font-size:9px;
+    }
+
+    .desktop-view{
+        display:none;
+    }
+
+    .mobile-view{
+        display:block;
+    }
+
+    .pagination{
+        position:sticky;
+        bottom:5px;
+        z-index:20;
+        box-shadow:0 8px 22px rgba(69,43,21,.2);
+    }
+
+    .page-size{
+        display:none;
+    }
+}
+
+@media(max-width:520px){
+
+    .troop-grid{
+        grid-template-columns:repeat(3,minmax(0,1fr));
+    }
+
+    .pagination-btn{
+        min-width:82px;
+        padding:0 8px;
+        font-size:11px;
+    }
+
+    .page-info{
+        font-size:10px;
+    }
+}
+
+@media(max-width:370px){
+
+    .troop-grid{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<header class="topbar">
+
+    <div class="brand">
+
+        <div class="brand-badge">♜</div>
+
+        <div class="brand-copy">
+            <h1 id="txt-title">KCS — Trupele alianței</h1>
+
+            <p id="txt-sub">
+                35 jucători · 114 sate · 31 cu Intel · s62-fr.kingsage.gameforge.com
+            </p>
+
+            <p id="txt-updated" class="last-updated">
+                Ultima actualizare: 16.10.2026 · 17:35
+            </p>
+        </div>
+
+    </div>
+
+    <div class="lang-picker">
+        <button class="lang-btn active" data-lang="ro">RO</button>
+        <button class="lang-btn" data-lang="fr">FR</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+    </div>
+
+</header>
+
+
+<section class="summary">
+
+    <div class="stat">
+        <strong>35</strong>
+        <span id="label-players">Jucători</span>
+    </div>
+
+    <div class="stat">
+        <strong>114</strong>
+        <span id="label-villages">Sate</span>
+    </div>
+
+    <div class="stat">
+        <strong>31</strong>
+        <span id="label-intel">Cu Intel</span>
+    </div>
+
+</section>
+
+
+<section class="desktop-view">
+
+<div class="table-shell">
+
+<div class="table-scroll">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th id="th-player">Jucător</th>
+<th id="th-village">Sat</th>
+<th id="th-coords">Coordonate</th>
+<th id="th-points">Puncte</th>
+
+<th>
+<div class="unit-head">
+<svg class="unit-icon" viewBox="0 0 24 24">
+<path d="M12 2L2 22h20L12 2zm0 4l6.5 13h-13L12 6z"/>
+</svg>
+<span class="unit-name" data-unit="farmers">Țărani</span>
+</div>
+</th>
+
+<th>
+<div class="unit-head">
+<svg class="unit-icon" viewBox="0 0 24 24">
+<path d="M12 2L4 5v6c0 5.55 3.84 10.74 8 12 4.16-1.26 8-6.45 8-12V5l-8-3z"/>
+</svg>
+<span class="unit-name" data-unit="templars">Templieri</span>
+</div>
+</th>
+
+<th>
+<div class="unit-head">
+<svg class="unit-icon" viewBox="0 0 24 24">
+<path d="M7 2v20h2v-8h6v8h2V2H7zm4 8V4h2v6h-2z"/>
+</svg>
+<span class="unit-name" data-unit="squires">Scutieri</span>
+</div>
+</th>
+
+<th>
+<div class="unit-head">
+<svg class="unit-icon" viewBox="0 0 24 24">
+<path d="M14.5 13.5L11 10 7.5 13.5 6 12l5-5 5 5z"/>
+</svg>
+<span class="unit-name" data-unit="berserkers">Berserkeri</span>
+</div>
+</th>
+
+<th>
+<div class="unit-head">
+<svg class="unit-icon" viewBox="0 0 24 24">
+<path d="M18 3v18h-2V3h2M4 12l8-8v16l-8-8z"/>
+</svg>
+<span class="unit-name" data-unit="longbows">Arcași</span>
+</div>
+</th>
+
+<th>
+<div class="unit-head">
+<svg class="unit-icon" viewBox="0 0 24 24">
+<path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5z"/>
+</svg>
+<span class="unit-name" data-unit="spies">Cercetași</span>
+</div>
+</th>
+
+<th>
+<div class="unit-head">
+<svg class="unit-icon" viewBox="0 0 24 24">
+<path d="M19 3H5c-1.1 0-2 .9-2 2v14h18V5c0-1.1-.9-2-2-2z"/>
+</svg>
+<span class="unit-name" data-unit="crusaders">Cruciați</span>
+</div>
+</th>
+
+<th>
+<div class="unit-head">
+<svg class="unit-icon" viewBox="0 0 24 24">
+<path d="M19 19H5V5h14z"/>
+</svg>
+<span class="unit-name" data-unit="blackknights">Cavaleri N.</span>
+</div>
+</th>
+
+<th>
+<div class="unit-head">
+<svg class="unit-icon" viewBox="0 0 24 24">
+<path d="M4 11h16v2H4z"/>
+</svg>
+<span class="unit-name" data-unit="rams">Berbeci</span>
+</div>
+</th>
+
+<th>
+<div class="unit-head">
+<svg class="unit-icon" viewBox="0 0 24 24">
+<path d="M2 22h20v-2H2zm18-4L12 4 4 18z"/>
+</svg>
+<span class="unit-name" data-unit="trebuchets">Catapulte</span>
+</div>
+</th>
+
+<th>
+<div class="unit-head">
+<svg class="unit-icon" viewBox="0 0 24 24">
+<path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11z"/>
+</svg>
+<span class="unit-name" data-unit="counts">Conți</span>
+</div>
+</th>
+
+</tr>
+
+</thead>
+
+<tbody id="table-body"></tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="mobile-view" id="mobile-body"></section>
+
+
+<nav class="pagination">
+
+<button class="pagination-btn" id="btn-prev">
 Anterior
-Pagina 1 din 1
+</button>
+
+<div class="pagination-center">
+
+<span id="page-info" class="page-info">
+Pagina 1 din 4
+</span>
+
+<label class="page-size">
+<span id="page-size-label">Pe pagină</span>
+
+<select id="page-size-select">
+<option value="10" selected>10</option>
+<option value="15">15</option>
+</select>
+
+</label>
+
+</div>
+
+<button class="pagination-btn" id="btn-next">
 Următor
+</button>
+
+</nav>
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   SCHIMBĂ DOAR ASTA CÂND ACTUALIZEZI DATELE
+   ========================================================= */
+
+const LAST_UPDATED = "16.10.2026 · 17:35";
+
+
+const translations = {
+
+ro:{
+    title:"KCS — Trupele alianței",
+    subtitle:"35 jucători · 114 sate · 31 cu Intel · s62-fr.kingsage.gameforge.com",
+    updated:"Ultima actualizare",
+    player:"Jucător",
+    village:"Sat",
+    coords:"Coordonate",
+    points:"Puncte",
+    noData:"Fără informații salvate",
+    prev:"Anterior",
+    next:"Următor",
+    page:"Pagina",
+    of:"din",
+    players:"Jucători",
+    villages:"Sate",
+    intel:"Cu Intel",
+    pageSize:"Pe pagină",
+    villageWord:"sate",
+
+    units:{
+        farmers:"Țărani",
+        templars:"Templieri",
+        squires:"Scutieri",
+        berserkers:"Berserkeri",
+        longbows:"Arcași",
+        spies:"Cercetași",
+        crusaders:"Cruciați",
+        blackknights:"Cavaleri N.",
+        rams:"Berbeci",
+        trebuchets:"Catapulte",
+        counts:"Conți"
+    }
+},
+
+fr:{
+    title:"KCS — Troupes de l'alliance",
+    subtitle:"35 joueurs · 114 villages · 31 avec Intel · s62-fr.kingsage.gameforge.com",
+    updated:"Dernière mise à jour",
+    player:"Joueur",
+    village:"Village",
+    coords:"Coordonnées",
+    points:"Points",
+    noData:"Aucune information enregistrée",
+    prev:"Précédent",
+    next:"Suivant",
+    page:"Page",
+    of:"sur",
+    players:"Joueurs",
+    villages:"Villages",
+    intel:"Avec Intel",
+    pageSize:"Par page",
+    villageWord:"villages",
+
+    units:{
+        farmers:"Paysans",
+        templars:"Templiers",
+        squires:"Écuyers",
+        berserkers:"Berserkers",
+        longbows:"Archers",
+        spies:"Espions",
+        crusaders:"Croisés",
+        blackknights:"Chevaliers N.",
+        rams:"Béliers",
+        trebuchets:"Trébuchets",
+        counts:"Comtes"
+    }
+},
+
+en:{
+    title:"KCS — Alliance Troops",
+    subtitle:"35 players · 114 villages · 31 with Intel · s62-fr.kingsage.gameforge.com",
+    updated:"Last updated",
+    player:"Player",
+    village:"Village",
+    coords:"Coordinates",
+    points:"Points",
+    noData:"No saved data",
+    prev:"Previous",
+    next:"Next",
+    page:"Page",
+    of:"of",
+    players:"Players",
+    villages:"Villages",
+    intel:"With Intel",
+    pageSize:"Per page",
+    villageWord:"villages",
+
+    units:{
+        farmers:"Farmers",
+        templars:"Templars",
+        squires:"Squires",
+        berserkers:"Berserkers",
+        longbows:"Long-bows",
+        spies:"Spies",
+        crusaders:"Crusaders",
+        blackknights:"Black Knights",
+        rams:"Rams",
+        trebuchets:"Trebuchets",
+        counts:"Counts"
+    }
+}
+
+};
+
+
+const unitKeys = [
+    "farmers",
+    "templars",
+    "squires",
+    "berserkers",
+    "longbows",
+    "spies",
+    "crusaders",
+    "blackknights",
+    "rams",
+    "trebuchets",
+    "counts"
+];
+
+
+let currentLang = "ro";
+let currentPage = 1;
+let itemsPerPage = 10;
+
+
+/* =========================================================
+   DATE JUCĂTORI
+   ========================================================= */
+
+const playersData = [
+
+{
+name:"mikey340",
+villages:[
+{name:"01 pan----pan",coords:"495|503",pts:"7.260",troops:null},
+{name:"02 le tireur",coords:"495|485",pts:"7.290",troops:[400,0,0,0,231,533,0,0,9,0,1]},
+{name:"03 carte bleu",coords:"494|498",pts:"7.600",troops:null},
+{name:"04 Hummmm",coords:"484|489",pts:"7.160",troops:null},
+{name:"05 trouble",coords:"489|506",pts:"7.300",troops:null},
+{name:"06 bommmm",coords:"471|489",pts:"5.300",troops:null},
+{name:"07 de poupie",coords:"505|504",pts:"4.490",troops:[188,0,0,0,13715,571,0,5489,0,0,0]},
+{name:"08 farfadet",coords:"511|517",pts:"4.120",troops:null},
+{name:"09 envolé",coords:"475|491",pts:"3.140",troops:null}
+]
+},
+
+{
+name:"WhaaaaaaaaZaaaaaaaaa",
+villages:[
+{name:"001",coords:"498|485",pts:"8.140",troops:[0,0,0,19674,7681,1878,3128,9134,600,100,7]},
+{name:"002",coords:"479|489",pts:"8.310",troops:[0,0,0,0,2883,190,0,1630,0,0,0]},
+{name:"003",coords:"486|475",pts:"6.800",troops:null},
+{name:"004",coords:"476|480",pts:"7.780",troops:[2122,0,0,0,4401,999,0,1491,34,0,0]},
+{name:"005",coords:"485|472",pts:"6.350",troops:[0,0,0,0,1273,739,0,1345,0,0,0]}
+]
+},
+
+{
+name:"mec2tess",
+villages:[
+{name:"000",coords:"492|499",pts:"6.700",troops:null},
+{name:"000",coords:"493|506",pts:"7.160",troops:null},
+{name:"000",coords:"491|486",pts:"6.610",troops:[0,0,0,0,10000,201,0,3800,0,0,0]},
+{name:"000",coords:"488|484",pts:"6.600",troops:null},
+{name:"010",coords:"481|513",pts:"5.220",troops:null},
+{name:"020",coords:"481|510",pts:"5.610",troops:null},
+{name:"030",coords:"483|498",pts:"4.140",troops:null},
+{name:"040",coords:"510|527",pts:"3.850",troops:null}
+]
+},
+
+{
+name:"Vincelli",
+villages:[
+{name:"001",coords:"501|507",pts:"6.770",troops:[384,3382,4000,27283,10234,161,52,0,510,0,2]},
+{name:"002",coords:"513|523",pts:"6.730",troops:null},
+{name:"003",coords:"495|504",pts:"7.010",troops:[193,0,1498,0,619,302,0,4186,3,0,0]},
+{name:"004",coords:"519|516",pts:"5.520",troops:null},
+{name:"005",coords:"507|507",pts:"6.320",troops:[349,0,1922,0,1536,176,0,1310,15,0,0]},
+{name:"006",coords:"518|509",pts:"7.590",troops:[0,0,0,0,900,0,0,2878,0,0,0]},
+{name:"007",coords:"503|505",pts:"6.100",troops:[0,0,1585,2418,11595,0,456,0,356,0,0]}
+]
+},
+
+{
+name:"Marshal Leofric",
+villages:[
+{name:"-01-SPARTE",coords:"500|498",pts:"7.980",troops:null},
+{name:"-02- Bruleurs de DEPS",coords:"482|496",pts:"6.570",troops:[2032,0,0,23000,0,2038,3500,0,600,100,1]},
+{name:"-03- Oupla griller !!",coords:"476|498",pts:"5.710",troops:[0,0,269,0,0,0,0,240,0,0,0]},
+{name:"-04- Merci la gratuité ...",coords:"477|497",pts:"6.160",troops:[0,0,0,0,50,1337,0,0,0,0,0]},
+{name:"-B01- Dans La Lune",coords:"495|502",pts:"5.870",troops:[0,0,0,48,1929,1812,0,1903,0,0,0]},
+{name:"-B02- bar fermé",coords:"490|516",pts:"5.600",troops:null},
+{name:"-B03- Abracadabra",coords:"489|516",pts:"5.470",troops:null}
+]
+},
+
+{
+name:"Bracks",
+villages:[
+{name:"01 - Front",coords:"496|488",pts:"7.880",troops:null},
+{name:"02 - Front",coords:"495|487",pts:"7.880",troops:null},
+{name:"AR - 01",coords:"489|502",pts:"6.530",troops:null},
+{name:"AR - 02",coords:"469|500",pts:"5.670",troops:null}
+]
+},
+
+{
+name:"ALAINR",
+villages:[
+{name:"001",coords:"500|503",pts:"7.510",troops:[363,0,4000,24721,2950,1384,3918,1700,498,50,2]},
+{name:"002",coords:"499|503",pts:"7.640",troops:null},
+{name:"003",coords:"493|517",pts:"6.640",troops:[4,4,0,0,411,12,0,2346,0,0,0]},
+{name:"004",coords:"491|511",pts:"5.900",troops:[1099,0,580,0,0,0,0,0,0,0,0]}
+]
+},
+
+{
+name:"LaaGazouzz",
+villages:[
+{name:"1 Athenae",coords:"496|498",pts:"8.700",troops:[500,2500,2000,0,8184,1651,0,9330,20,0,1]},
+{name:"2 Mykenai",coords:"488|491",pts:"7.650",troops:null},
+{name:"3 Olympia",coords:"495|497",pts:"6.770",troops:null},
+{name:"4 Messenia",coords:"477|502",pts:"4.490",troops:[185,0,0,0,40,40,0,0,0,0,0]}
+]
+},
+
+{
+name:"Balgorf",
+villages:[
+{name:"Alaric",coords:"475|483",pts:"5.740",troops:null},
+{name:"Arminius",coords:"491|484",pts:"6.890",troops:null},
+{name:"Attila",coords:"490|481",pts:"6.800",troops:null},
+{name:"Théodoric",coords:"473|470",pts:"1.820",troops:null}
+]
+},
+
+{
+name:"jc98",
+villages:[
+{name:"V001",coords:"499|495",pts:"7.570",troops:null},
+{name:"V002",coords:"498|481",pts:"6.410",troops:[0,1571,1571,0,2643,807,0,3309,0,0,0]},
+{name:"V003",coords:"487|507",pts:"6.320",troops:null},
+{name:"V004",coords:"486|508",pts:"6.230",troops:null},
+{name:"V005",coords:"490|468",pts:"2.960",troops:null}
+]
+},
+
+{
+name:"Bardack",
+villages:[
+{name:"Planete Vegeta",coords:"482|493",pts:"7.810",troops:null},
+{name:"SSJ1",coords:"484|482",pts:"7.320",troops:null},
+{name:"Ssj2",coords:"485|501",pts:"6.600",troops:null},
+{name:"SSJ3",coords:"481|506",pts:"5.610",troops:null}
+]
+},
+
+{
+name:"Pich x Fire",
+villages:[
+{name:"A01",coords:"501|508",pts:"7.150",troops:[314,0,0,0,0,686,93,0,0,0,0]},
+{name:"A02",coords:"500|512",pts:"6.800",troops:[3508,30,2075,0,2641,1005,0,5521,5,0,0]},
+{name:"A03",coords:"498|507",pts:"4.990",troops:null},
+{name:"Ae01",coords:"518|510",pts:"5.920",troops:null},
+{name:"B01",coords:"491|518",pts:"6.600",troops:null},
+{name:"B02",coords:"484|519",pts:"5.160",troops:null}
+]
+},
+
+{
+name:"Poukette",
+villages:[
+{name:"Vivi chief 01",coords:"490|498",pts:"7.400",troops:[1000,200,400,2810,1183,1011,0,2139,0,0,2]},
+{name:"Vivi chief 02",coords:"483|508",pts:"6.360",troops:null},
+{name:"Vivi Chief 03",coords:"491|512",pts:"5.870",troops:null}
+]
+},
+
+{
+name:"DU GUESCLIN",
+villages:[
+{name:"FOU 01",coords:"490|517",pts:"7.030",troops:[0,4135,3000,500,3476,100,0,0,5,0,0]},
+{name:"FOU 03",coords:"509|513",pts:"5.040",troops:[50,8000,6100,0,7550,643,0,950,0,0,0]},
+{name:"FOX",coords:"510|508",pts:"6.240",troops:null},
+{name:"Village abandonné",coords:"503|527",pts:"1.290",troops:null}
+]
+},
+
+{
+name:"Kyko",
+villages:[
+{name:"001 kyko",coords:"488|482",pts:"8.580",troops:[976,1000,0,0,1100,1000,0,608,7,0,2]},
+{name:"002 kyko",coords:"490|485",pts:"6.850",troops:null}
+]
+},
+
+{
+name:"Le petit Pat",
+villages:[
+{name:"Rage",coords:"488|529",pts:"5.830",troops:null},
+{name:"Village de Donald",coords:"495|494",pts:"7.750",troops:[0,701,1924,0,3509,1000,0,2553,0,0,0]}
+]
+},
+
+{
+name:"Cheikh-el-Rais",
+villages:[
+{name:"001",coords:"499|493",pts:"8.580",troops:null},
+{name:"002",coords:"484|511",pts:"5.590",troops:null}
+]
+},
+
+{
+name:"Doctogre",
+villages:[
+{name:"Bouse",coords:"498|514",pts:"5.780",troops:null},
+{name:"Marais",coords:"520|507",pts:"7.040",troops:null}
+]
+},
+
+{
+name:"Hrafnsson",
+villages:[
+{name:"Hrafnsson",coords:"488|525",pts:"7.220",troops:[900,1780,0,1600,566,300,0,2800,20,0,2]}
+]
+},
+
+{
+name:"Hazor",
+villages:[
+{name:"001 - il a pas dit Bonjour",coords:"512|519",pts:"5.060",troops:null},
+{name:"002 - Deviens génial",coords:"505|509",pts:"7.220",troops:null},
+{name:"003 - Vitrine",coords:"502|510",pts:"9.000",troops:null},
+{name:"004 - Désaccordé",coords:"490|520",pts:"6.510",troops:null}
+]
+},
+
+{
+name:"FineBzZz",
+villages:[
+{name:"Fine",coords:"512|511",pts:"6.380",troops:null},
+{name:"MoucheBzZz",coords:"508|517",pts:"5.290",troops:null}
+]
+},
+
+{
+name:"Spy Ida",
+villages:[
+{name:"Village de Spy Ida",coords:"491|498",pts:"5.990",troops:null}
+]
+},
+
+{
+name:"Priestess Vespera",
+villages:[
+{name:"Village de Priestess Vespera",coords:"488|492",pts:"7.470",troops:null}
+]
+},
+
+{
+name:"Papy Doudou21",
+villages:[
+{name:"Kribi",coords:"515|508",pts:"7.610",troops:null},
+{name:"Kribi 200",coords:"498|521",pts:"5.770",troops:null},
+{name:"Kribi 300",coords:"521|509",pts:"5.300",troops:null}
+]
+},
+
+{
+name:"Kaneky",
+villages:[
+{name:"001 a l attaque",coords:"487|486",pts:"6.330",troops:null},
+{name:"002 désoler du retard",coords:"474|482",pts:"4.450",troops:null},
+{name:"003 on ce reveil",coords:"479|495",pts:"3.160",troops:null}
+]
+},
+
+{
+name:"Sir Davos",
+villages:[
+{name:"2-Métairie de Sir Davos",coords:"511|518",pts:"6.380",troops:null},
+{name:"3-Commanderie de Gilead",coords:"501|505",pts:"5.320",troops:null},
+{name:"4-Village de Eagle",coords:"508|515",pts:"6.160",troops:null}
+]
+},
+
+{
+name:"eroisis v2",
+villages:[
+{name:"Eroisis",coords:"493|487",pts:"7.360",troops:[0,0,0,0,1100,200,0,1660,6,0,1]},
+{name:"Eroisis 2",coords:"490|489",pts:"5.280",troops:null},
+{name:"Eroisis 3",coords:"496|501",pts:"4.680",troops:null}
+]
+},
+
+{
+name:"Ortho",
+villages:[
+{name:"Bric",coords:"474|495",pts:"4.990",troops:null},
+{name:"Doctogre",coords:"477|510",pts:"1.040",troops:null}
+]
+},
+
+{
+name:"Benbao",
+villages:[
+{name:"Village de Benbao",coords:"510|511",pts:"6.040",troops:null}
+]
+},
+
+{
+name:"LEONIDAS",
+villages:[
+{name:"ATHENES",coords:"478|488",pts:"6.400",troops:null}
+]
+},
+
+{
+name:"Krays62",
+villages:[
+{name:"vivi00",coords:"511|516",pts:"3.940",troops:null},
+{name:"Vivi01",coords:"513|515",pts:"2.770",troops:null},
+{name:"Vivi02",coords:"511|515",pts:"2.820",troops:null}
+]
+},
+
+{
+name:"Diplomat Yorath",
+villages:[
+{name:"Village de Diplomat Yorath",coords:"471|503",pts:"2.230",troops:null}
+]
+},
+
+{
+name:"Vulrak",
+villages:[
+{name:"001 - Bulbizarre",coords:"476|489",pts:"2.470",troops:null}
+]
+},
+
+{
+name:"Denji",
+villages:[
+{name:"Village de Denji",coords:"475|503",pts:"1.340",troops:null}
+]
+},
+
+{
+name:"Spartacus",
+villages:[
+{name:"Village de Spartacus",coords:"464|512",pts:"850",troops:null}
+]
+}
+
+];
+
+
+/* =========================================================
+   FUNCȚII
+   ========================================================= */
+
+function escapeHTML(value){
+
+    return String(value ?? "")
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+}
+
+
+function formatNumber(value){
+
+    let locale = "ro-RO";
+
+    if(currentLang === "fr"){
+        locale = "fr-FR";
+    }
+
+    if(currentLang === "en"){
+        locale = "en-US";
+    }
+
+    return Number(value).toLocaleString(locale);
+}
+
+
+function totalPages(){
+
+    return Math.max(
+        1,
+        Math.ceil(playersData.length / itemsPerPage)
+    );
+}
+
+
+function pagePlayers(){
+
+    const start =
+        (currentPage - 1) * itemsPerPage;
+
+    return playersData.slice(
+        start,
+        start + itemsPerPage
+    );
+}
+
+
+function setLanguage(lang){
+
+    currentLang = lang;
+    currentPage = 1;
+
+    render();
+}
+
+
+function updateTexts(){
+
+    const t = translations[currentLang];
+
+    document.documentElement.lang =
+        currentLang;
+
+    document.getElementById("txt-title").textContent =
+        t.title;
+
+    document.getElementById("txt-sub").textContent =
+        t.subtitle;
+
+    document.getElementById("txt-updated").textContent =
+        `${t.updated}: ${LAST_UPDATED}`;
+
+    document.getElementById("th-player").textContent =
+        t.player;
+
+    document.getElementById("th-village").textContent =
+        t.village;
+
+    document.getElementById("th-coords").textContent =
+        t.coords;
+
+    document.getElementById("th-points").textContent =
+        t.points;
+
+    document.getElementById("label-players").textContent =
+        t.players;
+
+    document.getElementById("label-villages").textContent =
+        t.villages;
+
+    document.getElementById("label-intel").textContent =
+        t.intel;
+
+    document.getElementById("page-size-label").textContent =
+        t.pageSize;
+
+
+    document
+        .querySelectorAll(".unit-name")
+        .forEach(el=>{
+
+            const unit =
+                el.dataset.unit;
+
+            el.textContent =
+                t.units[unit];
+        });
+
+
+    document
+        .querySelectorAll(".lang-btn")
+        .forEach(btn=>{
+
+            btn.classList.toggle(
+                "active",
+                btn.dataset.lang === currentLang
+            );
+        });
+}
+
+
+function renderDesktop(){
+
+    const tbody =
+        document.getElementById("table-body");
+
+    tbody.innerHTML = "";
+
+    const t =
+        translations[currentLang];
+
+
+    pagePlayers().forEach(player=>{
+
+        player.villages.forEach(
+            (village,index)=>{
+
+                const tr =
+                    document.createElement("tr");
+
+
+                if(index === 0){
+
+                    const tdPlayer =
+                        document.createElement("td");
+
+                    tdPlayer.className =
+                        "player-cell";
+
+                    tdPlayer.rowSpan =
+                        player.villages.length;
+
+                    tdPlayer.textContent =
+                        player.name;
+
+                    tr.appendChild(tdPlayer);
+                }
+
+
+                const tdVillage =
+                    document.createElement("td");
+
+                tdVillage.className =
+                    "village-cell";
+
+                tdVillage.textContent =
+                    village.name;
+
+                tr.appendChild(tdVillage);
+
+
+                const tdCoords =
+                    document.createElement("td");
+
+                tdCoords.className =
+                    "coord-cell";
+
+                tdCoords.textContent =
+                    village.coords;
+
+                tr.appendChild(tdCoords);
+
+
+                const tdPoints =
+                    document.createElement("td");
+
+                tdPoints.textContent =
+                    village.pts;
+
+                tr.appendChild(tdPoints);
+
+
+                if(village.troops){
+
+                    village.troops.forEach(
+                        value=>{
+
+                            const td =
+                                document.createElement("td");
+
+                            td.className =
+                                value > 0
+                                ? "pos"
+                                : "zero";
+
+                            td.textContent =
+                                formatNumber(value);
+
+                            tr.appendChild(td);
+                        }
+                    );
+
+                }else{
+
+                    const td =
+                        document.createElement("td");
+
+                    td.colSpan = 11;
+
+                    td.className =
+                        "no-data";
+
+                    td.textContent =
+                        t.noData;
+
+                    tr.appendChild(td);
+                }
+
+
+                tbody.appendChild(tr);
+            }
+        );
+    });
+}
+
+
+function renderMobile(){
+
+    const root =
+        document.getElementById("mobile-body");
+
+    root.innerHTML = "";
+
+    const t =
+        translations[currentLang];
+
+
+    pagePlayers().forEach(player=>{
+
+        const card =
+            document.createElement("article");
+
+        card.className =
+            "mobile-player";
+
+
+        const head =
+            document.createElement("div");
+
+        head.className =
+            "mobile-player-head";
+
+        head.innerHTML = `
+            <div class="mobile-player-name">
+                ♜ ${escapeHTML(player.name)}
+            </div>
+
+            <div class="mobile-player-count">
+                ${player.villages.length}
+                ${escapeHTML(t.villageWord)}
+            </div>
+        `;
+
+        card.appendChild(head);
+
+
+        player.villages.forEach(village=>{
+
+            const villageBox =
+                document.createElement("div");
+
+            villageBox.className =
+                "mobile-village";
+
+
+            const top =
+                document.createElement("div");
+
+            top.className =
+                "mobile-village-top";
+
+            top.innerHTML = `
+                <div class="mobile-village-name">
+                    ${escapeHTML(village.name)}
+                </div>
+
+                <div class="mobile-coord">
+                    ${escapeHTML(village.coords)}
+                </div>
+
+                <div class="mobile-pts">
+                    ${escapeHTML(village.pts)}
+                </div>
+            `;
+
+            villageBox.appendChild(top);
+
+
+            if(village.troops){
+
+                const grid =
+                    document.createElement("div");
+
+                grid.className =
+                    "troop-grid";
+
+
+                village.troops.forEach(
+                    (value,index)=>{
+
+                        const unit =
+                            unitKeys[index];
+
+                        const box =
+                            document.createElement("div");
+
+                        box.className =
+                            "troop-box";
+
+                        box.innerHTML = `
+                            <span class="label">
+                                ${escapeHTML(t.units[unit])}
+                            </span>
+
+                            <span class="value ${value > 0 ? "pos" : "zero"}">
+                                ${formatNumber(value)}
+                            </span>
+                        `;
+
+                        grid.appendChild(box);
+                    }
+                );
+
+                villageBox.appendChild(grid);
+
+            }else{
+
+                const empty =
+                    document.createElement("div");
+
+                empty.className =
+                    "mobile-no-data";
+
+                empty.textContent =
+                    t.noData;
+
+                villageBox.appendChild(empty);
+            }
+
+
+            card.appendChild(villageBox);
+        });
+
+
+        root.appendChild(card);
+    });
+}
+
+
+function renderPagination(){
+
+    const t =
+        translations[currentLang];
+
+    const pages =
+        totalPages();
+
+
+    if(currentPage > pages){
+        currentPage = pages;
+    }
+
+
+    document.getElementById("page-info").textContent =
+        `${t.page} ${currentPage} ${t.of} ${pages}`;
+
+
+    const prev =
+        document.getElementById("btn-prev");
+
+    const next =
+        document.getElementById("btn-next");
+
+
+    prev.textContent =
+        t.prev;
+
+    next.textContent =
+        t.next;
+
+
+    prev.disabled =
+        currentPage === 1;
+
+    next.disabled =
+        currentPage === pages;
+}
+
+
+function render(){
+
+    updateTexts();
+
+    renderDesktop();
+
+    renderMobile();
+
+    renderPagination();
+}
+
+
+/* LIMBI */
+
+document
+.querySelectorAll(".lang-btn")
+.forEach(btn=>{
+
+    btn.addEventListener(
+        "click",
+        ()=>{
+
+            setLanguage(
+                btn.dataset.lang
+            );
+        }
+    );
+
+});
+
+
+/* PAGINA ANTERIOARĂ */
+
+document
+.getElementById("btn-prev")
+.addEventListener(
+    "click",
+    ()=>{
+
+        if(currentPage > 1){
+
+            currentPage--;
+
+            render();
+
+            window.scrollTo({
+                top:0,
+                behavior:"smooth"
+            });
+        }
+    }
+);
+
+
+/* PAGINA URMĂTOARE */
+
+document
+.getElementById("btn-next")
+.addEventListener(
+    "click",
+    ()=>{
+
+        if(currentPage < totalPages()){
+
+            currentPage++;
+
+            render();
+
+            window.scrollTo({
+                top:0,
+                behavior:"smooth"
+            });
+        }
+    }
+);
+
+
+/* 10 SAU 15 JUCĂTORI */
+
+document
+.getElementById("page-size-select")
+.addEventListener(
+    "change",
+    event=>{
+
+        itemsPerPage =
+            Number(event.target.value) || 10;
+
+        currentPage = 1;
+
+        render();
+    }
+);
+
+
+/* PORNIRE */
+
+render();
+
+</script>
+
+</body>
+</html>
