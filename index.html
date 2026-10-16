@@ -4,4254 +4,1792 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Kael — Trupele alianței</title>
-
 <style>
 :root{
-  --bg:#f2dfb8;
-  --paper:#fff7e4;
-  --paper2:#f4e2bb;
-  --head:#edd3a0;
-
-  --line:#a57435;
-  --line2:#d8ba80;
-
-  --text:#4b2d1a;
-  --muted:#8e795e;
-
-  --brown:#7e351d;
-  --brown2:#5f2615;
-
-  --off:#08783f;
-  --def:#d42c24;
-
-  --gold:#b87900;
-  --gold2:#8f5c00;
-
-  --shadow:0 6px 18px rgba(89,55,19,.13);
+  --bg:#f2dfb8;--paper:#fff7e4;--paper2:#f4e2bb;--head:#edd3a0;
+  --line:#a57435;--line2:#d8ba80;--text:#4b2d1a;--muted:#8e795e;
+  --brown:#7e351d;--brown2:#5f2615;--off:#08783f;--def:#d42c24;
+  --gold:#b87900;--gold2:#8f5c00;--shadow:0 6px 18px rgba(89,55,19,.13);
 }
-
-*{
-  box-sizing:border-box;
-}
-
-html,
-body{
-  margin:0;
-  padding:0;
-}
-
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
 body{
   padding:8px;
-
-  font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
-
+  font-family:Arial,Helvetica,sans-serif;
   color:var(--text);
-
   background:
-    radial-gradient(
-      circle at 15% 0%,
-      rgba(255,255,255,.85),
-      transparent 25%
-    ),
-    linear-gradient(
-      180deg,
-      #f8ecd0 0%,
-      #ead2a4 100%
-    );
+    radial-gradient(circle at 15% 0%,rgba(255,255,255,.85),transparent 25%),
+    linear-gradient(180deg,#f8ecd0 0%,#ead2a4 100%);
 }
+.app{max-width:1580px;margin:0 auto}
 
-.app{
-  max-width:1580px;
-  margin:0 auto;
-}
-
-
-/* =====================================================
-   HEADER
-===================================================== */
-
+/* HEADER */
 .topbar{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-
-  gap:14px;
-
-  flex-wrap:wrap;
-
-  min-height:72px;
-
-  padding:9px 14px;
-  margin-bottom:8px;
-
-  border:1px solid var(--line);
-  border-radius:10px;
-
-  background:
-    linear-gradient(
-      180deg,
-      #f2ddb2,
-      #e7c891
-    );
-
-  box-shadow:var(--shadow);
-
-  position:relative;
-
-  overflow:hidden;
+  display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;
+  min-height:72px;padding:9px 14px;margin-bottom:8px;border:1px solid var(--line);
+  border-radius:10px;background:linear-gradient(180deg,#f2ddb2,#e7c891);box-shadow:var(--shadow);
+  position:relative;overflow:hidden;
 }
-
 .topbar:after{
-  content:"";
-
-  position:absolute;
-
-  right:180px;
-  top:0;
-
-  width:420px;
-  height:100%;
-
-  opacity:.09;
-
-  pointer-events:none;
-
-  background:
-    linear-gradient(
-      90deg,
-      transparent,
-      #7f4b24,
-      transparent
-    );
+  content:"";position:absolute;right:180px;top:0;width:420px;height:100%;opacity:.09;pointer-events:none;
+  background:linear-gradient(90deg,transparent,#7f4b24,transparent);
 }
-
-.brand{
-  display:flex;
-  align-items:center;
-
-  gap:11px;
-
-  min-width:0;
-
-  z-index:1;
-}
-
+.brand{display:flex;align-items:center;gap:11px;min-width:0;z-index:1}
 .crest{
-  width:51px;
-  height:55px;
-
-  flex:0 0 51px;
-
-  display:grid;
-  place-items:center;
-
-  border:2px solid #5c2513;
-
-  border-radius:
-    12px
-    12px
-    18px
-    18px;
-
-  background:
-    linear-gradient(
-      180deg,
-      #a34524,
-      #6c2815
-    );
-
-  color:#ffe6a2;
-
-  font:
-    900
-    24px
-    Georgia,
-    serif;
-
-  box-shadow:
-    inset
-    0 0 0 2px
-    rgba(255,221,147,.35);
+  width:51px;height:55px;flex:0 0 51px;display:grid;place-items:center;
+  border:2px solid #5c2513;border-radius:12px 12px 18px 18px;
+  background:linear-gradient(180deg,#a34524,#6c2815);color:#ffe6a2;
+  font:900 24px Georgia,serif;box-shadow:inset 0 0 0 2px rgba(255,221,147,.35);
 }
-
-.brand h1{
-  margin:0;
-
-  font:
-    700
-    27px
-    Georgia,
-    serif;
-
-  line-height:1;
-
-  color:#5d2716;
-}
-
-.brand-sub{
-  margin-top:4px;
-
-  font-size:12px;
-  font-weight:700;
-
-  color:#6a4b30;
-}
-
+.brand h1{margin:0;font:700 27px Georgia,serif;line-height:1;color:#5d2716}
+.brand-sub{margin-top:4px;font-size:12px;font-weight:700;color:#6a4b30}
 .updated{
-  display:inline-flex;
-  align-items:center;
-
-  gap:6px;
-
-  margin-top:4px;
-
-  padding:4px 9px;
-
-  border:1px solid #ccb278;
-
-  border-radius:999px;
-
-  background:
-    rgba(
-      255,
-      250,
-      234,
-      .83
-    );
-
-  font-size:10px;
-  font-weight:800;
-
-  color:#693a23;
+  display:inline-flex;align-items:center;gap:6px;margin-top:4px;padding:4px 9px;
+  border:1px solid #ccb278;border-radius:999px;background:rgba(255,250,234,.83);
+  font-size:10px;font-weight:800;color:#693a23;
 }
-
-.updated:before{
-  content:"";
-
-  width:8px;
-  height:8px;
-
-  border-radius:50%;
-
-  background:#48b965;
-
-  box-shadow:
-    0 0 0 2px
-    rgba(72,185,101,.15);
-}
-
-.langs{
-  display:flex;
-  gap:6px;
-
-  z-index:1;
-}
-
+.updated:before{content:"";width:8px;height:8px;border-radius:50%;background:#48b965;box-shadow:0 0 0 2px rgba(72,185,101,.15)}
+.langs{display:flex;gap:6px;z-index:1}
 .lang-btn{
-  height:40px;
-
-  min-width:48px;
-
-  padding:0 12px;
-
-  border:
-    1px
-    solid
-    #ad8550;
-
-  border-radius:8px;
-
-  background:#fff8e8;
-
-  color:#57301d;
-
-  font-weight:900;
-
-  cursor:pointer;
-
-  box-shadow:
-    0 2px 4px
-    rgba(70,40,15,.08);
+  height:40px;min-width:48px;padding:0 12px;border:1px solid #ad8550;border-radius:8px;
+  background:#fff8e8;color:#57301d;font-weight:900;cursor:pointer;box-shadow:0 2px 4px rgba(70,40,15,.08);
 }
+.lang-btn.active{background:linear-gradient(180deg,#963c20,#6e2815);border-color:#632413;color:#fff}
 
-.lang-btn.active{
-  background:
-    linear-gradient(
-      180deg,
-      #963c20,
-      #6e2815
-    );
-
-  border-color:#632413;
-
-  color:#fff;
-}
-
-
-/* =====================================================
-   FILTRE
-===================================================== */
-
+/* TOOLBAR */
 .toolbar{
-  display:flex;
-  align-items:center;
-
-  gap:10px;
-
-  flex-wrap:wrap;
-
-  padding:9px 12px;
-
-  margin-bottom:8px;
-
-  border:
-    1px
-    solid
-    #ceb07c;
-
-  border-radius:10px;
-
-  background:
-    rgba(
-      255,
-      248,
-      232,
-      .95
-    );
-
-  box-shadow:
-    0 3px 10px
-    rgba(80,50,20,.06);
+  display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:9px 12px;margin-bottom:8px;
+  border:1px solid #ceb07c;border-radius:10px;background:rgba(255,248,232,.95);box-shadow:0 3px 10px rgba(80,50,20,.06);
 }
-
-.funnel{
-  font-size:23px;
-
-  color:#6d301b;
-
-  margin-right:2px;
-}
-
+.funnel{font-size:23px;color:#6d301b;margin-right:2px}
 .filter-btn{
-  height:40px;
-
-  min-width:132px;
-
-  padding:0 18px;
-
-  border-radius:8px;
-
-  border:
-    1px
-    solid
-    #b6905b;
-
-  background:#fff9ec;
-
-  color:#5f3c27;
-
-  font-size:13px;
-  font-weight:900;
-
-  cursor:pointer;
-
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-
-  gap:9px;
+  height:40px;min-width:132px;padding:0 18px;border-radius:8px;border:1px solid #b6905b;
+  background:#fff9ec;color:#5f3c27;font-size:13px;font-weight:900;cursor:pointer;
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
 }
-
-.filter-btn img{
-  width:28px;
-  height:28px;
-
-  object-fit:contain;
-}
-
-.filter-btn[data-filter="off"]{
-  border-color:#559469;
-  color:#17663b;
-}
-
-.filter-btn[data-filter="def"]{
-  border-color:#d17467;
-  color:#a82924;
-}
-
-.filter-btn[data-filter="counts"]{
-  border-color:#c89a3c;
-  color:#8a5b00;
-}
-
-.filter-btn.active[data-filter="off"]{
-  background:
-    linear-gradient(
-      180deg,
-      #258b50,
-      #0c6a39
-    );
-
-  color:#fff;
-
-  border-color:#07572f;
-}
-
-.filter-btn.active[data-filter="def"]{
-  background:
-    linear-gradient(
-      180deg,
-      #eb7567,
-      #c93d32
-    );
-
-  color:#fff;
-
-  border-color:#b72d25;
-}
-
-.filter-btn.active[data-filter="counts"]{
-  background:
-    linear-gradient(
-      180deg,
-      #eab94c,
-      #bd7a0a
-    );
-
-  color:#fff;
-
-  border-color:#a66a05;
-}
-
-.search-wrap{
-  margin-left:auto;
-
-  display:flex;
-  align-items:center;
-
-  min-width:280px;
-  max-width:430px;
-
-  flex:1;
-}
-
+.filter-btn img{width:28px;height:28px;object-fit:contain}
+.filter-btn[data-filter="off"]{border-color:#559469;color:#17663b}
+.filter-btn[data-filter="def"]{border-color:#d17467;color:#a82924}
+.filter-btn[data-filter="counts"]{border-color:#c89a3c;color:#8a5b00}
+.filter-btn.active[data-filter="all"]{background:linear-gradient(180deg,#8d3c22,#6d2917);color:#fff;border-color:#642414}
+.filter-btn.active[data-filter="off"]{background:linear-gradient(180deg,#258b50,#0c6a39);color:#fff;border-color:#07572f}
+.filter-btn.active[data-filter="def"]{background:linear-gradient(180deg,#eb7567,#c93d32);color:#fff;border-color:#b72d25}
+.filter-btn.active[data-filter="counts"]{background:linear-gradient(180deg,#eab94c,#bd7a0a);color:#fff;border-color:#a66a05}
+.search-wrap{margin-left:auto;display:flex;align-items:center;min-width:280px;max-width:430px;flex:1}
 .search-wrap input{
-  width:100%;
-  height:40px;
-
-  padding:0 13px;
-
-  border:
-    1px
-    solid
-    #b99d70;
-
-  border-radius:8px;
-
-  background:#fffdf8;
-
-  color:#4b3423;
-
-  font-size:13px;
-
-  outline:none;
-
-  box-shadow:
-    inset
-    0 1px 2px
-    rgba(82,51,21,.06);
+  width:100%;height:40px;padding:0 13px;border:1px solid #b99d70;border-radius:8px;background:#fffdf8;
+  color:#4b3423;font-size:13px;outline:none;box-shadow:inset 0 1px 2px rgba(82,51,21,.06);
 }
-
 .reset-btn{
-  height:40px;
-
-  padding:0 16px;
-
-  border:
-    1px
-    solid
-    #682514;
-
-  border-radius:8px;
-
-  background:
-    linear-gradient(
-      180deg,
-      #933a20,
-      #692514
-    );
-
-  color:#fff;
-
-  font-weight:900;
-
-  cursor:pointer;
+  height:40px;padding:0 16px;border:1px solid #682514;border-radius:8px;
+  background:linear-gradient(180deg,#933a20,#692514);color:#fff;font-weight:900;cursor:pointer;
 }
 
-
-/* =====================================================
-   TABEL
-===================================================== */
-
-.table-shell{
-  border:
-    1px
-    solid
-    var(--line);
-
-  border-radius:9px;
-
-  background:var(--paper);
-
-  box-shadow:var(--shadow);
-
-  overflow:hidden;
-}
-
-.table-viewport{
-  width:100%;
-
-  overflow-x:auto;
-  overflow-y:hidden;
-}
-
-.table-scale{
-  transform-origin:
-    top
-    left;
-
-  width:max-content;
-}
-
+/* TABLE */
+.table-shell{border:1px solid var(--line);border-radius:9px;background:var(--paper);box-shadow:var(--shadow);overflow:hidden}
+.table-viewport{width:100%;overflow-x:auto;overflow-y:hidden}
+.table-scale{transform-origin:top left;width:max-content}
 table{
-  width:1180px;
-  min-width:1180px;
-
-  border-collapse:collapse;
-
-  table-layout:fixed;
-
-  font-size:11px;
-
-  font-variant-numeric:
-    tabular-nums;
-
-  background:var(--paper);
+  width:1180px;min-width:1180px;border-collapse:collapse;table-layout:fixed;
+  font-size:11px;font-variant-numeric:tabular-nums;background:var(--paper);
 }
-
 thead th{
-  height:46px;
-
-  padding:2px 3px;
-
-  text-align:center;
-
-  vertical-align:middle;
-
-  background:
-    linear-gradient(
-      180deg,
-      #efd9aa,
-      #e5c68d
-    );
-
-  border-right:
-    1px
-    solid
-    #d2b37b;
-
-  border-bottom:
-    2px
-    solid
-    var(--line);
-
-  color:#55351f;
-
-  font-weight:900;
-
-  position:sticky;
-
-  top:0;
-
-  z-index:3;
+  height:46px;padding:2px 3px;text-align:center;vertical-align:middle;
+  background:linear-gradient(180deg,#efd9aa,#e5c68d);border-right:1px solid #d2b37b;border-bottom:2px solid var(--line);
+  color:#55351f;font-weight:900;position:sticky;top:0;z-index:3;
 }
-
-th.col-player{
-  width:155px;
-}
-
-th.col-village{
-  width:160px;
-}
-
-th.col-coord{
-  width:90px;
-}
-
-th.col-points{
-  width:72px;
-}
-
-th.unit-col{
-  width:64px;
-}
-
-.unit-h{
-  display:flex;
-
-  align-items:center;
-  justify-content:center;
-
-  height:100%;
-}
-
-.unit-img{
-  width:31px;
-  height:31px;
-
-  object-fit:contain;
-
-  display:block;
-
-  filter:
-    drop-shadow(
-      0 1px 1px
-      rgba(70,40,15,.18)
-    );
-}
-
+th.col-player{width:155px} th.col-village{width:160px} th.col-coord{width:90px} th.col-points{width:72px} th.unit-col{width:64px}
+.unit-h{display:flex;align-items:center;justify-content:center;height:100%}
+.unit-img{width:31px;height:31px;object-fit:contain;display:block;filter:drop-shadow(0 1px 1px rgba(70,40,15,.18))}
 tbody td{
-  height:25px;
-
-  padding:2px 5px;
-
-  border-right:
-    1px
-    solid
-    #eadbc0;
-
-  border-bottom:
-    1px
-    solid
-    #dfceb0;
-
-  white-space:nowrap;
-
-  text-align:right;
-
-  background:#fff9e9;
-
-  overflow:visible;
-
-  text-overflow:clip;
+  height:25px;padding:2px 5px;border-right:1px solid #eadbc0;border-bottom:1px solid #dfceb0;
+  white-space:nowrap;text-align:right;background:#fff9e9;overflow:visible;text-overflow:clip;
 }
-
-tbody tr:nth-child(even) td{
-  background:#fdf4df;
-}
-
-tbody tr:hover td{
-  background:#f7e7c5;
-}
-
-.group-start td{
-  border-top:
-    2px
-    solid
-    #9e7138;
-}
-
+tbody tr:nth-child(even) td{background:#fdf4df}
+tbody tr:hover td{background:#f7e7c5}
+.group-start td{border-top:2px solid #9e7138}
 .player-cell{
-  text-align:left!important;
-
-  font-weight:900;
-
-  font-size:11px;
-
-  vertical-align:middle;
-
-  padding-left:12px!important;
-
-  background:
-    #ead6b0!important;
-
-  border-right:
-    2px
-    solid
-    #b18449!important;
-
-  overflow:hidden!important;
-
-  text-overflow:ellipsis!important;
+  text-align:left!important;font-weight:900;font-size:11px;vertical-align:middle;padding-left:12px!important;
+  background:#ead6b0!important;border-right:2px solid #b18449!important;overflow:hidden!important;text-overflow:ellipsis!important;
 }
+.village-cell{text-align:left!important;padding-left:10px!important;overflow:hidden!important;text-overflow:ellipsis!important}
+.coord-cell{text-align:center!important}.points-cell{text-align:center!important}
+.no-data{text-align:left!important;color:#9b8970;font-style:italic;font-size:12px;background:#fff9e9!important;padding-left:12px!important}
+.val-off{color:var(--off);font-weight:900}.val-def{color:var(--def);font-weight:900}.val-count{color:var(--gold2);font-weight:900}.val-zero{color:#9c917e;font-weight:500}
+.empty{padding:28px;text-align:center;font-weight:800;color:#83674a}
 
-.village-cell{
-  text-align:left!important;
-
-  padding-left:10px!important;
-
-  overflow:hidden!important;
-
-  text-overflow:ellipsis!important;
-}
-
-.coord-cell{
-  text-align:center!important;
-}
-
-.points-cell{
-  text-align:center!important;
-}
-
-.no-data{
-  text-align:left!important;
-
-  color:#9b8970;
-
-  font-style:italic;
-
-  font-size:12px;
-
-  background:
-    #fff9e9!important;
-
-  padding-left:12px!important;
-}
-
-
-/* OFF = VERDE */
-
-.val-off{
-  color:var(--off);
-
-  font-weight:900;
-}
-
-
-/* DEFF = ROȘU */
-
-.val-def{
-  color:var(--def);
-
-  font-weight:900;
-}
-
-
-/* CONȚI = GOLD */
-
-.val-count{
-  color:var(--gold2);
-
-  font-weight:900;
-}
-
-.val-zero{
-  color:#9c917e;
-
-  font-weight:500;
-}
-
-.empty{
-  padding:28px;
-
-  text-align:center;
-
-  font-weight:800;
-
-  color:#83674a;
-}
-
-
-/* =====================================================
-   FOOTER
-===================================================== */
-
+/* FOOTER */
 .footerbar{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-
-  gap:10px;
-
-  flex-wrap:wrap;
-
-  margin-top:8px;
-
-  padding:6px 8px;
-
-  border:
-    1px
-    solid
-    #cfb17c;
-
-  border-radius:9px;
-
-  background:
-    rgba(
-      255,
-      248,
-      232,
-      .96
-    );
+  display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;
+  margin-top:8px;padding:6px 8px;border:1px solid #cfb17c;border-radius:9px;background:rgba(255,248,232,.96);
 }
-
-.page-size{
-  display:flex;
-  align-items:center;
-
-  gap:6px;
-
-  font-size:11px;
+.page-size{display:flex;align-items:center;gap:6px;font-size:11px}.page-size select{height:34px;border:1px solid #b89a69;border-radius:7px;background:#fff;padding:0 9px}
+.pager{display:flex;align-items:center;gap:12px}.page-btn{
+  height:38px;padding:0 17px;border:1px solid #662414;border-radius:8px;
+  background:linear-gradient(180deg,#8b381f,#692514);color:#fff;font-weight:900;cursor:pointer;
 }
-
-.page-size select{
-  height:34px;
-
-  border:
-    1px
-    solid
-    #b89a69;
-
-  border-radius:7px;
-
-  background:#fff;
-
-  padding:0 9px;
+.page-btn:disabled{opacity:.32;cursor:not-allowed}.page-info{font-size:12px;font-weight:900}
+.footer-stats{display:flex;gap:7px;flex-wrap:wrap}.badge{
+  display:inline-flex;align-items:center;gap:5px;padding:6px 9px;border:1px solid #d3b982;border-radius:8px;background:#fffaf0;font-size:10px;font-weight:900;
 }
+.badge.off{color:var(--off)}.badge.def{color:var(--def)}.badge.gold{color:var(--gold2)}
+.badge img{width:22px;height:22px;object-fit:contain}
 
-.pager{
-  display:flex;
-
-  align-items:center;
-
-  gap:12px;
-}
-
-.page-btn{
-  height:38px;
-
-  padding:0 17px;
-
-  border:
-    1px
-    solid
-    #662414;
-
-  border-radius:8px;
-
-  background:
-    linear-gradient(
-      180deg,
-      #8b381f,
-      #692514
-    );
-
-  color:#fff;
-
-  font-weight:900;
-
-  cursor:pointer;
-}
-
-.page-btn:disabled{
-  opacity:.32;
-
-  cursor:not-allowed;
-}
-
-.page-info{
-  font-size:12px;
-
-  font-weight:900;
-}
-
-.footer-stats{
-  display:flex;
-
-  gap:7px;
-
-  flex-wrap:wrap;
-}
-
-.badge{
-  display:inline-flex;
-
-  align-items:center;
-
-  gap:5px;
-
-  padding:6px 9px;
-
-  border:
-    1px
-    solid
-    #d3b982;
-
-  border-radius:8px;
-
-  background:#fffaf0;
-
-  font-size:10px;
-
-  font-weight:900;
-}
-
-.badge.off{
-  color:var(--off);
-}
-
-.badge.def{
-  color:var(--def);
-}
-
-.badge.gold{
-  color:var(--gold2);
-}
-
-.badge img{
-  width:22px;
-  height:22px;
-
-  object-fit:contain;
-}
-
-
-/* =====================================================
-   TELEFON
-   Păstrează exact tabelul și îl micșorează complet.
-   Numerele nu se taie și nu apar "...".
-===================================================== */
-
+/* MOBILE: keep EXACT table layout, scale the entire table so values never get cut */
 @media(max-width:900px){
-
-  body{
-    padding:4px;
-  }
-
-  .topbar{
-    min-height:0;
-
-    padding:7px 8px;
-
-    margin-bottom:5px;
-
-    gap:7px;
-  }
-
-  .crest{
-    width:37px;
-    height:40px;
-
-    flex-basis:37px;
-
-    font-size:18px;
-
-    border-radius:
-      9px
-      9px
-      13px
-      13px;
-  }
-
-  .brand{
-    gap:7px;
-  }
-
-  .brand h1{
-    font-size:19px;
-  }
-
-  .brand-sub{
-    font-size:9px;
-
-    margin-top:2px;
-  }
-
-  .updated{
-    font-size:8px;
-
-    padding:2px 6px;
-
-    margin-top:2px;
-  }
-
-  .langs{
-    margin-left:auto;
-  }
-
-  .lang-btn{
-    height:31px;
-
-    min-width:40px;
-
-    padding:0 8px;
-
-    font-size:10px;
-  }
-
-  .toolbar{
-    padding:5px;
-
-    gap:5px;
-
-    margin-bottom:5px;
-  }
-
-  .funnel{
-    display:none;
-  }
-
-  .filter-btn{
-    height:31px;
-
-    min-width:auto;
-
-    padding:0 10px;
-
-    font-size:10px;
-
-    gap:4px;
-  }
-
-  .filter-btn img{
-    width:20px;
-    height:20px;
-  }
-
-  .search-wrap{
-    order:10;
-
-    min-width:100%;
-    max-width:none;
-
-    margin-left:0;
-  }
-
-  .search-wrap input{
-    height:32px;
-
-    font-size:11px;
-  }
-
-  .reset-btn{
-    height:31px;
-
-    padding:0 9px;
-
-    font-size:10px;
-  }
-
-  .table-viewport{
-    overflow:hidden;
-  }
-
-  .footerbar{
-    position:sticky;
-
-    bottom:3px;
-
-    z-index:20;
-
-    padding:5px;
-
-    box-shadow:
-      0 7px 22px
-      rgba(72,42,15,.18);
-  }
-
-  .footer-stats{
-    display:none;
-  }
-
-  .page-size{
-    display:none;
-  }
-
-  .pager{
-    width:100%;
-
-    justify-content:space-between;
-
-    gap:6px;
-  }
-
-  .page-btn{
-    height:34px;
-
-    padding:0 11px;
-
-    font-size:10px;
-  }
-
-  .page-info{
-    font-size:10px;
-  }
+  body{padding:4px}
+  .topbar{min-height:0;padding:7px 8px;margin-bottom:5px;gap:7px}
+  .crest{width:37px;height:40px;flex-basis:37px;font-size:18px;border-radius:9px 9px 13px 13px}
+  .brand{gap:7px}.brand h1{font-size:19px}.brand-sub{font-size:9px;margin-top:2px}.updated{font-size:8px;padding:2px 6px;margin-top:2px}
+  .langs{margin-left:auto}.lang-btn{height:31px;min-width:40px;padding:0 8px;font-size:10px}
+  .toolbar{padding:5px;gap:5px;margin-bottom:5px}.funnel{display:none}
+  .filter-btn{height:31px;min-width:auto;padding:0 10px;font-size:10px;gap:4px}.filter-btn img{width:20px;height:20px}
+  .search-wrap{order:10;min-width:100%;max-width:none;margin-left:0}.search-wrap input{height:32px;font-size:11px}
+  .reset-btn{height:31px;padding:0 9px;font-size:10px}
+  .table-viewport{overflow:hidden}
+  .footerbar{position:sticky;bottom:3px;z-index:20;padding:5px;box-shadow:0 7px 22px rgba(72,42,15,.18)}
+  .footer-stats{display:none}.page-size{display:none}.pager{width:100%;justify-content:space-between;gap:6px}.page-btn{height:34px;padding:0 11px;font-size:10px}.page-info{font-size:10px}
 }
 </style>
 </head>
-
 <body>
-
 <div class="app">
-
-
-<header class="topbar">
-
-  <div class="brand">
-
-    <div class="crest">
-      K
-    </div>
-
-    <div>
-
-      <h1 id="title">
-        Kael — Trupele alianței
-      </h1>
-
-      <div
-        class="brand-sub"
-        id="subtitle">
+  <header class="topbar">
+    <div class="brand">
+      <div class="crest">K</div>
+      <div>
+        <h1 id="title">Kael — Trupele alianței</h1>
+        <div class="brand-sub" id="subtitle"></div>
+        <div class="updated" id="updated"></div>
       </div>
+    </div>
+    <div class="langs">
+      <button class="lang-btn active" data-lang="ro">RO</button>
+      <button class="lang-btn" data-lang="fr">FR</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+    </div>
+  </header>
 
-      <div
-        class="updated"
-        id="updated">
+  <section class="toolbar">
+    <span class="funnel">▼</span>
+    <button class="filter-btn" data-filter="off"><img src="https://s1-ro.kingsage.gameforge.com/img/units_big/axe_big.png" referrerpolicy="no-referrer" alt=""> OFF</button>
+    <button class="filter-btn" data-filter="def"><img src="https://s1-ro.kingsage.gameforge.com/img/units_big/sword_big.png" referrerpolicy="no-referrer" alt=""> DEFF</button>
+    <button class="filter-btn" data-filter="counts"><img src="https://s1-ro.kingsage.gameforge.com/img/units_big/snob_big.png" referrerpolicy="no-referrer" alt=""> CONȚI</button>
+    <div class="search-wrap"><input id="search" type="search" autocomplete="off" placeholder="Caută jucător sau sat..."></div>
+    <button class="reset-btn" id="resetBtn">↻ Reset</button>
+  </section>
+
+  <div class="table-shell">
+    <div class="table-viewport" id="tableViewport">
+      <div class="table-scale" id="tableScale">
+        <table id="troopTable">
+          <thead>
+            <tr>
+              <th class="col-player" id="hPlayer">Jucător</th>
+              <th class="col-village" id="hVillage">Sat</th>
+              <th class="col-coord" id="hCoords">Coordonate</th>
+              <th class="col-points" id="hPoints">Puncte</th>
+              <th class="unit-col"><div class="unit-h"><img class="unit-img" src="https://s1-ro.kingsage.gameforge.com/img/units_big/farmer_big.png" referrerpolicy="no-referrer" title="Țărani" alt="Țărani"></div></th>
+              <th class="unit-col"><div class="unit-h"><img class="unit-img" src="https://s1-ro.kingsage.gameforge.com/img/units_big/sword_big.png" referrerpolicy="no-referrer" title="Templieri" alt="Templieri"></div></th>
+              <th class="unit-col"><div class="unit-h"><img class="unit-img" src="https://s1-ro.kingsage.gameforge.com/img/units_big/spear_big.png" referrerpolicy="no-referrer" title="Scutieri" alt="Scutieri"></div></th>
+              <th class="unit-col"><div class="unit-h"><img class="unit-img" src="https://s1-ro.kingsage.gameforge.com/img/units_big/axe_big.png" referrerpolicy="no-referrer" title="Axe" alt="Axe"></div></th>
+              <th class="unit-col"><div class="unit-h"><img class="unit-img" src="https://s1-ro.kingsage.gameforge.com/img/units_big/bow_big.png" referrerpolicy="no-referrer" title="Arcași" alt="Arcași"></div></th>
+              <th class="unit-col"><div class="unit-h"><img class="unit-img" src="https://s1-ro.kingsage.gameforge.com/img/units_big/spy_big.png" referrerpolicy="no-referrer" title="Spioni" alt="Spioni"></div></th>
+              <th class="unit-col"><div class="unit-h"><img class="unit-img" src="https://s1-ro.kingsage.gameforge.com/img/units_big/light_big.png" referrerpolicy="no-referrer" title="Light" alt="Light"></div></th>
+              <th class="unit-col"><div class="unit-h"><img class="unit-img" src="https://s1-ro.kingsage.gameforge.com/img/units_big/heavy_big.png" referrerpolicy="no-referrer" title="Heavy" alt="Heavy"></div></th>
+              <th class="unit-col"><div class="unit-h"><img class="unit-img" src="https://s1-ro.kingsage.gameforge.com/img/units_big/ram_big.png" referrerpolicy="no-referrer" title="RAM" alt="RAM"></div></th>
+              <th class="unit-col"><div class="unit-h"><img class="unit-img" src="https://s1-ro.kingsage.gameforge.com/img/units_big/kata_big.png" referrerpolicy="no-referrer" title="Catapulte" alt="Catapulte"></div></th>
+              <th class="unit-col"><div class="unit-h"><img class="unit-img" src="https://s1-ro.kingsage.gameforge.com/img/units_big/snob_big.png" referrerpolicy="no-referrer" title="Conți" alt="Conți"></div></th>
+            </tr>
+          </thead>
+          <tbody id="tbody"></tbody>
+        </table>
       </div>
-
     </div>
-
+    <div class="empty" id="empty" hidden>Nu există sate pentru filtrul selectat.</div>
   </div>
 
-
-  <div class="langs">
-
-    <button
-      class="lang-btn active"
-      data-lang="ro">
-      RO
-    </button>
-
-    <button
-      class="lang-btn"
-      data-lang="fr">
-      FR
-    </button>
-
-    <button
-      class="lang-btn"
-      data-lang="en">
-      EN
-    </button>
-
-  </div>
-
-</header>
-
-
-<section class="toolbar">
-
-  <span class="funnel">
-    ▼
-  </span>
-
-
-  <button
-    class="filter-btn"
-    data-filter="off">
-
-    <img
-      src="https://s1-ro.kingsage.gameforge.com/img/units_big/axe_big.png"
-      referrerpolicy="no-referrer"
-      alt="">
-
-    OFF
-
-  </button>
-
-
-  <button
-    class="filter-btn"
-    data-filter="def">
-
-    <img
-      src="https://s1-ro.kingsage.gameforge.com/img/units_big/sword_big.png"
-      referrerpolicy="no-referrer"
-      alt="">
-
-    DEFF
-
-  </button>
-
-
-  <button
-    class="filter-btn"
-    data-filter="counts">
-
-    <img
-      src="https://s1-ro.kingsage.gameforge.com/img/units_big/snob_big.png"
-      referrerpolicy="no-referrer"
-      alt="">
-
-    CONȚI
-
-  </button>
-
-
-  <div class="search-wrap">
-
-    <input
-      id="search"
-      type="search"
-      autocomplete="off"
-      placeholder="Caută jucător sau sat...">
-
-  </div>
-
-
-  <button
-    class="reset-btn"
-    id="resetBtn">
-
-    ↻ Reset
-
-  </button>
-
-</section>
-
-
-<div class="table-shell">
-
-  <div
-    class="table-viewport"
-    id="tableViewport">
-
-    <div
-      class="table-scale"
-      id="tableScale">
-
-      <table id="troopTable">
-
-        <thead>
-
-          <tr>
-
-            <th
-              class="col-player"
-              id="hPlayer">
-              Jucător
-            </th>
-
-            <th
-              class="col-village"
-              id="hVillage">
-              Sat
-            </th>
-
-            <th
-              class="col-coord"
-              id="hCoords">
-              Coordonate
-            </th>
-
-            <th
-              class="col-points"
-              id="hPoints">
-              Puncte
-            </th>
-
-
-            <th class="unit-col">
-              <div class="unit-h">
-
-                <img
-                  class="unit-img"
-                  src="https://s1-ro.kingsage.gameforge.com/img/units_big/farmer_big.png"
-                  referrerpolicy="no-referrer"
-                  title="Țărani"
-                  alt="Țărani">
-
-              </div>
-            </th>
-
-
-            <th class="unit-col">
-              <div class="unit-h">
-
-                <img
-                  class="unit-img"
-                  src="https://s1-ro.kingsage.gameforge.com/img/units_big/sword_big.png"
-                  referrerpolicy="no-referrer"
-                  title="Templieri"
-                  alt="Templieri">
-
-              </div>
-            </th>
-
-
-            <th class="unit-col">
-              <div class="unit-h">
-
-                <img
-                  class="unit-img"
-                  src="https://s1-ro.kingsage.gameforge.com/img/units_big/spear_big.png"
-                  referrerpolicy="no-referrer"
-                  title="Scutieri"
-                  alt="Scutieri">
-
-              </div>
-            </th>
-
-
-            <th class="unit-col">
-              <div class="unit-h">
-
-                <img
-                  class="unit-img"
-                  src="https://s1-ro.kingsage.gameforge.com/img/units_big/axe_big.png"
-                  referrerpolicy="no-referrer"
-                  title="Axe"
-                  alt="Axe">
-
-              </div>
-            </th>
-
-
-            <th class="unit-col">
-              <div class="unit-h">
-
-                <img
-                  class="unit-img"
-                  src="https://s1-ro.kingsage.gameforge.com/img/units_big/bow_big.png"
-                  referrerpolicy="no-referrer"
-                  title="Arcași"
-                  alt="Arcași">
-
-              </div>
-            </th>
-
-
-            <th class="unit-col">
-              <div class="unit-h">
-
-                <img
-                  class="unit-img"
-                  src="https://s1-ro.kingsage.gameforge.com/img/units_big/spy_big.png"
-                  referrerpolicy="no-referrer"
-                  title="Spioni"
-                  alt="Spioni">
-
-              </div>
-            </th>
-
-
-            <th class="unit-col">
-              <div class="unit-h">
-
-                <img
-                  class="unit-img"
-                  src="https://s1-ro.kingsage.gameforge.com/img/units_big/light_big.png"
-                  referrerpolicy="no-referrer"
-                  title="Light"
-                  alt="Light">
-
-              </div>
-            </th>
-
-
-            <th class="unit-col">
-              <div class="unit-h">
-
-                <img
-                  class="unit-img"
-                  src="https://s1-ro.kingsage.gameforge.com/img/units_big/heavy_big.png"
-                  referrerpolicy="no-referrer"
-                  title="Heavy"
-                  alt="Heavy">
-
-              </div>
-            </th>
-
-
-            <th class="unit-col">
-              <div class="unit-h">
-
-                <img
-                  class="unit-img"
-                  src="https://s1-ro.kingsage.gameforge.com/img/units_big/ram_big.png"
-                  referrerpolicy="no-referrer"
-                  title="RAM"
-                  alt="RAM">
-
-              </div>
-            </th>
-
-
-            <th class="unit-col">
-              <div class="unit-h">
-
-                <img
-                  class="unit-img"
-                  src="https://s1-ro.kingsage.gameforge.com/img/units_big/kata_big.png"
-                  referrerpolicy="no-referrer"
-                  title="Catapulte"
-                  alt="Catapulte">
-
-              </div>
-            </th>
-
-
-            <th class="unit-col">
-              <div class="unit-h">
-
-                <img
-                  class="unit-img"
-                  src="https://s1-ro.kingsage.gameforge.com/img/units_big/snob_big.png"
-                  referrerpolicy="no-referrer"
-                  title="Conți"
-                  alt="Conți">
-
-              </div>
-            </th>
-
-          </tr>
-
-        </thead>
-
-
-        <tbody id="tbody">
-        </tbody>
-
-      </table>
-
+  <footer class="footerbar">
+    <label class="page-size"><span id="perPageLabel">Pe pagină:</span><select id="pageSize"><option value="10" selected>10</option><option value="15">15</option></select></label>
+    <div class="pager"><button class="page-btn" id="prev">‹ Anterior</button><span class="page-info" id="pageInfo">Pagina 1 din 1</span><button class="page-btn" id="next">Următor ›</button></div>
+    <div class="footer-stats">
+      <span class="badge off" id="offStat"><img src="https://s1-ro.kingsage.gameforge.com/img/units_big/axe_big.png" referrerpolicy="no-referrer" alt=""></span>
+      <span class="badge def" id="defStat"><img src="https://s1-ro.kingsage.gameforge.com/img/units_big/sword_big.png" referrerpolicy="no-referrer" alt=""></span>
+      <span class="badge gold" id="countStat"><img src="https://s1-ro.kingsage.gameforge.com/img/units_big/snob_big.png" referrerpolicy="no-referrer" alt=""></span>
     </div>
-
-  </div>
-
-
-  <div
-    class="empty"
-    id="empty"
-    hidden>
-
-    Nu există sate pentru filtrul selectat.
-
-  </div>
-
+  </footer>
 </div>
-
-
-<footer class="footerbar">
-
-  <label class="page-size">
-
-    <span id="perPageLabel">
-      Pe pagină:
-    </span>
-
-    <select id="pageSize">
-
-      <option
-        value="10"
-        selected>
-        10
-      </option>
-
-      <option value="15">
-        15
-      </option>
-
-    </select>
-
-  </label>
-
-
-  <div class="pager">
-
-    <button
-      class="page-btn"
-      id="prev">
-      ‹ Anterior
-    </button>
-
-    <span
-      class="page-info"
-      id="pageInfo">
-      Pagina 1 din 1
-    </span>
-
-    <button
-      class="page-btn"
-      id="next">
-      Următor ›
-    </button>
-
-  </div>
-
-
-  <div class="footer-stats">
-
-    <span
-      class="badge off"
-      id="offStat">
-
-      <img
-        src="https://s1-ro.kingsage.gameforge.com/img/units_big/axe_big.png"
-        referrerpolicy="no-referrer"
-        alt="">
-
-    </span>
-
-
-    <span
-      class="badge def"
-      id="defStat">
-
-      <img
-        src="https://s1-ro.kingsage.gameforge.com/img/units_big/sword_big.png"
-        referrerpolicy="no-referrer"
-        alt="">
-
-    </span>
-
-
-    <span
-      class="badge gold"
-      id="countStat">
-
-      <img
-        src="https://s1-ro.kingsage.gameforge.com/img/units_big/snob_big.png"
-        referrerpolicy="no-referrer"
-        alt="">
-
-    </span>
-
-  </div>
-
-</footer>
-
-</div>
-
-
 <script>
-
-/* =====================================================
-   ULTIMA ACTUALIZARE
-===================================================== */
-
-const LAST_UPDATED =
-"16.10.2026 · 18:06";
-
-
-const WORLD =
-"s62-fr.kingsage.gameforge.com";
-
-
-/* =====================================================
-   CLASIFICAREA TA
-
-   OFF:
-   Axe
-   Spioni
-   Light
-   RAM
-   Catapulte
-
-   DEFF:
-   Țărani
-   Templieri
-   Scutieri
-   Arcași
-   Spioni
-   Heavy
-
-   Spionii sunt OFF + DEFF,
-   dar sunt afișați VERDE.
-
-   Conții sunt GOLD.
-===================================================== */
-
-const OFF_INDEXES =
-[
-  3,
-  5,
-  6,
-  8,
-  9
-];
-
-
-const DEF_INDEXES =
-[
-  0,
-  1,
-  2,
-  4,
-  5,
-  7
-];
-
-
-const SPY_INDEX =
-5;
-
-
-const COUNT_INDEX =
-10;
-
-
-/* =====================================================
-   TRADUCERI
-===================================================== */
-
-const i18n = {
-
-ro:{
-
-  title:
-    "Kael — Trupele alianței",
-
-  updated:
-    "Ultima actualizare",
-
-  search:
-    "Caută jucător sau sat...",
-
-  reset:
-    "↻ Reset",
-
-  player:
-    "Jucător",
-
-  village:
-    "Sat",
-
-  coords:
-    "Coordonate",
-
-  points:
-    "Puncte",
-
-  noData:
-    "Fără informații salvate",
-
-  noResult:
-    "Nu există sate pentru filtrul selectat.",
-
-  prev:
-    "‹ Anterior",
-
-  next:
-    "Următor ›",
-
-  page:
-    "Pagina",
-
-  of:
-    "din",
-
-  perPage:
-    "Pe pagină:",
-
-  players:
-    "jucători",
-
-  villages:
-    "sate",
-
-  offVillages:
-    "Sate cu atac",
-
-  defVillages:
-    "Sate cu apărare",
-
-  countVillages:
-    "Sate cu conți"
-},
-
-
-fr:{
-
-  title:
-    "Kael — Troupes de l'alliance",
-
-  updated:
-    "Dernière mise à jour",
-
-  search:
-    "Rechercher joueur ou village...",
-
-  reset:
-    "↻ Reset",
-
-  player:
-    "Joueur",
-
-  village:
-    "Village",
-
-  coords:
-    "Coordonnées",
-
-  points:
-    "Points",
-
-  noData:
-    "Aucune information enregistrée",
-
-  noResult:
-    "Aucun village pour ce filtre.",
-
-  prev:
-    "‹ Précédent",
-
-  next:
-    "Suivant ›",
-
-  page:
-    "Page",
-
-  of:
-    "sur",
-
-  perPage:
-    "Par page :",
-
-  players:
-    "joueurs",
-
-  villages:
-    "villages",
-
-  offVillages:
-    "Villages d'attaque",
-
-  defVillages:
-    "Villages de défense",
-
-  countVillages:
-    "Villages avec comtes"
-},
-
-
-en:{
-
-  title:
-    "Kael — Alliance Troops",
-
-  updated:
-    "Last updated",
-
-  search:
-    "Search player or village...",
-
-  reset:
-    "↻ Reset",
-
-  player:
-    "Player",
-
-  village:
-    "Village",
-
-  coords:
-    "Coordinates",
-
-  points:
-    "Points",
-
-  noData:
-    "No saved information",
-
-  noResult:
-    "No villages match this filter.",
-
-  prev:
-    "‹ Previous",
-
-  next:
-    "Next ›",
-
-  page:
-    "Page",
-
-  of:
-    "of",
-
-  perPage:
-    "Per page:",
-
-  players:
-    "players",
-
-  villages:
-    "villages",
-
-  offVillages:
-    "Attack villages",
-
-  defVillages:
-    "Defense villages",
-
-  countVillages:
-    "Count villages"
-}
-
+const LAST_UPDATED="16.10.2026 · 18:33";
+const WORLD="s62-fr.kingsage.gameforge.com";
+const OFF_INDEXES=[3,5,6,8,9];
+const DEF_INDEXES=[0,1,2,4,5,7];
+const SPY_INDEX=5;
+const COUNT_INDEX=10;
+
+const i18n={
+  ro:{title:"Kael — Trupele alianței",updated:"Ultima actualizare",all:"TOATE",search:"Caută jucător sau sat...",reset:"↻ Reset",player:"Jucător",village:"Sat",coords:"Coordonate",points:"Puncte",noData:"Fără informații salvate",noResult:"Nu există sate pentru filtrul selectat.",prev:"‹ Anterior",next:"Următor ›",page:"Pagina",of:"din",perPage:"Pe pagină:",players:"jucători",villages:"sate",offVillages:"Sate cu atac",defVillages:"Sate cu apărare",countVillages:"Sate cu conți"},
+  fr:{title:"Kael — Troupes de l'alliance",updated:"Dernière mise à jour",all:"TOUS",search:"Rechercher joueur ou village...",reset:"↻ Reset",player:"Joueur",village:"Village",coords:"Coordonnées",points:"Points",noData:"Aucune information enregistrée",noResult:"Aucun village pour ce filtre.",prev:"‹ Précédent",next:"Suivant ›",page:"Page",of:"sur",perPage:"Par page :",players:"joueurs",villages:"villages",offVillages:"Villages d'attaque",defVillages:"Villages de défense",countVillages:"Villages avec comtes"},
+  en:{title:"Kael — Alliance Troops",updated:"Last updated",all:"ALL",search:"Search player or village...",reset:"↻ Reset",player:"Player",village:"Village",coords:"Coordinates",points:"Points",noData:"No saved information",noResult:"No villages match this filter.",prev:"‹ Previous",next:"Next ›",page:"Page",of:"of",perPage:"Per page:",players:"players",villages:"villages",offVillages:"Attack villages",defVillages:"Defense villages",countVillages:"Count villages"}
 };
 
-
-/* =====================================================
-   DATE JUCĂTORI
-===================================================== */
-
 const playersData = [
-
-{
-name:"mikey340",
-villages:[
-
-{
-name:"01 pan----pan",
-coords:"495|503",
-pts:"7.260",
-troops:null
-},
-
-{
-name:"02 le tireur",
-coords:"495|485",
-pts:"7.290",
-troops:[400,0,0,0,231,533,0,0,9,0,1]
-},
-
-{
-name:"03 carte bleu",
-coords:"494|498",
-pts:"7.600",
-troops:null
-},
-
-{
-name:"04 Hummmm",
-coords:"484|489",
-pts:"7.160",
-troops:null
-},
-
-{
-name:"05 trouble",
-coords:"489|506",
-pts:"7.300",
-troops:null
-},
-
-{
-name:"06 bommmm",
-coords:"471|489",
-pts:"5.300",
-troops:null
-},
-
-{
-name:"07 de poupie",
-coords:"505|504",
-pts:"4.490",
-troops:[188,0,0,0,13715,571,0,5489,0,0,0]
-},
-
-{
-name:"08 farfadet",
-coords:"511|517",
-pts:"4.120",
-troops:null
-},
-
-{
-name:"09 envolé",
-coords:"475|491",
-pts:"3.140",
-troops:null
-}
-
-]
-},
-
-
-{
-name:"WhaaaaaaaaZaaaaaaaaa",
-villages:[
-
-{
-name:"001",
-coords:"498|485",
-pts:"8.140",
-troops:[0,0,0,19674,7681,1878,3128,9134,600,100,7]
-},
-
-{
-name:"002",
-coords:"479|489",
-pts:"8.310",
-troops:[0,0,0,0,2883,190,0,1630,0,0,0]
-},
-
-{
-name:"003",
-coords:"486|475",
-pts:"6.800",
-troops:null
-},
-
-{
-name:"004",
-coords:"476|480",
-pts:"7.780",
-troops:[2122,0,0,0,4401,999,0,1491,34,0,0]
-},
-
-{
-name:"005",
-coords:"485|472",
-pts:"6.350",
-troops:[0,0,0,0,1273,739,0,1345,0,0,0]
-}
-
-]
-},
-
-
-{
-name:"mec2tess",
-villages:[
-
-{
-name:"000",
-coords:"492|499",
-pts:"6.700",
-troops:null
-},
-
-{
-name:"000",
-coords:"493|506",
-pts:"7.160",
-troops:null
-},
-
-{
-name:"000",
-coords:"491|486",
-pts:"6.610",
-troops:[0,0,0,0,10000,201,0,3800,0,0,0]
-},
-
-{
-name:"000",
-coords:"488|484",
-pts:"6.600",
-troops:null
-},
-
-{
-name:"010",
-coords:"481|513",
-pts:"5.220",
-troops:null
-},
-
-{
-name:"020",
-coords:"481|510",
-pts:"5.610",
-troops:null
-},
-
-{
-name:"030",
-coords:"483|498",
-pts:"4.140",
-troops:null
-},
-
-{
-name:"040",
-coords:"510|527",
-pts:"3.850",
-troops:null
-}
-
-]
-},
-
-
-{
-name:"Vincelli",
-villages:[
-
-{
-name:"001",
-coords:"501|507",
-pts:"6.770",
-troops:[384,3382,4000,27283,10234,161,52,0,510,0,2]
-},
-
-{
-name:"002",
-coords:"513|523",
-pts:"6.730",
-troops:null
-},
-
-{
-name:"003",
-coords:"495|504",
-pts:"7.010",
-troops:[193,0,1498,0,619,302,0,4186,3,0,0]
-},
-
-{
-name:"004",
-coords:"519|516",
-pts:"5.520",
-troops:null
-},
-
-{
-name:"005",
-coords:"507|507",
-pts:"6.320",
-troops:[349,0,1922,0,1536,176,0,1310,15,0,0]
-},
-
-{
-name:"006",
-coords:"518|509",
-pts:"7.590",
-troops:[0,0,0,0,900,0,0,2878,0,0,0]
-},
-
-{
-name:"007",
-coords:"503|505",
-pts:"6.100",
-troops:[0,0,1585,2418,11595,0,456,0,356,0,0]
-}
-
-]
-},
-
-
-{
-name:"Marshal Leofric",
-villages:[
-
-{
-name:"-01-SPARTE",
-coords:"500|498",
-pts:"7.980",
-troops:null
-},
-
-{
-name:"-02- Bruleurs de DEPS",
-coords:"482|496",
-pts:"6.570",
-troops:[2032,0,0,23000,0,2038,3500,0,600,100,1]
-},
-
-{
-name:"-03- Oupla griller !!",
-coords:"476|498",
-pts:"5.710",
-troops:[0,0,269,0,0,0,0,240,0,0,0]
-},
-
-{
-name:"-04- Merci la gratuité ...",
-coords:"477|497",
-pts:"6.160",
-troops:[0,0,0,0,50,1337,0,0,0,0,0]
-},
-
-{
-name:"-B01- Dans La Lune",
-coords:"495|502",
-pts:"5.870",
-troops:[0,0,0,48,1929,1812,0,1903,0,0,0]
-},
-
-{
-name:"-B02- bar fermé",
-coords:"490|516",
-pts:"5.600",
-troops:null
-},
-
-{
-name:"-B03- Abracadabra",
-coords:"489|516",
-pts:"5.470",
-troops:null
-}
-
-]
-},
-
-
-{
-name:"Bracks",
-villages:[
-
-{
-name:"01 - Front",
-coords:"496|488",
-pts:"7.880",
-troops:null
-},
-
-{
-name:"02 - Front",
-coords:"495|487",
-pts:"7.880",
-troops:null
-},
-
-{
-name:"AR - 01",
-coords:"489|502",
-pts:"6.530",
-troops:null
-},
-
-{
-name:"AR - 02",
-coords:"469|500",
-pts:"5.670",
-troops:null
-}
-
-]
-},
-
-
-{
-name:"ALAINR",
-villages:[
-
-{
-name:"001",
-coords:"500|503",
-pts:"7.510",
-troops:[363,0,4000,24721,2950,1384,3918,1700,498,50,2]
-},
-
-{
-name:"002",
-coords:"499|503",
-pts:"7.640",
-troops:null
-},
-
-{
-name:"003",
-coords:"493|517",
-pts:"6.640",
-troops:[4,4,0,0,411,12,0,2346,0,0,0]
-},
-
-{
-name:"004",
-coords:"491|511",
-pts:"5.900",
-troops:[1099,0,580,0,0,0,0,0,0,0,0]
-}
-
-]
-},
-
-
-{
-name:"LaaGazouzz",
-villages:[
-
-{
-name:"1 Athenae",
-coords:"496|498",
-pts:"8.700",
-troops:[500,2500,2000,0,8184,1651,0,9330,20,0,1]
-},
-
-{
-name:"2 Mykenai",
-coords:"488|491",
-pts:"7.650",
-troops:null
-},
-
-{
-name:"3 Olympia",
-coords:"495|497",
-pts:"6.770",
-troops:null
-},
-
-{
-name:"4 Messenia",
-coords:"477|502",
-pts:"4.490",
-troops:[185,0,0,0,40,40,0,0,0,0,0]
-}
-
-]
-},
-
-
-{
-name:"Balgorf",
-villages:[
-
-{
-name:"Alaric",
-coords:"475|483",
-pts:"5.740",
-troops:null
-},
-
-{
-name:"Arminius",
-coords:"491|484",
-pts:"6.890",
-troops:null
-},
-
-{
-name:"Attila",
-coords:"490|481",
-pts:"6.800",
-troops:null
-},
-
-{
-name:"Théodoric",
-coords:"473|470",
-pts:"1.820",
-troops:null
-}
-
-]
-},
-
-
-{
-name:"jc98",
-villages:[
-
-{
-name:"V001",
-coords:"499|495",
-pts:"7.570",
-troops:null
-},
-
-{
-name:"V002",
-coords:"498|481",
-pts:"6.410",
-troops:[0,1571,1571,0,2643,807,0,3309,0,0,0]
-},
-
-{
-name:"V003",
-coords:"487|507",
-pts:"6.320",
-troops:null
-},
-
-{
-name:"V004",
-coords:"486|508",
-pts:"6.230",
-troops:null
-},
-
-{
-name:"V005",
-coords:"490|468",
-pts:"2.960",
-troops:null
-}
-
-]
-},
-
-
-{
-name:"Bardack",
-villages:[
-
-{
-name:"Planete Vegeta",
-coords:"482|493",
-pts:"7.810",
-troops:null
-},
-
-{
-name:"SSJ1",
-coords:"484|482",
-pts:"7.320",
-troops:null
-},
-
-{
-name:"Ssj2",
-coords:"485|501",
-pts:"6.600",
-troops:null
-},
-
-{
-name:"SSJ3",
-coords:"481|506",
-pts:"5.610",
-troops:null
-}
-
-]
-},
-
-
-{
-name:"Pich x Fire",
-villages:[
-
-{
-name:"A01",
-coords:"501|508",
-pts:"7.150",
-troops:[314,0,0,0,0,686,93,0,0,0,0]
-},
-
-{
-name:"A02",
-coords:"500|512",
-pts:"6.800",
-troops:[3508,30,2075,0,2641,1005,0,5521,5,0,0]
-},
-
-{
-name:"A03",
-coords:"498|507",
-pts:"4.990",
-troops:null
-},
-
-{
-name:"Ae01",
-coords:"518|510",
-pts:"5.920",
-troops:null
-},
-
-{
-name:"B01",
-coords:"491|518",
-pts:"6.600",
-troops:null
-},
-
-{
-name:"B02",
-coords:"484|519",
-pts:"5.160",
-troops:null
-}
-
-]
-},
-
-
-{
-name:"Poukette",
-villages:[
-
-{
-name:"Vivi chief 01",
-coords:"490|498",
-pts:"7.400",
-troops:[1000,200,400,2810,1183,1011,0,2139,0,0,2]
-},
-
-{
-name:"Vivi chief 02",
-coords:"483|508",
-pts:"6.360",
-troops:null
-},
-
-{
-name:"Vivi Chief 03",
-coords:"491|512",
-pts:"5.870",
-troops:null
-}
-
-]
-},
-
-
-{
-name:"DU GUESCLIN",
-villages:[
-
-{
-name:"FOU 01",
-coords:"490|517",
-pts:"7.030",
-troops:[0,4135,3000,500,3476,100,0,0,5,0,0]
-},
-
-{
-name:"FOU 03",
-coords:"509|513",
-pts:"5.040",
-troops:[50,8000,6100,0,7550,643,0,950,0,0,0]
-},
-
-{
-name:"FOX",
-coords:"510|508",
-pts:"6.240",
-troops:null
-},
-
-{
-name:"Village abandonné",
-coords:"503|527",
-pts:"1.290",
-troops:null
-}
-
-]
-},
-
-
-{
-name:"Kyko",
-villages:[
-
-{
-name:"001 kyko",
-coords:"488|482",
-pts:"8.580",
-troops:[976,1000,0,0,1100,1000,0,608,7,0,2]
-},
-
-{
-name:"002 kyko",
-coords:"490|485",
-pts:"6.850",
-troops:null
-}
-
-]
-},
-
-
-{
-name:"Le petit Pat",
-villages:[
-
-{
-name:"Rage",
-coords:"488|529",
-pts:"5.830",
-troops:null
-},
-
-{
-name:"Village de Donald",
-coords:"495|494",
-pts:"7.750",
-troops:[0,701,1924,0,3509,1000,0,2553,0,0,0]
-}
-
-]
-},
-
-
-{
-name:"Cheikh-el-Rais",
-villages:[
-
-{
-name:"001",
-coords:"499|493",
-pts:"8.580",
-troops:null
-},
-
-{
-name:"002",
-coords:"484|511",
-pts:"5.590",
-troops:null
-}
-
-]
-},
-
-
-{
-name:"Doctogre",
-villages:[
-
-{
-name:"Bouse",
-coords:"498|514",
-pts:"5.780",
-troops:null
-},
-
-{
-name:"Marais",
-coords:"520|507",
-pts:"7.040",
-troops:null
-}
-
-]
-},
-
-
-{
-name:"Hrafnsson",
-villages:[
-
-{
-name:"Hrafnsson",
-coords:"488|525",
-pts:"7.220",
-troops:[900,1780,0,1600,566,300,0,2800,20,0,2]
-}
-
-]
-},
-
-
-{
-name:"Hazor",
-villages:[
-
-{
-name:"001 - il a pas dit Bonjour",
-coords:"512|519",
-pts:"5.060",
-troops:null
-},
-
-{
-name:"002 - Deviens génial",
-coords:"505|509",
-pts:"7.220",
-troops:null
-},
-
-{
-name:"003 - Vitrine",
-coords:"502|510",
-pts:"9.000",
-troops:null
-},
-
-{
-name:"004 - Désaccordé",
-coords:"490|520",
-pts:"6.510",
-troops:null
-}
-
-]
-},
-
-
-{
-name:"FineBzZz",
-villages:[
-
-{
-name:"Fine",
-coords:"512|511",
-pts:"6.380",
-troops:null
-},
-
-{
-name:"MoucheBzZz",
-coords:"508|517",
-pts:"5.290",
-troops:null
-}
-
-]
-},
-
-
-{
-name:"Spy Ida",
-villages:[
-
-{
-name:"Village de Spy Ida",
-coords:"491|498",
-pts:"5.990",
-troops:null
-}
-
-]
-},
-
-
-{
-name:"Priestess Vespera",
-villages:[
-
-{
-name:"Village de Priestess Vespera",
-coords:"488|492",
-pts:"7.470",
-troops:null
-}
-
-]
-},
-
-
-{
-name:"Papy Doudou21",
-villages:[
-
-{
-name:"Kribi",
-coords:"515|508",
-pts:"7.610",
-troops:null
-},
-
-{
-name:"Kribi 200",
-coords:"498|521",
-pts:"5.770",
-troops:null
-},
-
-{
-name:"Kribi 300",
-coords:"521|509",
-pts:"5.300",
-troops:null
-}
-
-]
-},
-
-
-{
-name:"Kaneky",
-villages:[
-
-{
-name:"001 a l attaque",
-coords:"487|486",
-pts:"6.330",
-troops:null
-},
-
-{
-name:"002 désoler du retard",
-coords:"474|482",
-pts:"4.450",
-troops:null
-},
-
-{
-name:"003 on ce reveil",
-coords:"479|495",
-pts:"3.160",
-troops:null
-}
-
-]
-},
-
-
-{
-name:"Sir Davos",
-villages:[
-
-{
-name:"2-Métairie de Sir Davos",
-coords:"511|518",
-pts:"6.380",
-troops:null
-},
-
-{
-name:"3-Commanderie de Gilead",
-coords:"501|505",
-pts:"5.320",
-troops:null
-},
-
-{
-name:"4-Village de Eagle",
-coords:"508|515",
-pts:"6.160",
-troops:null
-}
-
-]
-},
-
-
-{
-name:"eroisis v2",
-villages:[
-
-{
-name:"Eroisis",
-coords:"493|487",
-pts:"7.360",
-troops:[0,0,0,0,1100,200,0,1660,6,0,1]
-},
-
-{
-name:"Eroisis 2",
-coords:"490|489",
-pts:"5.280",
-troops:null
-},
-
-{
-name:"Eroisis 3",
-coords:"496|501",
-pts:"4.680",
-troops:null
-}
-
-]
-},
-
-
-{
-name:"Ortho",
-villages:[
-
-{
-name:"Bric",
-coords:"474|495",
-pts:"4.990",
-troops:null
-},
-
-{
-name:"Doctogre",
-coords:"477|510",
-pts:"1.040",
-troops:null
-}
-
-]
-},
-
-
-{
-name:"Benbao",
-villages:[
-
-{
-name:"Village de Benbao",
-coords:"510|511",
-pts:"6.040",
-troops:null
-}
-
-]
-},
-
-
-{
-name:"LEONIDAS",
-villages:[
-
-{
-name:"ATHENES",
-coords:"478|488",
-pts:"6.400",
-troops:null
-}
-
-]
-},
-
-
-{
-name:"Krays62",
-villages:[
-
-{
-name:"vivi00",
-coords:"511|516",
-pts:"3.940",
-troops:null
-},
-
-{
-name:"Vivi01",
-coords:"513|515",
-pts:"2.770",
-troops:null
-},
-
-{
-name:"Vivi02",
-coords:"511|515",
-pts:"2.820",
-troops:null
-}
-
-]
-},
-
-
-{
-name:"Diplomat Yorath",
-villages:[
-
-{
-name:"Village de Diplomat Yorath",
-coords:"471|503",
-pts:"2.230",
-troops:null
-}
-
-]
-},
-
-
-{
-name:"Vulrak",
-villages:[
-
-{
-name:"001 - Bulbizarre",
-coords:"476|489",
-pts:"2.470",
-troops:null
-}
-
-]
-},
-
-
-{
-name:"Denji",
-villages:[
-
-{
-name:"Village de Denji",
-coords:"475|503",
-pts:"1.340",
-troops:null
-}
-
-]
-},
-
-
-{
-name:"Spartacus",
-villages:[
-
-{
-name:"Village de Spartacus",
-coords:"464|512",
-pts:"850",
-troops:null
-}
-
-]
-}
-
+  {
+    "name": "mikey340",
+    "villages": [
+      {
+        "name": "01 pan----pan",
+        "coords": "495|503",
+        "pts": "7.260",
+        "troops": null
+      },
+      {
+        "name": "02  le tireur",
+        "coords": "495|485",
+        "pts": "7.290",
+        "troops": [
+          400,
+          0,
+          0,
+          0,
+          231,
+          533,
+          0,
+          0,
+          9,
+          0,
+          1
+        ]
+      },
+      {
+        "name": "03 carte bleu",
+        "coords": "494|498",
+        "pts": "7.600",
+        "troops": null
+      },
+      {
+        "name": "04 Hummmm",
+        "coords": "484|489",
+        "pts": "7.160",
+        "troops": null
+      },
+      {
+        "name": "05  trouble",
+        "coords": "489|506",
+        "pts": "7.370",
+        "troops": null
+      },
+      {
+        "name": "06 bommmm",
+        "coords": "471|489",
+        "pts": "5.320",
+        "troops": null
+      },
+      {
+        "name": "07 de poupie",
+        "coords": "505|504",
+        "pts": "4.530",
+        "troops": [
+          188,
+          0,
+          0,
+          0,
+          13715,
+          571,
+          0,
+          5489,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "08 farfadet",
+        "coords": "511|517",
+        "pts": "4.200",
+        "troops": null
+      },
+      {
+        "name": "09 envolé",
+        "coords": "475|491",
+        "pts": "3.240",
+        "troops": null
+      }
+    ]
+  },
+  {
+    "name": "WhaaaaaaaaZaaaaaaaaa",
+    "villages": [
+      {
+        "name": "001",
+        "coords": "498|485",
+        "pts": "8.140",
+        "troops": [
+          0,
+          0,
+          0,
+          19674,
+          7681,
+          1878,
+          3128,
+          9134,
+          600,
+          100,
+          7
+        ]
+      },
+      {
+        "name": "002",
+        "coords": "479|489",
+        "pts": "8.310",
+        "troops": [
+          0,
+          0,
+          0,
+          0,
+          2883,
+          190,
+          0,
+          1630,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "003",
+        "coords": "486|475",
+        "pts": "6.800",
+        "troops": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          200,
+          0,
+          400,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "004",
+        "coords": "476|480",
+        "pts": "7.780",
+        "troops": [
+          2122,
+          0,
+          0,
+          0,
+          4401,
+          999,
+          0,
+          1491,
+          34,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "005",
+        "coords": "485|472",
+        "pts": "6.360",
+        "troops": [
+          0,
+          0,
+          0,
+          0,
+          1273,
+          739,
+          0,
+          1345,
+          0,
+          0,
+          0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "mec2tess",
+    "villages": [
+      {
+        "name": "000",
+        "coords": "492|499",
+        "pts": "6.700",
+        "troops": [
+          416,
+          0,
+          0,
+          0,
+          1,
+          100,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "000",
+        "coords": "493|506",
+        "pts": "7.160",
+        "troops": [
+          0,
+          0,
+          0,
+          100,
+          0,
+          91,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "000",
+        "coords": "491|486",
+        "pts": "6.610",
+        "troops": [
+          0,
+          0,
+          0,
+          0,
+          10000,
+          201,
+          0,
+          3800,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "000",
+        "coords": "488|484",
+        "pts": "6.600",
+        "troops": [
+          0,
+          0,
+          0,
+          0,
+          8000,
+          600,
+          0,
+          3500,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "010",
+        "coords": "481|513",
+        "pts": "5.250",
+        "troops": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          21,
+          0,
+          9,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "020",
+        "coords": "481|510",
+        "pts": "5.630",
+        "troops": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "030",
+        "coords": "483|498",
+        "pts": "4.160",
+        "troops": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "040",
+        "coords": "510|527",
+        "pts": "3.870",
+        "troops": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Vincelli",
+    "villages": [
+      {
+        "name": "001",
+        "coords": "501|507",
+        "pts": "6.770",
+        "troops": [
+          384,
+          3382,
+          4000,
+          27283,
+          10234,
+          161,
+          52,
+          0,
+          510,
+          0,
+          2
+        ]
+      },
+      {
+        "name": "002",
+        "coords": "513|523",
+        "pts": "6.730",
+        "troops": [
+          0,
+          0,
+          5485,
+          0,
+          9099,
+          84,
+          0,
+          2524,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "003",
+        "coords": "495|504",
+        "pts": "7.020",
+        "troops": [
+          193,
+          0,
+          1498,
+          0,
+          619,
+          302,
+          0,
+          4186,
+          3,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "004",
+        "coords": "519|516",
+        "pts": "5.520",
+        "troops": [
+          0,
+          0,
+          1178,
+          0,
+          1443,
+          593,
+          0,
+          2036,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "005",
+        "coords": "507|507",
+        "pts": "6.330",
+        "troops": [
+          349,
+          0,
+          1922,
+          0,
+          1536,
+          176,
+          0,
+          1310,
+          15,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "006",
+        "coords": "518|509",
+        "pts": "7.590",
+        "troops": [
+          0,
+          0,
+          0,
+          0,
+          900,
+          0,
+          0,
+          2878,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "007",
+        "coords": "503|505",
+        "pts": "6.120",
+        "troops": [
+          0,
+          0,
+          1585,
+          2418,
+          11595,
+          0,
+          456,
+          0,
+          356,
+          0,
+          0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Bracks",
+    "villages": [
+      {
+        "name": "01 - Front",
+        "coords": "496|488",
+        "pts": "7.880",
+        "troops": null
+      },
+      {
+        "name": "02 - Front",
+        "coords": "495|487",
+        "pts": "7.880",
+        "troops": null
+      },
+      {
+        "name": "AR - 01",
+        "coords": "489|502",
+        "pts": "6.530",
+        "troops": null
+      },
+      {
+        "name": "AR - 02",
+        "coords": "469|500",
+        "pts": "5.690",
+        "troops": null
+      }
+    ]
+  },
+  {
+    "name": "ALAINR",
+    "villages": [
+      {
+        "name": "001",
+        "coords": "500|503",
+        "pts": "7.510",
+        "troops": [
+          363,
+          0,
+          4000,
+          24721,
+          2950,
+          1384,
+          3918,
+          1700,
+          498,
+          50,
+          2
+        ]
+      },
+      {
+        "name": "002",
+        "coords": "499|503",
+        "pts": "7.640",
+        "troops": null
+      },
+      {
+        "name": "003",
+        "coords": "493|517",
+        "pts": "6.640",
+        "troops": [
+          4,
+          4,
+          0,
+          0,
+          411,
+          12,
+          0,
+          2346,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "004",
+        "coords": "491|511",
+        "pts": "5.900",
+        "troops": [
+          1099,
+          0,
+          580,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "LaaGazouzz",
+    "villages": [
+      {
+        "name": "1 Athenae",
+        "coords": "496|498",
+        "pts": "8.700",
+        "troops": [
+          500,
+          2500,
+          2000,
+          0,
+          8184,
+          1651,
+          0,
+          9330,
+          20,
+          0,
+          1
+        ]
+      },
+      {
+        "name": "2 Mykenai",
+        "coords": "488|491",
+        "pts": "7.650",
+        "troops": null
+      },
+      {
+        "name": "3 Olympia",
+        "coords": "495|497",
+        "pts": "6.770",
+        "troops": null
+      },
+      {
+        "name": "4 Messenia",
+        "coords": "477|502",
+        "pts": "4.510",
+        "troops": [
+          185,
+          0,
+          0,
+          0,
+          40,
+          40,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Balgorf",
+    "villages": [
+      {
+        "name": "Alaric",
+        "coords": "475|483",
+        "pts": "5.760",
+        "troops": null
+      },
+      {
+        "name": "Arminius",
+        "coords": "491|484",
+        "pts": "6.890",
+        "troops": null
+      },
+      {
+        "name": "Attila",
+        "coords": "490|481",
+        "pts": "6.800",
+        "troops": null
+      },
+      {
+        "name": "Théodoric",
+        "coords": "473|470",
+        "pts": "2.000",
+        "troops": null
+      }
+    ]
+  },
+  {
+    "name": "jc98",
+    "villages": [
+      {
+        "name": "V001",
+        "coords": "499|495",
+        "pts": "7.570",
+        "troops": null
+      },
+      {
+        "name": "V002",
+        "coords": "498|481",
+        "pts": "6.410",
+        "troops": [
+          0,
+          1571,
+          1571,
+          0,
+          2643,
+          807,
+          0,
+          3309,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "V003",
+        "coords": "487|507",
+        "pts": "6.320",
+        "troops": null
+      },
+      {
+        "name": "V004",
+        "coords": "486|508",
+        "pts": "6.250",
+        "troops": null
+      },
+      {
+        "name": "V005",
+        "coords": "490|468",
+        "pts": "3.060",
+        "troops": null
+      }
+    ]
+  },
+  {
+    "name": "Bardack",
+    "villages": [
+      {
+        "name": "Planete Vegeta",
+        "coords": "482|493",
+        "pts": "7.810",
+        "troops": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2
+        ]
+      },
+      {
+        "name": "SSJ1",
+        "coords": "484|482",
+        "pts": "7.320",
+        "troops": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          34,
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "name": "Ssj2",
+        "coords": "485|501",
+        "pts": "6.620",
+        "troops": null
+      },
+      {
+        "name": "SSJ3",
+        "coords": "481|506",
+        "pts": "5.630",
+        "troops": null
+      }
+    ]
+  },
+  {
+    "name": "Marshal Leofric",
+    "villages": [
+      {
+        "name": "-01-SPARTE",
+        "coords": "500|498",
+        "pts": "7.980",
+        "troops": null
+      },
+      {
+        "name": "-02- Bruleurs de DEPS",
+        "coords": "482|496",
+        "pts": "6.570",
+        "troops": [
+          2032,
+          0,
+          0,
+          23000,
+          0,
+          2038,
+          3500,
+          0,
+          600,
+          100,
+          1
+        ]
+      },
+      {
+        "name": "-03- Oupla griller !!",
+        "coords": "476|498",
+        "pts": "5.730",
+        "troops": [
+          0,
+          0,
+          269,
+          0,
+          0,
+          0,
+          0,
+          240,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "-04- Merci la gratuité ...",
+        "coords": "477|497",
+        "pts": "6.220",
+        "troops": [
+          0,
+          0,
+          0,
+          0,
+          50,
+          1337,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "-B01- Dans La Lune",
+        "coords": "495|502",
+        "pts": "5.880",
+        "troops": [
+          0,
+          0,
+          0,
+          48,
+          1929,
+          1812,
+          0,
+          1903,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "-B02- bar fermé",
+        "coords": "490|516",
+        "pts": "5.620",
+        "troops": null
+      },
+      {
+        "name": "-B03- Abracadabra",
+        "coords": "489|516",
+        "pts": "5.470",
+        "troops": null
+      }
+    ]
+  },
+  {
+    "name": "Pich x Fire",
+    "villages": [
+      {
+        "name": "A01",
+        "coords": "501|508",
+        "pts": "7.170",
+        "troops": [
+          314,
+          0,
+          0,
+          0,
+          0,
+          686,
+          93,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "A02",
+        "coords": "500|512",
+        "pts": "6.800",
+        "troops": [
+          3508,
+          30,
+          2075,
+          0,
+          2641,
+          1005,
+          0,
+          5521,
+          5,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "A03",
+        "coords": "498|507",
+        "pts": "4.990",
+        "troops": null
+      },
+      {
+        "name": "Ae01",
+        "coords": "518|510",
+        "pts": "5.940",
+        "troops": [
+          2177,
+          0,
+          2545,
+          0,
+          2067,
+          184,
+          0,
+          1016,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "B01",
+        "coords": "491|518",
+        "pts": "6.600",
+        "troops": [
+          5989,
+          0,
+          0,
+          0,
+          657,
+          1493,
+          0,
+          467,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "B02",
+        "coords": "484|519",
+        "pts": "5.220",
+        "troops": null
+      }
+    ]
+  },
+  {
+    "name": "Poukette",
+    "villages": [
+      {
+        "name": "Vivi chief 01",
+        "coords": "490|498",
+        "pts": "7.400",
+        "troops": [
+          1000,
+          200,
+          400,
+          2810,
+          1183,
+          1011,
+          0,
+          2139,
+          0,
+          0,
+          2
+        ]
+      },
+      {
+        "name": "Vivi chief 02",
+        "coords": "483|508",
+        "pts": "6.370",
+        "troops": null
+      },
+      {
+        "name": "Vivi Chief 03",
+        "coords": "491|512",
+        "pts": "5.870",
+        "troops": null
+      }
+    ]
+  },
+  {
+    "name": "DU GUESCLIN",
+    "villages": [
+      {
+        "name": "FOU 01",
+        "coords": "490|517",
+        "pts": "7.030",
+        "troops": [
+          0,
+          4135,
+          3000,
+          500,
+          3476,
+          100,
+          0,
+          0,
+          5,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "FOU 03",
+        "coords": "509|513",
+        "pts": "5.050",
+        "troops": [
+          50,
+          8000,
+          6100,
+          0,
+          7550,
+          643,
+          0,
+          950,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "FOU 2",
+        "coords": "503|527",
+        "pts": "1.440",
+        "troops": null
+      },
+      {
+        "name": "FOX",
+        "coords": "510|508",
+        "pts": "6.250",
+        "troops": null
+      }
+    ]
+  },
+  {
+    "name": "Kyko",
+    "villages": [
+      {
+        "name": "001 kyko",
+        "coords": "488|482",
+        "pts": "8.580",
+        "troops": [
+          976,
+          1000,
+          0,
+          0,
+          1100,
+          1000,
+          0,
+          608,
+          7,
+          0,
+          2
+        ]
+      },
+      {
+        "name": "002 kyko",
+        "coords": "490|485",
+        "pts": "6.870",
+        "troops": null
+      }
+    ]
+  },
+  {
+    "name": "Le petit Pat",
+    "villages": [
+      {
+        "name": "Rage",
+        "coords": "488|529",
+        "pts": "5.870",
+        "troops": null
+      },
+      {
+        "name": "Village de Donald",
+        "coords": "495|494",
+        "pts": "7.750",
+        "troops": [
+          0,
+          701,
+          1924,
+          31987,
+          3509,
+          1124,
+          1429,
+          2553,
+          531,
+          215,
+          2
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Cheikh-el-Rais",
+    "villages": [
+      {
+        "name": "001",
+        "coords": "499|493",
+        "pts": "8.580",
+        "troops": [
+          2086,
+          12667,
+          3435,
+          0,
+          11719,
+          834,
+          1,
+          3984,
+          40,
+          24,
+          2
+        ]
+      },
+      {
+        "name": "002",
+        "coords": "484|511",
+        "pts": "5.650",
+        "troops": [
+          1,
+          263,
+          0,
+          557,
+          175,
+          20,
+          483,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Doctogre",
+    "villages": [
+      {
+        "name": "Bouse",
+        "coords": "498|514",
+        "pts": "5.810",
+        "troops": null
+      },
+      {
+        "name": "Doctogre",
+        "coords": "477|510",
+        "pts": "1.090",
+        "troops": null
+      },
+      {
+        "name": "Marais",
+        "coords": "520|507",
+        "pts": "7.080",
+        "troops": null
+      }
+    ]
+  },
+  {
+    "name": "Hrafnsson",
+    "villages": [
+      {
+        "name": "Hrafnsson",
+        "coords": "488|525",
+        "pts": "7.240",
+        "troops": [
+          900,
+          1780,
+          0,
+          1600,
+          566,
+          300,
+          0,
+          2800,
+          20,
+          0,
+          2
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Hazor",
+    "villages": [
+      {
+        "name": "001 - il a pas dit Bonjour",
+        "coords": "512|519",
+        "pts": "5.100",
+        "troops": null
+      },
+      {
+        "name": "002 - Deviens génial",
+        "coords": "505|509",
+        "pts": "7.230",
+        "troops": null
+      },
+      {
+        "name": "003 - Vitrine",
+        "coords": "502|510",
+        "pts": "9.000",
+        "troops": null
+      },
+      {
+        "name": "004 - Désaccordé",
+        "coords": "490|520",
+        "pts": "6.530",
+        "troops": null
+      }
+    ]
+  },
+  {
+    "name": "FineBzZz",
+    "villages": [
+      {
+        "name": "Fine",
+        "coords": "512|511",
+        "pts": "6.400",
+        "troops": null
+      },
+      {
+        "name": "MoucheBzZz",
+        "coords": "508|517",
+        "pts": "5.310",
+        "troops": [
+          386,
+          0,
+          1063,
+          36,
+          138,
+          255,
+          0,
+          861,
+          1,
+          0,
+          0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Spy Ida",
+    "villages": [
+      {
+        "name": "Village de Spy Ida",
+        "coords": "491|498",
+        "pts": "5.990",
+        "troops": null
+      }
+    ]
+  },
+  {
+    "name": "Priestess Vespera",
+    "villages": [
+      {
+        "name": "Village de Priestess Vespera",
+        "coords": "488|492",
+        "pts": "7.470",
+        "troops": null
+      }
+    ]
+  },
+  {
+    "name": "Papy Doudou21",
+    "villages": [
+      {
+        "name": "Kribi",
+        "coords": "515|508",
+        "pts": "7.610",
+        "troops": null
+      },
+      {
+        "name": "Kribi 200",
+        "coords": "498|521",
+        "pts": "5.770",
+        "troops": null
+      },
+      {
+        "name": "Kribi 300",
+        "coords": "521|509",
+        "pts": "5.300",
+        "troops": null
+      }
+    ]
+  },
+  {
+    "name": "Kaneky",
+    "villages": [
+      {
+        "name": "001 a l attaque",
+        "coords": "487|486",
+        "pts": "6.330",
+        "troops": [
+          0,
+          0,
+          0,
+          13949,
+          0,
+          1000,
+          1032,
+          0,
+          522,
+          0,
+          2
+        ]
+      },
+      {
+        "name": "002 désoler du retard",
+        "coords": "474|482",
+        "pts": "4.470",
+        "troops": null
+      },
+      {
+        "name": "003 on ce reveil",
+        "coords": "479|495",
+        "pts": "3.180",
+        "troops": null
+      }
+    ]
+  },
+  {
+    "name": "Sir Davos",
+    "villages": [
+      {
+        "name": "2-Métairie de Sir Davos",
+        "coords": "511|518",
+        "pts": "6.380",
+        "troops": null
+      },
+      {
+        "name": "3-Commanderie de Gilead",
+        "coords": "501|505",
+        "pts": "5.340",
+        "troops": null
+      },
+      {
+        "name": "4-Village de Eagle",
+        "coords": "508|515",
+        "pts": "6.180",
+        "troops": null
+      }
+    ]
+  },
+  {
+    "name": "eroisis v2",
+    "villages": [
+      {
+        "name": "Eroisis",
+        "coords": "493|487",
+        "pts": "7.360",
+        "troops": [
+          0,
+          0,
+          0,
+          0,
+          1100,
+          200,
+          0,
+          1660,
+          6,
+          0,
+          1
+        ]
+      },
+      {
+        "name": "Eroisis 2",
+        "coords": "490|489",
+        "pts": "5.280",
+        "troops": null
+      },
+      {
+        "name": "Eroisis 3",
+        "coords": "496|501",
+        "pts": "4.720",
+        "troops": [
+          0,
+          0,
+          60,
+          1016,
+          160,
+          90,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Ortho",
+    "villages": [
+      {
+        "name": "Bric",
+        "coords": "474|495",
+        "pts": "4.990",
+        "troops": null
+      }
+    ]
+  },
+  {
+    "name": "Krays62",
+    "villages": [
+      {
+        "name": "vivi00",
+        "coords": "511|516",
+        "pts": "4.040",
+        "troops": null
+      },
+      {
+        "name": "Vivi01",
+        "coords": "513|515",
+        "pts": "3.270",
+        "troops": null
+      },
+      {
+        "name": "Vivi02",
+        "coords": "511|515",
+        "pts": "2.880",
+        "troops": null
+      }
+    ]
+  },
+  {
+    "name": "Benbao",
+    "villages": [
+      {
+        "name": "Village de Benbao",
+        "coords": "510|511",
+        "pts": "6.040",
+        "troops": null
+      }
+    ]
+  },
+  {
+    "name": "LEONIDAS",
+    "villages": [
+      {
+        "name": "ATHENES",
+        "coords": "478|488",
+        "pts": "6.400",
+        "troops": null
+      }
+    ]
+  },
+  {
+    "name": "Diplomat Yorath",
+    "villages": [
+      {
+        "name": "Village de Diplomat Yorath",
+        "coords": "471|503",
+        "pts": "2.440",
+        "troops": null
+      }
+    ]
+  },
+  {
+    "name": "Vulrak",
+    "villages": [
+      {
+        "name": "001 - Bulbizarre",
+        "coords": "476|489",
+        "pts": "2.470",
+        "troops": null
+      }
+    ]
+  },
+  {
+    "name": "Denji",
+    "villages": [
+      {
+        "name": "Village de Denji",
+        "coords": "475|503",
+        "pts": "1.520",
+        "troops": null
+      }
+    ]
+  },
+  {
+    "name": "Spartacus",
+    "villages": [
+      {
+        "name": "Village de Spartacus",
+        "coords": "464|512",
+        "pts": "870",
+        "troops": null
+      }
+    ]
+  }
 ];
 
-
-/* =====================================================
-   STARE
-===================================================== */
-
-let lang =
-"ro";
-
-let activeFilter =
-"all";
-
-let searchText =
-"";
-
-let page =
-1;
-
-let perPage =
-10;
-
-
-/* =====================================================
-   FUNCȚII
-===================================================== */
-
-const t =
-() =>
-  i18n[lang];
-
-
-function fmt(n){
-
-  return Number(n)
-    .toLocaleString(
-
-      lang === "fr"
-        ? "fr-FR"
-        : lang === "en"
-        ? "en-US"
-        : "ro-RO"
-
-    );
-
-}
-
-
-function hasAny(
-  troops,
-  indexes
-){
-
-  return (
-
-    Array.isArray(
-      troops
-    )
-
-    &&
-
-    indexes.some(
-
-      i =>
-        Number(
-          troops[i] || 0
-        ) > 0
-
-    )
-
-  );
-
-}
-
-
-/* OFF */
-
-function isOff(v){
-
-  return hasAny(
-    v.troops,
-    OFF_INDEXES
-  );
-
-}
-
-
-/* DEFF */
-
-function isDef(v){
-
-  return hasAny(
-    v.troops,
-    DEF_INDEXES
-  );
-
-}
-
-
-/* CONȚI */
-
-function hasCount(v){
-
-  return (
-
-    Array.isArray(
-      v.troops
-    )
-
-    &&
-
-    Number(
-      v.troops[
-        COUNT_INDEX
-      ] || 0
-    ) > 0
-
-  );
-
-}
-
-
-/* FILTRARE */
-
-function villageMatches(
-  v,
-  pname
-){
-
-  if(
-    activeFilter === "off"
-    &&
-    !isOff(v)
-  ){
-
-    return false;
-
-  }
-
-
-  if(
-    activeFilter === "def"
-    &&
-    !isDef(v)
-  ){
-
-    return false;
-
-  }
-
-
-  if(
-    activeFilter === "counts"
-    &&
-    !hasCount(v)
-  ){
-
-    return false;
-
-  }
-
-
-  if(searchText){
-
-    const hay =
-      (
-        pname
-        +
-        " "
-        +
-        v.name
-        +
-        " "
-        +
-        v.coords
-      )
-      .toLowerCase();
-
-
-    if(
-      !hay.includes(
-        searchText
-      )
-    ){
-
-      return false;
-
-    }
-
-  }
-
-
+let lang="ro",activeFilter="all",searchText="",page=1,perPage=10;
+const t=()=>i18n[lang];
+function fmt(n){return Number(n).toLocaleString(lang==="fr"?"fr-FR":lang==="en"?"en-US":"ro-RO")}
+function hasAny(troops,indexes){return Array.isArray(troops)&&indexes.some(i=>Number(troops[i]||0)>0)}
+function isOff(v){return hasAny(v.troops,OFF_INDEXES)}
+function isDef(v){return hasAny(v.troops,DEF_INDEXES)}
+function hasCount(v){return Array.isArray(v.troops)&&Number(v.troops[COUNT_INDEX]||0)>0}
+function villageMatches(v,pname){
+  if(activeFilter==="off"&&!isOff(v))return false;
+  if(activeFilter==="def"&&!isDef(v))return false;
+  if(activeFilter==="counts"&&!hasCount(v))return false;
+  if(searchText){const hay=(pname+" "+v.name+" "+v.coords).toLowerCase();if(!hay.includes(searchText))return false}
   return true;
-
 }
-
-
-/* LISTA DUPĂ FILTRE */
-
-function getFilteredPlayers(){
-
-  return playersData
-
-    .map(
-
-      p => ({
-
-        name:
-          p.name,
-
-        villages:
-          p.villages.filter(
-
-            v =>
-              villageMatches(
-                v,
-                p.name
-              )
-
-          )
-
-      })
-
-    )
-
-    .filter(
-
-      p =>
-        p.villages.length
-
-    );
-
-}
-
-
-/* TOTAL SATE */
-
-function totalVillageCount(){
-
-  return playersData.reduce(
-
-    (
-      n,
-      p
-    ) =>
-
-      n
-      +
-      p.villages.length,
-
-    0
-
-  );
-
-}
-
-
-/* STATISTICI */
-
-function allVillageStats(){
-
-  const a =
-    playersData.flatMap(
-
-      p =>
-        p.villages
-
-    );
-
-
-  return {
-
-    off:
-      a.filter(
-        isOff
-      ).length,
-
-    def:
-      a.filter(
-        isDef
-      ).length,
-
-    counts:
-      a.filter(
-        hasCount
-      ).length
-
-  };
-
-}
-
-
-/* CULOAREA NUMERELOR */
-
-function cellClass(
-  i,
-  v
-){
-
-  if(
-    Number(v) === 0
-  ){
-
-    return "val-zero";
-
-  }
-
-
-  if(
-    i === COUNT_INDEX
-  ){
-
-    return "val-count";
-
-  }
-
-
-  if(
-    i === SPY_INDEX
-    ||
-    OFF_INDEXES.includes(i)
-  ){
-
-    return "val-off";
-
-  }
-
-
-  return "val-def";
-
-}
-
-
-/* =====================================================
-   TEXTE
-===================================================== */
+function getFilteredPlayers(){return playersData.map(p=>({name:p.name,villages:p.villages.filter(v=>villageMatches(v,p.name))})).filter(p=>p.villages.length)}
+function totalVillageCount(){return playersData.reduce((n,p)=>n+p.villages.length,0)}
+function allVillageStats(){const a=playersData.flatMap(p=>p.villages);return{off:a.filter(isOff).length,def:a.filter(isDef).length,counts:a.filter(hasCount).length}}
+function cellClass(i,v){if(Number(v)===0)return"val-zero";if(i===COUNT_INDEX)return"val-count";if(i===SPY_INDEX||OFF_INDEXES.includes(i))return"val-off";return"val-def"}
 
 function renderTexts(){
-
-  const x =
-    t();
-
-
-  document
-    .documentElement
-    .lang =
-      lang;
-
-
-  document
-    .getElementById(
-      "title"
-    )
-    .textContent =
-      x.title;
-
-
-  document
-    .getElementById(
-      "subtitle"
-    )
-    .textContent =
-      `${playersData.length} ${x.players} · ${totalVillageCount()} ${x.villages} · ${WORLD}`;
-
-
-  document
-    .getElementById(
-      "updated"
-    )
-    .textContent =
-      `${x.updated}: ${LAST_UPDATED}`;
-
-
-  document
-    .getElementById(
-      "search"
-    )
-    .placeholder =
-      x.search;
-
-
-  document
-    .getElementById(
-      "resetBtn"
-    )
-    .textContent =
-      x.reset;
-
-
-  document
-    .getElementById(
-      "hPlayer"
-    )
-    .textContent =
-      x.player;
-
-
-  document
-    .getElementById(
-      "hVillage"
-    )
-    .textContent =
-      x.village;
-
-
-  document
-    .getElementById(
-      "hCoords"
-    )
-    .textContent =
-      x.coords;
-
-
-  document
-    .getElementById(
-      "hPoints"
-    )
-    .textContent =
-      x.points;
-
-
-  document
-    .getElementById(
-      "empty"
-    )
-    .textContent =
-      x.noResult;
-
-
-  document
-    .getElementById(
-      "perPageLabel"
-    )
-    .textContent =
-      x.perPage;
-
-
-  document
-    .querySelectorAll(
-      ".lang-btn"
-    )
-    .forEach(
-
-      b =>
-
-        b.classList.toggle(
-
-          "active",
-
-          b.dataset.lang
-          ===
-          lang
-
-        )
-
-    );
-
+  const x=t();document.documentElement.lang=lang;
+  document.getElementById("title").textContent=x.title;
+  document.getElementById("subtitle").textContent=`${playersData.length} ${x.players} · ${totalVillageCount()} ${x.villages} · ${WORLD}`;
+  document.getElementById("updated").textContent=`${x.updated}: ${LAST_UPDATED}`;
+  document.getElementById("search").placeholder=x.search;
+  document.getElementById("resetBtn").textContent=x.reset;
+  document.getElementById("hPlayer").textContent=x.player;
+  document.getElementById("hVillage").textContent=x.village;
+  document.getElementById("hCoords").textContent=x.coords;
+  document.getElementById("hPoints").textContent=x.points;
+  document.getElementById("empty").textContent=x.noResult;
+  document.getElementById("perPageLabel").textContent=x.perPage;
+  document.querySelectorAll(".lang-btn").forEach(b=>b.classList.toggle("active",b.dataset.lang===lang));
 }
-
-
-/* =====================================================
-   TABEL
-===================================================== */
 
 function renderTable(){
-
-  const x =
-    t();
-
-
-  const list =
-    getFilteredPlayers();
-
-
-  const pages =
-    Math.max(
-
-      1,
-
-      Math.ceil(
-        list.length
-        /
-        perPage
-      )
-
-    );
-
-
-  if(
-    page > pages
-  ){
-
-    page =
-      pages;
-
-  }
-
-
-  const subset =
-    list.slice(
-
-      (page - 1)
-      *
-      perPage,
-
-      page
-      *
-      perPage
-
-    );
-
-
-  const tbody =
-    document
-      .getElementById(
-        "tbody"
-      );
-
-
-  tbody.innerHTML =
-    "";
-
-
-  subset.forEach(
-
-    (
-      player,
-      pi
-    ) => {
-
-      player.villages.forEach(
-
-        (
-          v,
-          vi
-        ) => {
-
-          const tr =
-            document
-              .createElement(
-                "tr"
-              );
-
-
-          if(
-            pi > 0
-            &&
-            vi === 0
-          ){
-
-            tr
-              .classList
-              .add(
-                "group-start"
-              );
-
-          }
-
-
-          if(
-            vi === 0
-          ){
-
-            const td =
-              document
-                .createElement(
-                  "td"
-                );
-
-
-            td.className =
-              "player-cell";
-
-
-            td.rowSpan =
-              player
-                .villages
-                .length;
-
-
-            td.textContent =
-              player.name;
-
-
-            tr.appendChild(
-              td
-            );
-
-          }
-
-
-          const village =
-            document
-              .createElement(
-                "td"
-              );
-
-
-          village.className =
-            "village-cell";
-
-
-          village.textContent =
-            v.name;
-
-
-          tr.appendChild(
-            village
-          );
-
-
-          const coord =
-            document
-              .createElement(
-                "td"
-              );
-
-
-          coord.className =
-            "coord-cell";
-
-
-          coord.textContent =
-            v.coords;
-
-
-          tr.appendChild(
-            coord
-          );
-
-
-          const points =
-            document
-              .createElement(
-                "td"
-              );
-
-
-          points.className =
-            "points-cell";
-
-
-          points.textContent =
-            v.pts;
-
-
-          tr.appendChild(
-            points
-          );
-
-
-          if(
-            !Array.isArray(
-              v.troops
-            )
-          ){
-
-            const td =
-              document
-                .createElement(
-                  "td"
-                );
-
-
-            td.colSpan =
-              11;
-
-
-            td.className =
-              "no-data";
-
-
-            td.textContent =
-              x.noData;
-
-
-            tr.appendChild(
-              td
-            );
-
-          }
-
-          else{
-
-            v.troops.forEach(
-
-              (
-                value,
-                i
-              ) => {
-
-                const td =
-                  document
-                    .createElement(
-                      "td"
-                    );
-
-
-                td.className =
-                  cellClass(
-                    i,
-                    value
-                  );
-
-
-                /*
-                  IMPORTANT:
-                  nu există ellipsis la cifre.
-                  13.715 rămâne 13.715.
-                */
-
-                td.textContent =
-                  fmt(value);
-
-
-                tr.appendChild(
-                  td
-                );
-
-              }
-
-            );
-
-          }
-
-
-          tbody.appendChild(
-            tr
-          );
-
-        }
-
-      );
-
-    }
-
-  );
-
-
-  document
-    .getElementById(
-      "empty"
-    )
-    .hidden =
-      list.length !== 0;
-
-
-  document
-    .getElementById(
-      "tableViewport"
-    )
-    .style
-    .display =
-      list.length
-        ? ""
-        : "none";
-
-
-  document
-    .getElementById(
-      "pageInfo"
-    )
-    .textContent =
-      `${x.page} ${page} ${x.of} ${pages}`;
-
-
-  const prev =
-    document
-      .getElementById(
-        "prev"
-      );
-
-
-  const next =
-    document
-      .getElementById(
-        "next"
-      );
-
-
-  prev.textContent =
-    x.prev;
-
-
-  next.textContent =
-    x.next;
-
-
-  prev.disabled =
-    page <= 1;
-
-
-  next.disabled =
-    page >= pages;
-
-
-  const s =
-    allVillageStats();
-
-
-  document
-    .getElementById(
-      "offStat"
-    )
-    .innerHTML =
-      `
-      <img
-        src="https://s1-ro.kingsage.gameforge.com/img/units_big/axe_big.png"
-        referrerpolicy="no-referrer"
-        alt="">
-      ${x.offVillages}: ${s.off}
-      `;
-
-
-  document
-    .getElementById(
-      "defStat"
-    )
-    .innerHTML =
-      `
-      <img
-        src="https://s1-ro.kingsage.gameforge.com/img/units_big/sword_big.png"
-        referrerpolicy="no-referrer"
-        alt="">
-      ${x.defVillages}: ${s.def}
-      `;
-
-
-  document
-    .getElementById(
-      "countStat"
-    )
-    .innerHTML =
-      `
-      <img
-        src="https://s1-ro.kingsage.gameforge.com/img/units_big/snob_big.png"
-        referrerpolicy="no-referrer"
-        alt="">
-      ${x.countVillages}: ${s.counts}
-      `;
-
-
-  requestAnimationFrame(
-    fitTable
-  );
-
+  const x=t(),list=getFilteredPlayers();
+  const pages=Math.max(1,Math.ceil(list.length/perPage));if(page>pages)page=pages;
+  const subset=list.slice((page-1)*perPage,page*perPage),tbody=document.getElementById("tbody");tbody.innerHTML="";
+  subset.forEach((player,pi)=>{
+    player.villages.forEach((v,vi)=>{
+      const tr=document.createElement("tr");if(pi>0&&vi===0)tr.classList.add("group-start");
+      if(vi===0){const td=document.createElement("td");td.className="player-cell";td.rowSpan=player.villages.length;td.textContent=player.name;tr.appendChild(td)}
+      const a=document.createElement("td");a.className="village-cell";a.textContent=v.name;tr.appendChild(a);
+      const b=document.createElement("td");b.className="coord-cell";b.textContent=v.coords;tr.appendChild(b);
+      const c=document.createElement("td");c.className="points-cell";c.textContent=v.pts;tr.appendChild(c);
+      if(!Array.isArray(v.troops)){
+        const td=document.createElement("td");td.colSpan=11;td.className="no-data";td.textContent=x.noData;tr.appendChild(td);
+      }else{
+        v.troops.forEach((value,i)=>{const td=document.createElement("td");td.className=cellClass(i,value);td.textContent=fmt(value);tr.appendChild(td)});
+      }
+      tbody.appendChild(tr);
+    });
+  });
+  document.getElementById("empty").hidden=list.length!==0;
+  document.getElementById("tableViewport").style.display=list.length?"":"none";
+  document.getElementById("pageInfo").textContent=`${x.page} ${page} ${x.of} ${pages}`;
+  document.getElementById("prev").textContent=x.prev;document.getElementById("next").textContent=x.next;
+  document.getElementById("prev").disabled=page<=1;document.getElementById("next").disabled=page>=pages;
+  const s=allVillageStats();
+  document.getElementById("offStat").innerHTML=`<img src="https://s1-ro.kingsage.gameforge.com/img/units_big/axe_big.png" referrerpolicy="no-referrer" alt=""> ${x.offVillages}: ${s.off}`;
+  document.getElementById("defStat").innerHTML=`<img src="https://s1-ro.kingsage.gameforge.com/img/units_big/sword_big.png" referrerpolicy="no-referrer" alt=""> ${x.defVillages}: ${s.def}`;
+  document.getElementById("countStat").innerHTML=`<img src="https://s1-ro.kingsage.gameforge.com/img/units_big/snob_big.png" referrerpolicy="no-referrer" alt=""> ${x.countVillages}: ${s.counts}`;
+  requestAnimationFrame(fitTable);
 }
-
-
-/* =====================================================
-   TELEFON
-   Tabelul se micșorează complet.
-   Nu taie cifrele.
-===================================================== */
 
 function fitTable(){
-
-  const viewport =
-    document
-      .getElementById(
-        "tableViewport"
-      );
-
-
-  const scaleBox =
-    document
-      .getElementById(
-        "tableScale"
-      );
-
-
-  const table =
-    document
-      .getElementById(
-        "troopTable"
-      );
-
-
-  if(
-    !viewport
-    ||
-    !scaleBox
-    ||
-    !table
-  ){
-
-    return;
-
+  const viewport=document.getElementById("tableViewport"),scaleBox=document.getElementById("tableScale"),table=document.getElementById("troopTable");
+  if(!viewport||!scaleBox||!table)return;
+  scaleBox.style.transform="none";viewport.style.height="auto";
+  if(window.innerWidth<=900){
+    const naturalW=table.offsetWidth,naturalH=table.offsetHeight,available=viewport.clientWidth;
+    const scale=Math.min(1,available/naturalW);
+    scaleBox.style.transform=`scale(${scale})`;
+    viewport.style.height=Math.ceil(naturalH*scale)+"px";
+  }else{
+    scaleBox.style.transform="none";viewport.style.height="auto";
   }
-
-
-  /*
-    reset înainte de măsurare
-  */
-
-  scaleBox
-    .style
-    .transform =
-      "none";
-
-
-  viewport
-    .style
-    .height =
-      "auto";
-
-
-  if(
-    window.innerWidth
-    <=
-    900
-  ){
-
-    const naturalW =
-      table.offsetWidth;
-
-
-    const naturalH =
-      table.offsetHeight;
-
-
-    const available =
-      viewport.clientWidth;
-
-
-    const scale =
-      Math.min(
-
-        1,
-
-        available
-        /
-        naturalW
-
-      );
-
-
-    scaleBox
-      .style
-      .transform =
-        `scale(${scale})`;
-
-
-    viewport
-      .style
-      .height =
-        Math.ceil(
-          naturalH
-          *
-          scale
-        )
-        +
-        "px";
-
-  }
-
-  else{
-
-    scaleBox
-      .style
-      .transform =
-        "none";
-
-
-    viewport
-      .style
-      .height =
-        "auto";
-
-  }
-
 }
 
-
-/* =====================================================
-   RENDER
-===================================================== */
-
-function render(){
-
-  renderTexts();
-
-  renderTable();
-
-}
-
-
-/* =====================================================
-   FILTRE OFF / DEFF / CONȚI
-===================================================== */
-
-document
-.querySelectorAll(
-  ".filter-btn"
-)
-.forEach(
-
-  btn =>
-
-    btn.addEventListener(
-
-      "click",
-
-      () => {
-
-        /*
-          Dacă apeși din nou
-          același filtru,
-          revine la toate.
-        */
-
-        if(
-          activeFilter
-          ===
-          btn.dataset.filter
-        ){
-
-          activeFilter =
-            "all";
-
-
-          btn
-            .classList
-            .remove(
-              "active"
-            );
-
-        }
-
-        else{
-
-          activeFilter =
-            btn.dataset.filter;
-
-
-          document
-            .querySelectorAll(
-              ".filter-btn"
-            )
-            .forEach(
-
-              x =>
-
-                x
-                  .classList
-                  .toggle(
-
-                    "active",
-
-                    x === btn
-
-                  )
-
-            );
-
-        }
-
-
-        page =
-          1;
-
-
-        renderTable();
-
-      }
-
-    )
-
-);
-
-
-/* =====================================================
-   LIMBI
-===================================================== */
-
-document
-.querySelectorAll(
-  ".lang-btn"
-)
-.forEach(
-
-  btn =>
-
-    btn.addEventListener(
-
-      "click",
-
-      () => {
-
-        lang =
-          btn.dataset.lang;
-
-
-        page =
-          1;
-
-
-        render();
-
-      }
-
-    )
-
-);
-
-
-/* =====================================================
-   CĂUTARE
-===================================================== */
-
-document
-.getElementById(
-  "search"
-)
-.addEventListener(
-
-  "input",
-
-  e => {
-
-    searchText =
-      e
-        .target
-        .value
-        .trim()
-        .toLowerCase();
-
-
-    page =
-      1;
-
-
-    renderTable();
-
-  }
-
-);
-
-
-/* =====================================================
-   RESET
-===================================================== */
-
-document
-.getElementById(
-  "resetBtn"
-)
-.addEventListener(
-
-  "click",
-
-  () => {
-
-    activeFilter =
-      "all";
-
-
-    searchText =
-      "";
-
-
-    page =
-      1;
-
-
-    document
-      .getElementById(
-        "search"
-      )
-      .value =
-        "";
-
-
-    document
-      .querySelectorAll(
-        ".filter-btn"
-      )
-      .forEach(
-
-        x =>
-
-          x
-            .classList
-            .remove(
-              "active"
-            )
-
-      );
-
-
-    renderTable();
-
-  }
-
-);
-
-
-/* =====================================================
-   10 / 15 JUCĂTORI PE PAGINĂ
-===================================================== */
-
-document
-.getElementById(
-  "pageSize"
-)
-.addEventListener(
-
-  "change",
-
-  e => {
-
-    perPage =
-      Number(
-        e.target.value
-      )
-      ||
-      10;
-
-
-    page =
-      1;
-
-
-    renderTable();
-
-  }
-
-);
-
-
-/* =====================================================
-   ANTERIOR
-===================================================== */
-
-document
-.getElementById(
-  "prev"
-)
-.addEventListener(
-
-  "click",
-
-  () => {
-
-    if(
-      page > 1
-    ){
-
-      page--;
-
-
-      renderTable();
-
-
-      window.scrollTo({
-
-        top:0,
-
-        behavior:
-          "smooth"
-
-      });
-
-    }
-
-  }
-
-);
-
-
-/* =====================================================
-   URMĂTOR
-===================================================== */
-
-document
-.getElementById(
-  "next"
-)
-.addEventListener(
-
-  "click",
-
-  () => {
-
-    const pages =
-      Math.max(
-
-        1,
-
-        Math.ceil(
-
-          getFilteredPlayers()
-            .length
-          /
-          perPage
-
-        )
-
-      );
-
-
-    if(
-      page < pages
-    ){
-
-      page++;
-
-
-      renderTable();
-
-
-      window.scrollTo({
-
-        top:0,
-
-        behavior:
-          "smooth"
-
-      });
-
-    }
-
-  }
-
-);
-
-
-/* =====================================================
-   RESIZE
-===================================================== */
-
-window
-.addEventListener(
-
-  "resize",
-
-  () =>
-
-    requestAnimationFrame(
-      fitTable
-    )
-
-);
-
-
-window
-.addEventListener(
-
-  "load",
-
-  () =>
-
-    requestAnimationFrame(
-      fitTable
-    )
-
-);
-
-
-/* =====================================================
-   START
-===================================================== */
-
+function render(){renderTexts();renderTable()}
+document.querySelectorAll(".filter-btn").forEach(btn=>btn.addEventListener("click",()=>{
+  if(activeFilter===btn.dataset.filter){activeFilter="all";btn.classList.remove("active");}
+  else{activeFilter=btn.dataset.filter;document.querySelectorAll(".filter-btn").forEach(x=>x.classList.toggle("active",x===btn));}
+  page=1;renderTable();
+}));
+document.querySelectorAll(".lang-btn").forEach(btn=>btn.addEventListener("click",()=>{lang=btn.dataset.lang;page=1;render()}));
+document.getElementById("search").addEventListener("input",e=>{searchText=e.target.value.trim().toLowerCase();page=1;renderTable()});
+document.getElementById("resetBtn").addEventListener("click",()=>{activeFilter="all";searchText="";page=1;document.getElementById("search").value="";document.querySelectorAll(".filter-btn").forEach(x=>x.classList.remove("active"));renderTable()});
+document.getElementById("pageSize").addEventListener("change",e=>{perPage=Number(e.target.value)||10;page=1;renderTable()});
+document.getElementById("prev").addEventListener("click",()=>{if(page>1){page--;renderTable();window.scrollTo({top:0,behavior:"smooth"})}});
+document.getElementById("next").addEventListener("click",()=>{const pages=Math.max(1,Math.ceil(getFilteredPlayers().length/perPage));if(page<pages){page++;renderTable();window.scrollTo({top:0,behavior:"smooth"})}});
+window.addEventListener("resize",()=>requestAnimationFrame(fitTable));
+window.addEventListener("load",()=>requestAnimationFrame(fitTable));
 render();
-
 </script>
-
 </body>
 </html>
