@@ -150,6 +150,276 @@ tbody tr:hover td{background:#f7e7c5}
   .footerbar{position:sticky;bottom:3px;z-index:20;padding:5px;box-shadow:0 7px 22px rgba(72,42,15,.18)}
   .footer-stats{display:none}.page-size{display:none}.pager{width:100%;justify-content:space-between;gap:6px}.page-btn{height:34px;padding:0 11px;font-size:10px}.page-info{font-size:10px}
 }
+
+/* =====================================================
+   PROTOTIP HARTĂ KAEL
+===================================================== */
+.view-tabs{
+  display:flex;
+  gap:7px;
+  margin:0 0 8px;
+}
+.view-tab{
+  height:38px;
+  padding:0 18px;
+  border:1px solid #a77b44;
+  border-radius:8px;
+  background:#fff7e4;
+  color:#5c321d;
+  font-weight:900;
+  cursor:pointer;
+}
+.view-tab.active{
+  background:linear-gradient(180deg,#8e3a20,#682514);
+  color:#fff;
+  border-color:#5f2112;
+}
+.kael-view{display:none}
+.kael-view.active{display:block}
+
+.coord-link{
+  appearance:none;
+  border:0;
+  background:none;
+  padding:0;
+  margin:0;
+  font:inherit;
+  font-weight:900;
+  color:#7d321d;
+  text-decoration:underline;
+  text-decoration-style:dotted;
+  cursor:pointer;
+}
+.coord-link:hover{color:#0b713d}
+
+.map-panel{
+  border:1px solid var(--line);
+  border-radius:10px;
+  overflow:hidden;
+  background:#fff7e4;
+  box-shadow:var(--shadow);
+}
+.map-toolbar{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  flex-wrap:wrap;
+  padding:7px 8px;
+  border-bottom:1px solid #c9a96e;
+  background:linear-gradient(180deg,#f1ddb3,#e7cb96);
+}
+.map-toolbar strong{
+  margin-right:5px;
+  color:#5e2c19;
+}
+.map-toolbar input{
+  height:34px;
+  width:110px;
+  border:1px solid #b48d58;
+  border-radius:7px;
+  background:#fffaf0;
+  padding:0 9px;
+  font-weight:800;
+  color:#4c3422;
+}
+.map-tool-btn{
+  height:34px;
+  min-width:36px;
+  padding:0 10px;
+  border:1px solid #7d3b21;
+  border-radius:7px;
+  background:#fff7e5;
+  color:#642c18;
+  font-weight:900;
+  cursor:pointer;
+}
+.map-tool-btn.primary{
+  background:linear-gradient(180deg,#8f3b20,#682514);
+  color:#fff;
+}
+.map-legend{
+  margin-left:auto;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
+  font-size:10px;
+  font-weight:800;
+}
+.legend-dot{
+  display:inline-block;
+  width:10px;height:10px;border-radius:50%;
+  vertical-align:-1px;margin-right:3px;
+  border:1px solid rgba(0,0,0,.25);
+}
+.legend-off{background:#08783f}
+.legend-def{background:#d42c24}
+.legend-mix{background:linear-gradient(90deg,#08783f 50%,#d42c24 50%)}
+.legend-count{background:#d7a014}
+.legend-empty{background:#a89c86}
+
+.map-viewport{
+  position:relative;
+  width:100%;
+  height:min(68vh,720px);
+  min-height:430px;
+  overflow:hidden;
+  touch-action:none;
+  cursor:grab;
+  background:
+    radial-gradient(circle at 25% 20%,rgba(255,255,255,.65),transparent 22%),
+    #ecd7ad;
+}
+.map-viewport.dragging{cursor:grabbing}
+.map-canvas{
+  position:absolute;
+  left:0;top:0;
+  transform-origin:0 0;
+  border:2px solid #8e693a;
+  background-color:#f4e5c4;
+  background-image:
+    linear-gradient(to right,rgba(120,92,52,.13) 1px,transparent 1px),
+    linear-gradient(to bottom,rgba(120,92,52,.13) 1px,transparent 1px),
+    linear-gradient(to right,rgba(120,92,52,.22) 1px,transparent 1px),
+    linear-gradient(to bottom,rgba(120,92,52,.22) 1px,transparent 1px);
+}
+.map-axis{
+  position:absolute;
+  color:#8a704d;
+  font:700 9px Arial,sans-serif;
+  pointer-events:none;
+  opacity:.85;
+}
+.map-marker{
+  position:absolute;
+  width:18px;height:18px;
+  transform:translate(-50%,-50%);
+  border-radius:50%;
+  border:2px solid #fff5d7;
+  box-shadow:0 1px 4px rgba(61,36,13,.48);
+  cursor:pointer;
+  padding:0;
+}
+.map-marker.off{background:#08783f}
+.map-marker.def{background:#d42c24}
+.map-marker.mix{background:linear-gradient(90deg,#08783f 50%,#d42c24 50%)}
+.map-marker.empty{background:#a89c86}
+.map-marker.count{
+  outline:3px solid #d8a117;
+  outline-offset:2px;
+}
+.map-marker.selected{
+  width:24px;height:24px;
+  z-index:20;
+  box-shadow:0 0 0 5px rgba(255,250,220,.8),0 2px 8px rgba(60,30,10,.55);
+}
+.map-popup{
+  position:absolute;
+  width:290px;
+  max-width:calc(100vw - 28px);
+  z-index:50;
+  border:2px solid #7e572d;
+  border-radius:9px;
+  background:#fff8e7;
+  box-shadow:0 10px 28px rgba(58,32,10,.28);
+  padding:9px;
+  color:#49331f;
+}
+.map-popup h3{
+  margin:0 25px 3px 0;
+  font:700 15px Georgia,serif;
+  color:#6e2f1a;
+}
+.map-popup .sub{
+  font-size:11px;
+  font-weight:800;
+  margin-bottom:6px;
+}
+.map-popup .tags{
+  display:flex;gap:4px;flex-wrap:wrap;margin-bottom:7px;
+}
+.map-tag{
+  font-size:9px;font-weight:900;
+  border-radius:999px;padding:3px 6px;
+  border:1px solid #cab185;background:#fffdf5;
+}
+.map-tag.off{color:#08783f;border-color:#88b599}
+.map-tag.def{color:#c82d25;border-color:#df9b93}
+.map-tag.gold{color:#946000;border-color:#d5b04e}
+.map-popup-units{
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  gap:4px;
+  margin:6px 0 8px;
+}
+.map-unit{
+  text-align:center;
+  border:1px solid #e1cfaa;
+  border-radius:5px;
+  padding:3px 1px;
+  background:#fffdf6;
+  font-size:9px;
+  font-weight:900;
+}
+.map-unit img{
+  display:block;
+  width:20px;height:20px;
+  object-fit:contain;
+  margin:0 auto 1px;
+}
+.map-popup-actions{
+  display:flex;
+  gap:5px;
+}
+.map-popup-actions button,
+.map-popup-actions a{
+  flex:1;
+  min-height:31px;
+  border:1px solid #7e3b21;
+  border-radius:6px;
+  background:#fff4da;
+  color:#642e1a;
+  font-size:10px;
+  font-weight:900;
+  text-decoration:none;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+}
+.map-popup-actions a{
+  background:linear-gradient(180deg,#8d3a20,#682514);
+  color:#fff;
+}
+.map-popup-close{
+  position:absolute;
+  right:6px;top:5px;
+  width:25px;height:25px;
+  border:0;background:transparent;
+  font-size:18px;font-weight:900;color:#713820;
+  cursor:pointer;
+}
+.map-help{
+  padding:5px 8px;
+  border-top:1px solid #dac49b;
+  background:#fff9e9;
+  color:#80684b;
+  font-size:10px;
+  text-align:center;
+}
+
+@media(max-width:900px){
+  .view-tabs{margin-bottom:5px}
+  .view-tab{height:32px;padding:0 12px;font-size:10px}
+  .map-toolbar{gap:4px;padding:5px}
+  .map-toolbar strong{font-size:10px}
+  .map-toolbar input{height:30px;width:90px;font-size:10px}
+  .map-tool-btn{height:30px;padding:0 8px;font-size:10px}
+  .map-legend{width:100%;margin-left:0;justify-content:center;font-size:8px}
+  .map-viewport{height:68vh;min-height:420px}
+  .map-popup{width:265px}
+}
+
 </style>
 </head>
 <body>
@@ -178,6 +448,14 @@ tbody tr:hover td{background:#f7e7c5}
     <div class="search-wrap"><input id="search" type="search" autocomplete="off" placeholder="Caută jucător sau sat..."></div>
     <button class="reset-btn" id="resetBtn">↻ Reset</button>
   </section>
+
+
+  <div class="view-tabs">
+    <button class="view-tab active" id="tabTroops" data-view="troops">⚔ Trupe</button>
+    <button class="view-tab" id="tabMap" data-view="map">🗺 Hartă</button>
+  </div>
+
+  <div class="kael-view active" id="troopsView">
 
   <div class="table-shell">
     <div class="table-viewport" id="tableViewport">
@@ -218,6 +496,38 @@ tbody tr:hover td{background:#f7e7c5}
       <span class="badge gold" id="countStat"><img src="https://s1-ro.kingsage.gameforge.com/img/units_big/snob_big.png" referrerpolicy="no-referrer" alt=""></span>
     </div>
   </footer>
+
+  </div><!-- /troopsView -->
+
+  <div class="kael-view" id="mapView">
+    <section class="map-panel">
+      <div class="map-toolbar">
+        <strong id="mapTitle">Hartă Kael</strong>
+        <input id="mapCoordSearch" inputmode="numeric" placeholder="501|507">
+        <button class="map-tool-btn primary" id="mapGoBtn">Arată</button>
+        <button class="map-tool-btn" id="mapZoomIn" title="Zoom +">＋</button>
+        <button class="map-tool-btn" id="mapZoomOut" title="Zoom -">−</button>
+        <button class="map-tool-btn" id="mapFitBtn">Încadrează</button>
+
+        <div class="map-legend">
+          <span><i class="legend-dot legend-off"></i>OFF</span>
+          <span><i class="legend-dot legend-def"></i>DEFF</span>
+          <span><i class="legend-dot legend-mix"></i>OFF+DEFF</span>
+          <span><i class="legend-dot legend-count"></i>Conte</span>
+          <span><i class="legend-dot legend-empty"></i>Fără date</span>
+        </div>
+      </div>
+
+      <div class="map-viewport" id="mapViewport">
+        <div class="map-canvas" id="mapCanvas"></div>
+      </div>
+
+      <div class="map-help" id="mapHelp">
+        Trage harta cu degetul. Apasă pe un sat pentru detalii. Coordonatele din tabel deschid automat satul aici.
+      </div>
+    </section>
+  </div>
+
 </div>
 <script>
 const LAST_UPDATED="17.10.2026 · 22:39";
@@ -1991,7 +2301,13 @@ function renderTable(){
       const tr=document.createElement("tr");if(pi>0&&vi===0)tr.classList.add("group-start");
       if(vi===0){const td=document.createElement("td");td.className="player-cell";td.rowSpan=player.villages.length;td.textContent=player.name;tr.appendChild(td)}
       const a=document.createElement("td");a.className="village-cell";a.textContent=v.name;tr.appendChild(a);
-      const b=document.createElement("td");b.className="coord-cell";b.textContent=v.coords;tr.appendChild(b);
+      const b=document.createElement("td");b.className="coord-cell";
+      const coordBtn=document.createElement("button");
+      coordBtn.className="coord-link";
+      coordBtn.textContent=v.coords;
+      coordBtn.title="Arată pe harta Kael";
+      coordBtn.addEventListener("click",()=>openMapAt(v.coords,player.name,v.name));
+      b.appendChild(coordBtn);tr.appendChild(b);
       const c=document.createElement("td");c.className="points-cell";c.textContent=v.pts;tr.appendChild(c);
       if(!Array.isArray(v.troops)){
         const td=document.createElement("td");td.colSpan=11;td.className="no-data";td.textContent=x.noData;tr.appendChild(td);
@@ -2041,6 +2357,367 @@ document.getElementById("prev").addEventListener("click",()=>{if(page>1){page--;
 document.getElementById("next").addEventListener("click",()=>{const pages=Math.max(1,Math.ceil(getFilteredPlayers().length/perPage));if(page<pages){page++;renderTable();window.scrollTo({top:0,behavior:"smooth"})}});
 window.addEventListener("resize",()=>requestAnimationFrame(fitTable));
 window.addEventListener("load",()=>requestAnimationFrame(fitTable));
+
+/* =====================================================
+   HARTĂ KAEL — PROTOTIP
+===================================================== */
+const MAP_CELL = 34;
+const MAP_UNIT_ICONS = [
+  "farmer","sword","spear","axe","bow","spy",
+  "light","heavy","ram","kata","snob"
+];
+
+const mapLang = {
+  ro:{
+    troops:"⚔ Trupe",map:"🗺 Hartă",title:"Hartă Kael",
+    show:"Arată",fit:"Încadrează",
+    help:"Trage harta cu degetul. Apasă pe un sat pentru detalii. Coordonatele din tabel deschid automat satul aici.",
+    copy:"Copiază coord.",game:"Deschide harta jocului",noTroops:"Fără informații despre trupe"
+  },
+  fr:{
+    troops:"⚔ Troupes",map:"🗺 Carte",title:"Carte Kael",
+    show:"Afficher",fit:"Ajuster",
+    help:"Faites glisser la carte. Touchez un village pour les détails. Les coordonnées du tableau ouvrent automatiquement le village ici.",
+    copy:"Copier coord.",game:"Ouvrir la carte du jeu",noTroops:"Aucune information sur les troupes"
+  },
+  en:{
+    troops:"⚔ Troops",map:"🗺 Map",title:"Kael Map",
+    show:"Show",fit:"Fit",
+    help:"Drag the map. Tap a village for details. Coordinates in the table open the village here automatically.",
+    copy:"Copy coords",game:"Open game map",noTroops:"No troop information"
+  }
+};
+
+let mapBuilt=false;
+let mapState={scale:1,tx:0,ty:0,minX:0,minY:0,maxX:0,maxY:0,w:0,h:0};
+let mapDragging=false;
+let mapPointerId=null;
+let mapDragStart={x:0,y:0,tx:0,ty:0};
+let selectedMapMarker=null;
+
+function allMapVillages(){
+  const out=[];
+  playersData.forEach(p=>{
+    p.villages.forEach(v=>{
+      const m=String(v.coords||"").match(/^(\d+)\|(\d+)$/);
+      if(!m)return;
+      out.push({
+        player:p.name,
+        village:v.name,
+        coords:v.coords,
+        x:Number(m[1]),
+        y:Number(m[2]),
+        pts:v.pts,
+        troops:v.troops
+      });
+    });
+  });
+  return out;
+}
+
+function mapMarkerType(item){
+  const v={troops:item.troops};
+  const off=isOff(v),def=isDef(v),count=hasCount(v);
+  let cls="empty";
+  if(off&&def)cls="mix";
+  else if(off)cls="off";
+  else if(def)cls="def";
+  return {cls,count,off,def};
+}
+
+function switchView(which){
+  const troops=which==="troops";
+  document.getElementById("troopsView").classList.toggle("active",troops);
+  document.getElementById("mapView").classList.toggle("active",!troops);
+  document.getElementById("tabTroops").classList.toggle("active",troops);
+  document.getElementById("tabMap").classList.toggle("active",!troops);
+  if(!troops){
+    buildMap();
+    requestAnimationFrame(()=>{
+      if(!mapState.initialFitDone){
+        fitMap();
+        mapState.initialFitDone=true;
+      }
+    });
+  }
+}
+
+function renderMapTexts(){
+  const x=mapLang[lang]||mapLang.ro;
+  document.getElementById("tabTroops").textContent=x.troops;
+  document.getElementById("tabMap").textContent=x.map;
+  document.getElementById("mapTitle").textContent=x.title;
+  document.getElementById("mapGoBtn").textContent=x.show;
+  document.getElementById("mapFitBtn").textContent=x.fit;
+  document.getElementById("mapHelp").textContent=x.help;
+}
+
+function buildMap(){
+  if(mapBuilt)return;
+  mapBuilt=true;
+
+  const list=allMapVillages();
+  if(!list.length)return;
+
+  mapState.minX=Math.min(...list.map(v=>v.x))-1;
+  mapState.maxX=Math.max(...list.map(v=>v.x))+1;
+  mapState.minY=Math.min(...list.map(v=>v.y))-1;
+  mapState.maxY=Math.max(...list.map(v=>v.y))+1;
+
+  mapState.w=(mapState.maxX-mapState.minX+1)*MAP_CELL;
+  mapState.h=(mapState.maxY-mapState.minY+1)*MAP_CELL;
+
+  const canvas=document.getElementById("mapCanvas");
+  canvas.style.width=mapState.w+"px";
+  canvas.style.height=mapState.h+"px";
+  canvas.style.backgroundSize=
+    `${MAP_CELL}px ${MAP_CELL}px,${MAP_CELL}px ${MAP_CELL}px,${MAP_CELL*5}px ${MAP_CELL*5}px,${MAP_CELL*5}px ${MAP_CELL*5}px`;
+
+  // Axe la fiecare 5 coordonate.
+  for(let x=Math.ceil(mapState.minX/5)*5;x<=mapState.maxX;x+=5){
+    const lab=document.createElement("span");
+    lab.className="map-axis";
+    lab.style.left=((x-mapState.minX)*MAP_CELL+3)+"px";
+    lab.style.top="3px";
+    lab.textContent=x;
+    canvas.appendChild(lab);
+  }
+  for(let y=Math.ceil(mapState.minY/5)*5;y<=mapState.maxY;y+=5){
+    const lab=document.createElement("span");
+    lab.className="map-axis";
+    lab.style.left="3px";
+    lab.style.top=((y-mapState.minY)*MAP_CELL+3)+"px";
+    lab.textContent=y;
+    canvas.appendChild(lab);
+  }
+
+  list.forEach(item=>{
+    const info=mapMarkerType(item);
+    const marker=document.createElement("button");
+    marker.type="button";
+    marker.className=`map-marker ${info.cls}${info.count?" count":""}`;
+    marker.style.left=((item.x-mapState.minX)*MAP_CELL+MAP_CELL/2)+"px";
+    marker.style.top=((item.y-mapState.minY)*MAP_CELL+MAP_CELL/2)+"px";
+    marker.title=`${item.player} · ${item.village} · ${item.coords}`;
+    marker.dataset.coords=item.coords;
+    marker.addEventListener("pointerdown",e=>e.stopPropagation());
+    marker.addEventListener("click",e=>{
+      e.stopPropagation();
+      selectMapVillage(item,marker);
+    });
+    canvas.appendChild(marker);
+  });
+
+  applyMapTransform();
+}
+
+function applyMapTransform(){
+  const canvas=document.getElementById("mapCanvas");
+  canvas.style.transform=`translate(${mapState.tx}px,${mapState.ty}px) scale(${mapState.scale})`;
+}
+
+function fitMap(){
+  buildMap();
+  const vp=document.getElementById("mapViewport");
+  if(!vp.clientWidth||!vp.clientHeight)return;
+  const sx=(vp.clientWidth-28)/mapState.w;
+  const sy=(vp.clientHeight-28)/mapState.h;
+  mapState.scale=Math.max(.2,Math.min(1.15,sx,sy));
+  mapState.tx=(vp.clientWidth-mapState.w*mapState.scale)/2;
+  mapState.ty=(vp.clientHeight-mapState.h*mapState.scale)/2;
+  applyMapTransform();
+}
+
+function zoomMap(factor){
+  const vp=document.getElementById("mapViewport");
+  const cx=vp.clientWidth/2,cy=vp.clientHeight/2;
+  const old=mapState.scale;
+  const next=Math.max(.25,Math.min(2.6,old*factor));
+  const worldX=(cx-mapState.tx)/old;
+  const worldY=(cy-mapState.ty)/old;
+  mapState.scale=next;
+  mapState.tx=cx-worldX*next;
+  mapState.ty=cy-worldY*next;
+  applyMapTransform();
+}
+
+function focusMapCoord(coords,desiredScale=1.35){
+  buildMap();
+  const m=String(coords).match(/^(\d+)\|(\d+)$/);
+  if(!m)return false;
+  const x=Number(m[1]),y=Number(m[2]);
+  const vp=document.getElementById("mapViewport");
+  mapState.scale=Math.max(mapState.scale,desiredScale);
+  const px=(x-mapState.minX)*MAP_CELL+MAP_CELL/2;
+  const py=(y-mapState.minY)*MAP_CELL+MAP_CELL/2;
+  mapState.tx=vp.clientWidth/2-px*mapState.scale;
+  mapState.ty=vp.clientHeight/2-py*mapState.scale;
+  applyMapTransform();
+  return true;
+}
+
+function findVillageByCoord(coords,playerName,villageName){
+  const all=allMapVillages();
+  return all.find(v=>
+    v.coords===coords &&
+    (!playerName||v.player===playerName) &&
+    (!villageName||v.village===villageName)
+  ) || all.find(v=>v.coords===coords);
+}
+
+function openMapAt(coords,playerName="",villageName=""){
+  switchView("map");
+  requestAnimationFrame(()=>{
+    focusMapCoord(coords,1.45);
+    const item=findVillageByCoord(coords,playerName,villageName);
+    if(item){
+      const marker=[...document.querySelectorAll(".map-marker")]
+        .find(m=>m.dataset.coords===item.coords);
+      if(marker)selectMapVillage(item,marker);
+    }
+  });
+}
+
+function troopColorClass(i){
+  if(i===COUNT_INDEX)return "val-count";
+  if(i===SPY_INDEX||OFF_INDEXES.includes(i))return "val-off";
+  return "val-def";
+}
+
+function selectMapVillage(item,marker){
+  if(selectedMapMarker)selectedMapMarker.classList.remove("selected");
+  selectedMapMarker=marker;
+  marker.classList.add("selected");
+
+  document.querySelectorAll(".map-popup").forEach(x=>x.remove());
+
+  const info=mapMarkerType(item);
+  const pop=document.createElement("div");
+  pop.className="map-popup";
+
+  const x=(item.x-mapState.minX)*MAP_CELL+MAP_CELL/2;
+  const y=(item.y-mapState.minY)*MAP_CELL+MAP_CELL/2;
+
+  const maxLeft=mapState.w-310;
+  pop.style.left=Math.max(5,Math.min(maxLeft,x+18))+"px";
+  pop.style.top=Math.max(5,y-25)+"px";
+
+  const labels=[];
+  if(info.off)labels.push('<span class="map-tag off">OFF</span>');
+  if(info.def)labels.push('<span class="map-tag def">DEFF</span>');
+  if(info.count)labels.push('<span class="map-tag gold">CONȚI</span>');
+
+  let units="";
+  if(Array.isArray(item.troops)){
+    units='<div class="map-popup-units">'+item.troops.map((v,i)=>`
+      <div class="map-unit ${troopColorClass(i)}">
+        <img src="https://s1-ro.kingsage.gameforge.com/img/units_big/${MAP_UNIT_ICONS[i]}_big.png" referrerpolicy="no-referrer" alt="">
+        ${fmt(v)}
+      </div>`).join("")+'</div>';
+  }else{
+    units=`<div style="font-size:10px;color:#8b785e;font-style:italic;margin:7px 0">${(mapLang[lang]||mapLang.ro).noTroops}</div>`;
+  }
+
+  const tx=mapLang[lang]||mapLang.ro;
+  pop.innerHTML=`
+    <button class="map-popup-close" type="button">×</button>
+    <h3>${escapeHtml(item.player)}</h3>
+    <div class="sub">${escapeHtml(item.village)} · <b>${escapeHtml(item.coords)}</b> · ${escapeHtml(item.pts)} pts</div>
+    <div class="tags">${labels.join("")}</div>
+    ${units}
+    <div class="map-popup-actions">
+      <button type="button" class="copy-coord">${tx.copy}</button>
+      <a href="https://s62-fr.kingsage.gameforge.com/?s=map" target="_blank" rel="noopener">${tx.game}</a>
+    </div>
+  `;
+
+  pop.querySelector(".map-popup-close").addEventListener("click",e=>{
+    e.stopPropagation();
+    pop.remove();
+    marker.classList.remove("selected");
+    selectedMapMarker=null;
+  });
+
+  pop.querySelector(".copy-coord").addEventListener("click",async e=>{
+    e.stopPropagation();
+    try{
+      await navigator.clipboard.writeText(item.coords);
+      e.currentTarget.textContent="✓ "+item.coords;
+    }catch(_){
+      e.currentTarget.textContent=item.coords;
+    }
+  });
+
+  document.getElementById("mapCanvas").appendChild(pop);
+}
+
+function escapeHtml(s){
+  return String(s??"")
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+}
+
+/* Drag hartă */
+const mapVp=document.getElementById("mapViewport");
+mapVp.addEventListener("pointerdown",e=>{
+  if(e.target.closest(".map-marker,.map-popup"))return;
+  mapDragging=true;
+  mapPointerId=e.pointerId;
+  mapDragStart={x:e.clientX,y:e.clientY,tx:mapState.tx,ty:mapState.ty};
+  mapVp.setPointerCapture(e.pointerId);
+  mapVp.classList.add("dragging");
+});
+mapVp.addEventListener("pointermove",e=>{
+  if(!mapDragging||e.pointerId!==mapPointerId)return;
+  mapState.tx=mapDragStart.tx+(e.clientX-mapDragStart.x);
+  mapState.ty=mapDragStart.ty+(e.clientY-mapDragStart.y);
+  applyMapTransform();
+});
+function stopMapDrag(e){
+  if(e.pointerId!==mapPointerId)return;
+  mapDragging=false;
+  mapPointerId=null;
+  mapVp.classList.remove("dragging");
+}
+mapVp.addEventListener("pointerup",stopMapDrag);
+mapVp.addEventListener("pointercancel",stopMapDrag);
+
+mapVp.addEventListener("wheel",e=>{
+  e.preventDefault();
+  zoomMap(e.deltaY<0?1.12:.89);
+},{passive:false});
+
+document.getElementById("tabTroops").addEventListener("click",()=>switchView("troops"));
+document.getElementById("tabMap").addEventListener("click",()=>switchView("map"));
+document.getElementById("mapZoomIn").addEventListener("click",()=>zoomMap(1.2));
+document.getElementById("mapZoomOut").addEventListener("click",()=>zoomMap(.83));
+document.getElementById("mapFitBtn").addEventListener("click",fitMap);
+document.getElementById("mapGoBtn").addEventListener("click",()=>{
+  const c=document.getElementById("mapCoordSearch").value.trim();
+  if(c)openMapAt(c);
+});
+document.getElementById("mapCoordSearch").addEventListener("keydown",e=>{
+  if(e.key==="Enter"){
+    const c=e.currentTarget.value.trim();
+    if(c)openMapAt(c);
+  }
+});
+window.addEventListener("resize",()=>{
+  if(document.getElementById("mapView").classList.contains("active")){
+    requestAnimationFrame(fitMap);
+  }
+});
+
+/* Extinde render-ul existent ca să traducă și harta */
+const originalRender=render;
+render=function(){
+  originalRender();
+  renderMapTexts();
+};
+
 render();
 </script>
 </body>
